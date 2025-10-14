@@ -1,0 +1,170 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Anokhi अदा Design System - Elegant jewelry brand with pastel purple aesthetics */
+
+@layer base {
+  :root {
+    /* Brand Colors - Pastel Purple Theme */
+    --background: 0 0% 100%;
+    --foreground: 270 15% 25%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 270 15% 25%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 270 15% 25%;
+
+    /* Primary - Deep elegant purple */
+    --primary: 270 15% 25%;
+    --primary-foreground: 0 0% 100%;
+
+    /* Secondary - Soft pastel purple */
+    --secondary: 300 20% 90%;
+    --secondary-foreground: 270 15% 25%;
+
+    /* Muted - Light lavender */
+    --muted: 300 15% 95%;
+    --muted-foreground: 270 10% 55%;
+
+    /* Accent - Pastel purple highlight */
+    --accent: 285 30% 85%;
+    --accent-foreground: 270 15% 25%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 300 15% 92%;
+    --input: 300 15% 95%;
+    --ring: 285 30% 70%;
+    
+    /* Brand specific colors */
+    --brand-purple: 285 30% 85%;
+    --brand-purple-light: 300 20% 95%;
+    --brand-purple-dark: 270 20% 20%;
+    --brand-lavender: 280 25% 90%;
+    --brand-soft-grey: 270 5% 65%;
+    
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(285 30% 85%), hsl(300 20% 90%));
+    --gradient-hero: linear-gradient(135deg, hsl(300 20% 95%), hsl(285 30% 90%));
+    --gradient-card: linear-gradient(135deg, hsl(0 0% 100%), hsl(300 15% 98%));
+    
+    /* Shadows */
+    --shadow-soft: 0 4px 20px hsl(285 30% 85% / 0.15);
+    --shadow-elegant: 0 8px 30px hsl(285 30% 70% / 0.12);
+    --shadow-hover: 0 12px 40px hsl(285 30% 70% / 0.2);
+    
+    /* Typography */
+    --font-heading: 'Playfair Display', serif;
+    --font-body: 'Inter', sans-serif;
+
+    --radius: 0.5rem;
+
+    --sidebar-background: 0 0% 98%;
+
+    --sidebar-foreground: 240 5.3% 26.1%;
+
+    --sidebar-primary: 240 5.9% 10%;
+
+    --sidebar-primary-foreground: 0 0% 98%;
+
+    --sidebar-accent: 240 4.8% 95.9%;
+
+    --sidebar-accent-foreground: 240 5.9% 10%;
+
+    --sidebar-border: 220 13% 91%;
+
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 210 40% 98%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 212.7 26.8% 83.9%;
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-body;
+  }
+  
+  /* Typography */
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-heading;
+  }
+  
+  /* Custom utility classes for brand elements */
+  .gradient-primary {
+    background: var(--gradient-primary);
+  }
+  
+  .gradient-hero {
+    background: var(--gradient-hero);
+  }
+  
+  .gradient-card {
+    background: var(--gradient-card);
+  }
+  
+  .shadow-soft {
+    box-shadow: var(--shadow-soft);
+  }
+  
+  .shadow-elegant {
+    box-shadow: var(--shadow-elegant);
+  }
+  
+  .shadow-hover {
+    box-shadow: var(--shadow-hover);
+  }
+  
+  /* Smooth transitions for all interactive elements */
+  .transition-smooth {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  /* Backdrop blur utilities for navbar */
+  .backdrop-blur-md {
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+  }
+}

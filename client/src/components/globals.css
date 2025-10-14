@@ -1,0 +1,136 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap');
+
+:root {
+  --brand-purple: #8a4fff;
+  --brand-purple-dark: #6b3dc8;
+}
+
+.font-playfair {
+  font-family: 'Playfair Display', serif;
+}
+
+.font-montserrat {
+  font-family: 'Montserrat', sans-serif;
+}
+
+.transition-smooth {
+  transition: all 0.3s ease;
+}
+
+.shadow-soft {
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+}
+
+.shadow-elegant {
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+}
+
+.shadow-hover {
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+}
+
+.gradient-hero {
+  background: linear-gradient(135deg, #fdf2f8 0%, #f5f0fe 100%);
+}
+
+body {
+  background-color: #fff;
+  color: #333;
+}
+
+/* Add this to your existing CSS */
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0px); }
+}
+
+.floating {
+  animation: float 3s ease-in-out infinite;
+}
+/* Add to your global CSS file */
+@keyframes blob {
+  0% {
+    transform: translate(0px, 0px) scale(1);
+  }
+  33% {
+    transform: translate(30px, -50px) scale(1.1);
+  }
+  66% {
+    transform: translate(-20px, 20px) scale(0.9);
+  }
+  100% {
+    transform: translate(0px, 0px) scale(1);
+  }
+}
+
+.animate-blob {
+  animation: blob 7s infinite;
+}
+
+.animation-delay-2000 {
+  animation-delay: 2s;
+}
+
+.animation-delay-4000 {
+  animation-delay: 4s;
+}
+
+/* Custom input focus */
+input:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(249, 168, 212, 0.5);
+}
+
+/* Custom rounded corners */
+ 
+
+/* Shadow effect */
+.shadow-elegant {
+  box-shadow: 0 10px 30px rgba(236, 72, 153, 0.15);
+}
+/* Add to your global CSS file */
+@keyframes blob {
+  0% {
+    transform: translate(0px, 0px) scale(1);
+  }
+  33% {
+    transform: translate(30px, -50px) scale(1.1);
+  }
+  66% {
+    transform: translate(-20px, 20px) scale(0.9);
+  }
+  100% {
+    transform: translate(0px, 0px) scale(1);
+  }
+}
+
+.animate-blob {
+  animation: blob 7s infinite;
+}
+
+.animation-delay-2000 {
+  animation-delay: 2s;
+}
+
+.animation-delay-4000 {
+  animation-delay: 4s;
+}
+
+.custom-rounded {
+  border-radius: 40px;
+}
+
+input:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(249, 168, 212, 0.5);
+}
+
+.shadow-elegant {
+  box-shadow: 0 10px 30px rgba(236, 72, 153, 0.15);
+}
+
+/* Custom form styling */
+.bg-gradient-hero {
+  background: linear-gradient(135deg, #fdf2f8 0%, #fce7f3 50%, #fbcfe8 100%);
+}
