@@ -15,7 +15,7 @@ const Getsignature = async (req, res) => {
       cloudInstance = "primary",
     } = req.body;
     const timestamp = Math.round(new Date().getTime() / 1000);
-    const public_id = `AnokhiAda/Product/${Product_category}/${Product_name}_${timestamp}`;
+    const public_id = `RKSTORE/Product/${Product_category}/${Product_name}_${timestamp}`;
 
     const uploadparams = {
       timestamp,
@@ -136,7 +136,7 @@ const SaveProduct = async (req, res) => {
       Product_image: req.body.Product_image || [],
       Product_category: req.body.Product_category,
       Product_available: req.body.Product_available !== false,
-      Product_public_id: req.body.Product_public_id,
+      Product_public_id: req.body.Product_public_id || "undcnwe ic jwdn cjw ncjkw cjw",
       Product_slug: category.slug,
     });
 
@@ -170,24 +170,46 @@ const SaveProduct = async (req, res) => {
   }
 };
 
-
 const DeleteProduct = async (req, res) => {
   try {
-    const { _id, Product_public_id } = req.body;
-    const cloudinary_Delete_Result = await cloudinary.uploader.destroy(
-      Product_public_id
-    );
-    if (!cloudinary_Delete_Result)
-      throw new Error("delete faild from cloudinary try again");
+    const { _id } = req.body;
+    
+    const find = await Product.findById(_id);
+    const ImageLinksArray = find.Product_image;
 
+    // Extract public IDs from image URLs and delete from Cloudinary
+    for (const imageUrl of ImageLinksArray) {
+      // Extract public ID from Cloudinary URL
+      // URL format: https://res.cloudinary.com/diypnkid6/image/upload/v1759769713/AnokhiAda/Product/general/upload_1759769645113_1759769694.jpg
+      const urlParts = imageUrl.split('/');
+      
+      // Find the index where 'upload' appears and get everything after it
+      const uploadIndex = urlParts.indexOf('upload');
+      if (uploadIndex !== -1) {
+        // Get the path after 'upload' and remove the file extension
+        const pathAfterUpload = urlParts.slice(uploadIndex + 1).join('/');
+        const publicId = pathAfterUpload.replace(/\.[^/.]+$/, ""); // Remove file extension
+        
+        console.log(`Deleting image with public ID: ${publicId}`);
+        
+        // Delete image from Cloudinary
+        const cloudinary_Delete_Result = await cloudinary.uploader.destroy(publicId);
+        
+        if (cloudinary_Delete_Result.result !== 'ok') {
+          console.warn(`Failed to delete image: ${publicId}`);
+        }
+      }
+    }
+
+    // Delete the product from database
     const post_Delete = await Product.findByIdAndDelete(_id);
-    if (!post_Delete) throw new Error("error ecoured Try Again!");
+    if (!post_Delete) throw new Error("Error occurred! Try Again!");
 
     const responseData = await Product.find({});
 
     res.status(200).json({
       Products: responseData,
-      Message: "Deleted Succesfully!",
+      Message: "Deleted Successfully!",
     });
   } catch (e) {
     console.log(e.message);

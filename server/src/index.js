@@ -75,7 +75,7 @@ app.use("/wishlist", wishlistRouter);
 app.use("/cart", cartRouter);
 app.use("/notifications", notificationRouter);
 app.use("/shiprocket",ShipRocketrouter);
-app.use("/api/verify",numberVerifyrouter); 
+app.use("/api/verify",numberVerifyrouter);
 app.use("/hamper",hamperRouter);
  
 // FIX: Razorpay logic ko '/razorpay' prefix par mount kiya

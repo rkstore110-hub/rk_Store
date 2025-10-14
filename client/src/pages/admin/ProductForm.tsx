@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -14,7 +13,7 @@ import {
 } from "@/components/ui/select";
 import { Card, CardContent } from "@/components/ui/card";
 import ImageUploader from "../../components/admin/ImageUploader";
-import { Loader2, Gift, AlertTriangle } from "lucide-react";
+import { Loader2 } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 
 interface ProductFormProps {
@@ -31,26 +30,11 @@ const ProductForm: React.FC<ProductFormProps> = ({
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [price, setPrice] = useState("");
-  const [hamperPrice, setHamperPrice] = useState("");
   const [category, setCategory] = useState(categories[0]?.id || "");
   const [images, setImages] = useState<string[]>([]);
-  const [isHamperProduct, setIsHamperProduct] = useState(false);
   const [isAvailable, setIsAvailable] = useState(true);
   const [loading, setLoading] = useState(false);
   const { toast } = useToast();
-
-  // ✅ Validation for hamper pricing
-  const validateHamperPrice = () => {
-    if (!isHamperProduct || !hamperPrice) return true;
-
-    const regularPrice = parseFloat(price);
-    const hamperPriceNum = parseFloat(hamperPrice);
-
-    if (hamperPriceNum <= 0) return false;
-    if (hamperPriceNum >= regularPrice) return false;
-
-    return true;
-  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -83,27 +67,14 @@ const ProductForm: React.FC<ProductFormProps> = ({
       return;
     }
 
-    // ✅ Validate hamper pricing
-    if (isHamperProduct && hamperPrice && !validateHamperPrice()) {
-      toast({
-        title: "Invalid Hamper Price",
-        description:
-          "Hamper price must be greater than 0 and less than regular price",
-        variant: "destructive",
-      });
-      return;
-    }
-
     setLoading(true);
     try {
       const productData = {
         name,
         description,
         price,
-        hamperPrice: isHamperProduct && hamperPrice ? hamperPrice : null,
         category,
         images,
-        isHamperProduct,
         isAvailable,
       };
 
@@ -113,10 +84,8 @@ const ProductForm: React.FC<ProductFormProps> = ({
       setName("");
       setDescription("");
       setPrice("");
-      setHamperPrice("");
       setCategory(categories[0]?.id || "");
       setImages([]);
-      setIsHamperProduct(false);
       setIsAvailable(true);
     } finally {
       setLoading(false);
@@ -142,7 +111,7 @@ const ProductForm: React.FC<ProductFormProps> = ({
             </div>
 
             <div className="space-y-2">
-              <Label htmlFor="product-price">Regular Price (₹) *</Label>
+              <Label htmlFor="product-price">Price (₹) *</Label>
               <Input
                 id="product-price"
                 type="number"
@@ -162,91 +131,11 @@ const ProductForm: React.FC<ProductFormProps> = ({
             <Checkbox
               id="product-available"
               checked={isAvailable}
-              // ✅ This fixes the TypeScript error
               onCheckedChange={(checked) => setIsAvailable(checked === true)}
             />
             <Label htmlFor="product-available" className="text-sm font-medium">
               Product Available for Sale
             </Label>
-          </div>
-
-          {/* ✅ Hamper Product Section */}
-          <div className="border rounded-lg p-4 bg-orange-50/50 border-orange-200">
-            <div className="flex items-center space-x-2 mb-3">
-              <Checkbox
-                id="hamper-product"
-                checked={isHamperProduct}
-                onCheckedChange={(checked) => {
-                  setIsHamperProduct(!!checked);
-                  if (!checked) {
-                    setHamperPrice("");
-                  }
-                }}
-              />
-              <Label
-                htmlFor="hamper-product"
-                className="text-sm font-medium flex items-center gap-2"
-              >
-                <Gift className="w-4 h-4 text-orange-600" />
-                Available for Custom Hampers
-              </Label>
-            </div>
-
-            {isHamperProduct && (
-              <div className="space-y-3">
-                <div className="space-y-2">
-                  <Label htmlFor="hamper-price" className="text-orange-800">
-                    Hamper Price (₹) - Special pricing for hampers
-                  </Label>
-                  <Input
-                    id="hamper-price"
-                    type="number"
-                    min="1"
-                    step="0.01"
-                    value={hamperPrice}
-                    onChange={(e) => setHamperPrice(e.target.value)}
-                    placeholder="Enter special hamper price"
-                    className="h-10 border-orange-300 focus:border-orange-500"
-                  />
-                </div>
-
-                <div className="bg-orange-100 border border-orange-300 rounded-md p-3">
-                  <div className="flex items-start gap-2">
-                    <AlertTriangle className="w-4 h-4 text-orange-600 mt-0.5 flex-shrink-0" />
-                    <div className="text-xs text-orange-700">
-                      <p className="font-medium mb-1">
-                        Hamper Pricing Guidelines:
-                      </p>
-                      <ul className="space-y-0.5 text-orange-600">
-                        <li>• Leave empty to use regular price for hampers</li>
-                        <li>
-                          • If set, hamper price should be less than regular
-                          price
-                        </li>
-                        <li>
-                          • Only hamper-priced products appear in hamper builder
-                        </li>
-                        {price && hamperPrice && (
-                          <li className="font-medium text-orange-800">
-                            • Current discount: ₹
-                            {(
-                              parseFloat(price) - parseFloat(hamperPrice)
-                            ).toFixed(2)}
-                            (
-                            {(
-                              ((parseFloat(price) - parseFloat(hamperPrice)) /
-                                parseFloat(price)) *
-                              100
-                            ).toFixed(1)}
-                            % off)
-                          </li>
-                        )}
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            )}
           </div>
 
           <div className="space-y-2">
@@ -305,7 +194,7 @@ const ProductForm: React.FC<ProductFormProps> = ({
             type="submit"
             onClick={handleSubmit}
             className="w-full bg-purple-600 hover:bg-purple-700 h-11 text-base font-medium"
-            disabled={loading || !validateHamperPrice()}
+            disabled={loading}
           >
             {loading ? (
               <>
