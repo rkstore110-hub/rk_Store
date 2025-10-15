@@ -34,6 +34,7 @@ export const usePhoneVerification = () => {
   const handlePhoneVerification = async (e: React.FormEvent) => {
     e.preventDefault();
     const cleanNumber = phoneNumber.replace(/\D/g, "");
+    
     if (
       !cleanNumber ||
       cleanNumber.length !== 10 ||
@@ -52,11 +53,11 @@ export const usePhoneVerification = () => {
 
     try {
       setIsVerifyingPhone(true);
+      
+      // Check if phone is already verified
       const checkResponse = await axiosInstance.post(
         "/api/verify/check-phone",
-        {
-          phoneNumber: phoneNumber,
-        }
+        { phoneNumber: cleanNumber }
       );
 
       if (checkResponse.data.success && checkResponse.data.isVerified) {
@@ -64,35 +65,34 @@ export const usePhoneVerification = () => {
         setShowPhoneVerification(false);
         toast({
           title: "Phone Verified! 📱",
-          description:
-            "Phone number found in our records. Proceeding to checkout.",
+          description: "Phone number found in our records. Proceeding to checkout.",
           variant: "default",
         });
         return true;
-      } else {
-        const otpResponse = await axiosInstance.post("/api/verify/send", {
-          countryCode: "91",
-          mobileNumber: phoneNumber.replace(/\D/g, ""),
-        });
+      }
+      
+      // Send OTP
+      const otpResponse = await axiosInstance.post("/api/verify/send", {
+        countryCode: "91",
+        mobileNumber: cleanNumber,
+      });
 
-        if (otpResponse.data.success) {
-          setVerificationId(otpResponse.data.verificationId);
-          setShowOTPInput(true);
-          setOtpTimer(otpResponse.data.timeout || 60);
-          setCanResendOTP(false);
-          toast({
-            title: "OTP Sent! 📲",
-            description: `Verification code sent to ${phoneNumber}`,
-            variant: "default",
-          });
-        }
+      if (otpResponse.data.success) {
+        setVerificationId(otpResponse.data.verificationId);
+        setShowOTPInput(true);
+        setOtpTimer(otpResponse.data.timeout || 60);
+        setCanResendOTP(false);
+        toast({
+          title: "OTP Sent! 📲",
+          description: `Verification code sent to ${phoneNumber}`,
+          variant: "default",
+        });
       }
     } catch (error: any) {
       console.error("Phone verification error:", error);
       toast({
         title: "Verification Failed",
-        description:
-          error.response?.data?.message || "Failed to verify phone number",
+        description: error.response?.data?.message || "Failed to verify phone number",
         variant: "destructive",
       });
     } finally {
@@ -103,10 +103,12 @@ export const usePhoneVerification = () => {
 
   const handleOTPVerification = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!otp || otp.length !== 4) {
+    
+    // MessageCentral sends 6-digit OTP, not 4-digit
+    if (!otp || otp.length < 4 || otp.length > 6) {
       toast({
         title: "Invalid OTP",
-        description: "Please enter a valid 4-digit OTP",
+        description: "Please enter a valid OTP code",
         variant: "destructive",
       });
       return;
@@ -127,8 +129,7 @@ export const usePhoneVerification = () => {
         setShowOTPInput(false);
         toast({
           title: "Phone Verified Successfully! ✅",
-          description:
-            "Your phone number has been verified. Proceeding to checkout.",
+          description: "Your phone number has been verified. Proceeding to checkout.",
           variant: "default",
         });
         return true;
@@ -137,8 +138,7 @@ export const usePhoneVerification = () => {
       console.error("OTP verification error:", error);
       toast({
         title: "Invalid OTP",
-        description:
-          error.response?.data?.message || "Please enter the correct OTP",
+        description: error.response?.data?.message || "Please enter the correct OTP",
         variant: "destructive",
       });
     } finally {
@@ -186,6 +186,7 @@ export const usePhoneVerification = () => {
     setPhoneVerified(false);
     setOtpTimer(0);
     setCanResendOTP(false);
+    setVerificationId("");
   };
 
   return {
