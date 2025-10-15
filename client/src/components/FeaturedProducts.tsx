@@ -159,7 +159,6 @@ const ProductCard: React.FC<{
           <Button
             onClick={e => { e.stopPropagation(); handleAdd(); }}
             disabled={adding}
-            // size="md"
             className="w-full font-semibold rounded-lg bg-amber-600 hover:bg-amber-700 text-white transition-all duration-200 shadow-sm hover:shadow-md border-0"
           >
             <ShoppingCart size={18} className="mr-2" /> 
@@ -333,8 +332,8 @@ const FeaturedProducts: React.FC = () => {
           ))}
         </div>
 
-        {/* Products Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6 mb-12">
+        {/* Products Grid - Fixed for mobile (2 cards) */}
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 md:gap-6 mb-12">
           {products.map((product, index) => (
             <ProductCard
               key={product._id}
