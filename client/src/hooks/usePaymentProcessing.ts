@@ -191,7 +191,7 @@ export const usePaymentProcessing = () => {
             key: razorpayKeyId || RAZORPAY_KEY_ID, // Server se mili key ya fallback key
             amount: amount, // Amount in paise
             currency: "INR",
-            name: "Your Company Name", 
+            name: "RK STORE", 
             description: `Order ID: ${internalOrderId}`,
             order_id: razorpayOrderId, 
             handler: handlePaymentSuccess, 
