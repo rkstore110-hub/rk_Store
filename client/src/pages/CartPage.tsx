@@ -10,21 +10,13 @@ import axiosInstance from "@/utils/axiosConfig";
 import { motion, AnimatePresence } from "framer-motion";
 import { X, Minus, Plus, Trash2, ShoppingBag, Truck, Lock, Crown, Gem } from "lucide-react";
 
-// New imports for phone verification and payment processing
-import { usePhoneVerification } from "@/hooks/usePhoneVerification";
-import { usePaymentProcessing } from "@/hooks/usePaymentProcessing";
-import PhoneVerificationModal from "@/components/PhoneVerificationModal";
-
 const CartPage = () => {
   const { cart, removeCart, clearCart, updateQuantity, getCartTotal } = useCart();
   const navigate = useNavigate();
   const { user } = useAuth();
   const { toast } = useToast();
-  const phoneVerification = usePhoneVerification();
-  const { checkoutLoading, processPayment } = usePaymentProcessing();
 
   const [isCheckingOut, setIsCheckingOut] = useState(false);
-  const [selectedPaymentMethod, setSelectedPaymentMethod] = useState<"cod" | "online" | null>(null);
   const [shippingAddress, setShippingAddress] = useState({
     fullName: "",
     address: "",
@@ -37,16 +29,6 @@ const CartPage = () => {
   const getProductId = (item: any) => item._id || item.id;
   const totalPrice = getCartTotal();
   const DELIVERY_CHARGE = 0;
-
-  useEffect(() => {
-    if (phoneVerification.phoneVerified) {
-      setShippingAddress(prev => ({
-        ...prev,
-        phone: phoneVerification.phoneNumber
-      }));
-      setIsCheckingOut(true);
-    }
-  }, [phoneVerification.phoneVerified, phoneVerification.phoneNumber]);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -77,53 +59,13 @@ const CartPage = () => {
       toast({ title: "Cart is empty", description: "Add items to your cart before checkout", variant: "destructive" });
       return;
     }
-    phoneVerification.setShowPhoneVerification(true);
-  };
-
-  const handlePaymentSelection = async (paymentMethod: "cod" | "online") => {
-    const requiredFields = ["fullName", "address", "city", "state", "pinCode", "phone"];
-    const missingFields = requiredFields.filter((field) => !shippingAddress[field].trim());
-    if (missingFields.length > 0) {
-      toast({ title: "Missing Information", description: "Please fill in all shipping address fields", variant: "destructive" });
-      return;
-    }
-    if (!phoneVerification.phoneVerified) {
-      toast({ title: "Phone Not Verified", description: "Please verify your phone number first", variant: "destructive" });
-      return;
-    }
-
-    const orderItems = cart.map(item => ({
-      productId: item._id || item.id,
-      quantity: item.quantity || 1,
-      price: parseFloat(String(item.price).replace(/[^0-9.-]+/g, "")),
-      name: item.name || item.Product_name,
-      image: item.image || (item.Product_image && item.Product_image[0])
-    }));
-
-    const deliveryCharge = 0;
-
-    const success = await processPayment(
-      orderItems,
-      shippingAddress,
-      paymentMethod,
-      {
-        itemsTotal: totalPrice,
-        deliveryCharge: deliveryCharge,
-        totalAmount: totalPrice + deliveryCharge
-      },
-      "cart"
-    );
-
-    if (success) {
-      clearCart();
-      setIsCheckingOut(false);
-      setSelectedPaymentMethod(null);
-      phoneVerification.resetPhoneVerification();
-    }
-  };
-
-  const handlePaymentMethodSelect = (method: "cod" | "online") => {
-    setSelectedPaymentMethod(method);
+    
+    // Payment functionality disabled for now
+    toast({ 
+      title: "Checkout Temporarily Unavailable", 
+      description: "Online payment and COD services are currently being upgraded. Please check back soon.", 
+      variant: "default" 
+    });
   };
 
   const getItemTotal = (item: any) => {
@@ -352,7 +294,7 @@ const CartPage = () => {
         </div>
       </div>
 
-      {/* Checkout Modal */}
+      {/* Checkout Modal - Removed payment functionality but kept structure */}
       <AnimatePresence>
         {isCheckingOut && (
           <motion.div
@@ -360,7 +302,7 @@ const CartPage = () => {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4"
-            onClick={() => !checkoutLoading && setIsCheckingOut(false)}
+            onClick={() => setIsCheckingOut(false)}
           >
             <motion.div
               initial={{ scale: 0.9, opacity: 0 }}
@@ -385,7 +327,7 @@ const CartPage = () => {
                     variant="ghost"
                     size="icon"
                     className="h-8 w-8 rounded-full hover:bg-white/20 text-white"
-                    onClick={() => !checkoutLoading && setIsCheckingOut(false)}
+                    onClick={() => setIsCheckingOut(false)}
                   >
                     <X className="h-4 w-4" />
                   </Button>
@@ -416,8 +358,22 @@ const CartPage = () => {
                   </div>
                 </div>
 
-                {/* Shipping Address Form */}
-                <div className="space-y-4">
+                {/* Service Unavailable Message */}
+                <div className="bg-amber-50 border border-amber-200 rounded-xl p-6 text-center mb-6">
+                  <div className="w-12 h-12 bg-amber-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <Lock className="w-6 h-6 text-amber-600" />
+                  </div>
+                  <h3 className="text-lg font-semibold text-amber-800 mb-2">
+                    Checkout Service Temporarily Unavailable
+                  </h3>
+                  <p className="text-amber-700 text-sm">
+                    We're currently upgrading our payment systems to serve you better. 
+                    Online payment and Cash on Delivery services will be available soon.
+                  </p>
+                </div>
+
+                {/* Shipping Address Form - Kept for future use */}
+                <div className="space-y-4 opacity-50 pointer-events-none">
                   <h3 className="font-semibold text-purple-900 text-lg">Shipping Information</h3>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div className="space-y-2">
@@ -439,8 +395,7 @@ const CartPage = () => {
                         value={shippingAddress.phone}
                         onChange={handleInputChange}
                         className="border-purple-300 focus:border-purple-400"
-                        placeholder="Verified phone number"
-                        disabled
+                        placeholder="Phone number"
                       />
                     </div>
                     <div className="md:col-span-2 space-y-2">
@@ -491,68 +446,22 @@ const CartPage = () => {
                 </div>
               </div>
 
-              {/* Payment Buttons */}
+              {/* Payment Buttons - Disabled */}
               <div className="flex-shrink-0 bg-white border-t border-purple-200 p-6 space-y-3 rounded-b-2xl">
                 <Button
-                  onClick={() => handlePaymentSelection('online')}
-                  disabled={checkoutLoading}
-                  className="w-full h-12 rounded-xl bg-purple-900 hover:bg-purple-800 text-white font-semibold shadow-lg hover:shadow-xl transition-all duration-200"
+                  disabled
+                  className="w-full h-12 rounded-xl bg-gray-400 text-white font-semibold cursor-not-allowed"
                 >
-                  {checkoutLoading ? (
-                    <div className="flex items-center justify-center gap-2">
-                      <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
-                      Processing...
-                    </div>
-                  ) : (
-                    <div className="flex items-center justify-center gap-2">
-                      <Lock className="w-5 h-5" />
-                      Pay Online - ₹{totalPrice.toLocaleString()}
-                    </div>
-                  )}
-                </Button>
-
-                <Button
-                  onClick={() => handlePaymentSelection('cod')}
-                  disabled={checkoutLoading}
-                  variant="outline"
-                  className="w-full h-12 rounded-xl border-2 border-purple-600 text-purple-700 hover:bg-purple-600 hover:text-white font-semibold shadow-lg hover:shadow-xl transition-all duration-200"
-                >
-                  {checkoutLoading ? (
-                    <div className="flex items-center justify-center gap-2">
-                      <div className="w-5 h-5 border-2 border-purple-600 border-t-transparent rounded-full animate-spin"></div>
-                      Processing...
-                    </div>
-                  ) : (
-                    <div className="flex items-center justify-center gap-2">
-                      <Truck className="w-5 h-5" />
-                      Cash on Delivery - ₹{totalPrice.toLocaleString()}
-                    </div>
-                  )}
+                  <div className="flex items-center justify-center gap-2">
+                    <Lock className="w-5 h-5" />
+                    Payment Services Coming Soon
+                  </div>
                 </Button>
               </div>
             </motion.div>
           </motion.div>
         )}
       </AnimatePresence>
-
-      {/* Phone Verification Modal */}
-      <PhoneVerificationModal
-        showPhoneVerification={phoneVerification.showPhoneVerification}
-        phoneNumber={phoneVerification.phoneNumber}
-        setPhoneNumber={phoneVerification.setPhoneNumber}
-        otp={phoneVerification.otp}
-        setOtp={phoneVerification.setOtp}
-        otpInputRefs={phoneVerification.otpInputRefs}
-        otpTimer={phoneVerification.otpTimer}
-        showOTPInput={phoneVerification.showOTPInput}
-        setShowOTPInput={phoneVerification.setShowOTPInput}
-        isVerifyingPhone={phoneVerification.isVerifyingPhone}
-        isVerifyingOTP={phoneVerification.isVerifyingOTP}
-        handlePhoneVerification={phoneVerification.handlePhoneVerification}
-        handleOTPVerification={phoneVerification.handleOTPVerification}
-        handleResendOTP={phoneVerification.handleResendOTP}
-        resetPhoneVerification={phoneVerification.resetPhoneVerification}
-      />
     </>
   );
 };
