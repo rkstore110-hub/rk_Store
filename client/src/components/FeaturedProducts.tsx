@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect, useMemo, useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Heart, Star, ShoppingCart, Eye, ChevronDown } from "lucide-react";
+import { Heart, Star, ShoppingCart, Eye, ChevronDown, ChevronLeft, ChevronRight } from "lucide-react";
 import { useWishlist } from "./WishlistContext";
 import { useCart } from "./CartContext";
 import { useAuth } from "./AuthContext";
@@ -178,6 +178,7 @@ const FeaturedProducts: React.FC = () => {
   const [hasMore, setHasMore] = useState(true);
   const [totalProducts, setTotalProducts] = useState(0);
   const [selectedCategory, setSelectedCategory] = useState<string>("");
+  const [scrollPosition, setScrollPosition] = useState(0);
 
   const { toggleWishlist, isInWishlist } = useWishlist();
   const { addToCart } = useCart();
@@ -278,6 +279,20 @@ const FeaturedProducts: React.FC = () => {
     [navigate]
   );
 
+  // Scroll functions for categories
+  const scrollCategories = (direction: 'left' | 'right') => {
+    const container = document.getElementById('categories-container');
+    if (container) {
+      const scrollAmount = 200;
+      const newPosition = direction === 'left' 
+        ? Math.max(0, scrollPosition - scrollAmount)
+        : scrollPosition + scrollAmount;
+      
+      container.scrollTo({ left: newPosition, behavior: 'smooth' });
+      setScrollPosition(newPosition);
+    }
+  };
+
   return (
     <section className="relative pt-24 pb-16" style={{ background: "white" }}>
       <div className="relative max-w-7xl mx-auto px-4">
@@ -309,31 +324,62 @@ const FeaturedProducts: React.FC = () => {
           </motion.div>
         </motion.header>
 
-        {/* Category Filters */}
-        <div className="flex flex-wrap justify-center gap-3 mb-12">
-          <Button 
-            size="sm" 
-            variant={selectedCategory === "" ? "default" : "outline"} 
-            onClick={() => setSelectedCategory("")} 
-            className="rounded-full px-6 py-2 font-medium transition-all duration-200 bg-purple-600 hover:bg-purple-700 text-white border-purple-600"
-          >
-            All Collections
-          </Button>
-          {categories.map((cat) => (
+        {/* Category Filters - Horizontal Scroll */}
+        <div className="relative mb-12">
+          {/* Scroll Buttons for Desktop */}
+          <div className="hidden md:flex absolute left-0 top-1/2 transform -translate-y-1/2 z-10">
             <Button
-              key={cat._id}
+              variant="outline"
               size="sm"
-              variant={selectedCategory === cat.slug ? "default" : "outline"}
-              onClick={() => setSelectedCategory(cat.slug || "")}
-              className="rounded-full px-6 py-2 font-medium transition-all duration-200 border-purple-200 text-purple-700 hover:bg-purple-50 hover:border-purple-300"
+              onClick={() => scrollCategories('left')}
+              className="rounded-full p-2 bg-white shadow-md border-purple-200 text-purple-600 hover:bg-purple-50"
+              disabled={scrollPosition === 0}
             >
-              {cat.name}
+              <ChevronLeft size={20} />
             </Button>
-          ))}
+          </div>
+          
+          <div className="hidden md:flex absolute right-0 top-1/2 transform -translate-y-1/2 z-10">
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={() => scrollCategories('right')}
+              className="rounded-full p-2 bg-white shadow-md border-purple-200 text-purple-600 hover:bg-purple-50"
+            >
+              <ChevronRight size={20} />
+            </Button>
+          </div>
+
+          {/* Categories Container */}
+          <div
+            id="categories-container"
+            className="flex space-x-3 overflow-x-auto pb-4 scrollbar-hide scroll-smooth px-2"
+            style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+          >
+            <Button 
+              size="sm" 
+              variant={selectedCategory === "" ? "default" : "outline"} 
+              onClick={() => setSelectedCategory("")} 
+              className="flex-shrink-0 rounded-full px-6 py-2 font-medium transition-all duration-200 bg-purple-600 hover:bg-purple-700 text-white border-purple-600"
+            >
+              All Collections
+            </Button>
+            {categories.map((cat) => (
+              <Button
+                key={cat._id}
+                size="sm"
+                variant={selectedCategory === cat.slug ? "default" : "outline"}
+                onClick={() => setSelectedCategory(cat.slug || "")}
+                className="flex-shrink-0 rounded-full px-6 py-2 font-medium transition-all duration-200 border-purple-200 text-purple-700 hover:bg-purple-50 hover:border-purple-300 whitespace-nowrap"
+              >
+                {cat.name}
+              </Button>
+            ))}
+          </div>
         </div>
 
-        {/* Products Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6 mb-12">
+        {/* Products Grid - 2 columns on mobile */}
+        <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 sm:gap-6 mb-12">
           {products.map((product, index) => (
             <ProductCard
               key={product._id}
@@ -354,11 +400,11 @@ const FeaturedProducts: React.FC = () => {
               size="lg"
               onClick={handleLoadMore}
               disabled={loadingMore}
-              className="border-purple-300 text-purple-700 px-12 py-6 rounded-full font-semibold hover:bg-purple-50 hover:border-purple-400 transition-all duration-200 text-lg"
+              className="border-purple-300 text-purple-700 px-8 sm:px-12 py-4 sm:py-6 rounded-full font-semibold hover:bg-purple-50 hover:border-purple-400 transition-all duration-200 text-base sm:text-lg"
             >
               {loadingMore ? (
                 <div className="flex items-center gap-2">
-                  <div className="w-5 h-5 border-2 border-purple-400 border-t-transparent rounded-full animate-spin"></div>
+                  <div className="w-4 h-4 sm:w-5 sm:h-5 border-2 border-purple-400 border-t-transparent rounded-full animate-spin"></div>
                   Loading...
                 </div>
               ) : (
@@ -368,6 +414,17 @@ const FeaturedProducts: React.FC = () => {
           </div>
         )}
       </div>
+
+      {/* Custom CSS for hiding scrollbar */}
+      <style>{`
+        .scrollbar-hide {
+          -ms-overflow-style: none;
+          scrollbar-width: none;
+        }
+        .scrollbar-hide::-webkit-scrollbar {
+          display: none;
+        }
+      `}</style>
     </section>
   );
 };
