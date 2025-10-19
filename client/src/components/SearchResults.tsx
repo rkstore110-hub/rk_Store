@@ -172,16 +172,16 @@ const SearchResults = () => {
       <div 
         className="min-h-screen pt-20 px-4 flex items-center justify-center"
         style={{
-          background: "linear-gradient(135deg, #ffffff 0%, #fffaf0 40%, #fff9e6 100%)",
+          background: "linear-gradient(135deg, #ffffff 0%, #f8f0fc 40%, #f3e8ff 100%)",
         }}
       >
         <div className="text-center">
           <div className="relative mb-6">
-            <div className="w-16 h-16 border-4 border-amber-200 rounded-full animate-spin"></div>
-            <div className="absolute top-0 left-0 w-16 h-16 border-4 border-amber-600 rounded-full animate-spin border-t-transparent"></div>
+            <div className="w-16 h-16 border-4 border-purple-200 rounded-full animate-spin"></div>
+            <div className="absolute top-0 left-0 w-16 h-16 border-4 border-purple-600 rounded-full animate-spin border-t-transparent"></div>
           </div>
-          <h3 className="text-xl font-semibold text-stone-900 mb-2">Searching Premium Collection...</h3>
-          <p className="text-stone-600">Discovering exquisite pieces for you</p>
+          <h3 className="text-xl font-semibold text-gray-900 mb-2">Searching Premium Collection...</h3>
+          <p className="text-gray-600">Discovering exquisite pieces for you</p>
         </div>
       </div>
     );
@@ -191,7 +191,7 @@ const SearchResults = () => {
     <div 
       className="min-h-screen pt-20"
       style={{
-        background: "linear-gradient(135deg, #ffffff 0%, #fffaf0 40%, #fff9e6 100%)",
+        background: "linear-gradient(135deg, #ffffff 0%, #f8f0fc 40%, #f3e8ff 100%)",
       }}
     >
       <div className="container mx-auto px-4 lg:px-6 py-8">
@@ -200,7 +200,7 @@ const SearchResults = () => {
           initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, x: 0 }}
           onClick={handleGoBack}
-          className="group flex items-center gap-3 text-stone-600 hover:text-amber-600 mb-8 transition-all duration-200 hover:bg-white px-4 py-2 rounded-lg hover:shadow-md"
+          className="group flex items-center gap-3 text-gray-600 hover:text-purple-600 mb-8 transition-all duration-200 hover:bg-white px-4 py-2 rounded-lg hover:shadow-md"
         >
           <ArrowLeft size={20} className="group-hover:-translate-x-1 transition-transform" />
           <span className="font-medium">Back to Collections</span>
@@ -212,12 +212,12 @@ const SearchResults = () => {
           animate={{ opacity: 1, y: 0 }}
           className="mb-8 text-center"
         >
-          <div className="inline-flex items-center gap-2 bg-white px-6 py-3 rounded-full shadow-lg border border-stone-200 mb-4">
-            <Search size={18} className="text-amber-600" />
-            <span className="text-sm font-medium text-stone-600">Search Results for</span>
-            <span className="font-bold text-amber-600">"{query}"</span>
+          <div className="inline-flex items-center gap-2 bg-white px-6 py-3 rounded-full shadow-lg border border-purple-200 mb-4">
+            <Search size={18} className="text-purple-600" />
+            <span className="text-sm font-medium text-gray-600">Search Results for</span>
+            <span className="font-bold text-purple-600">"{query}"</span>
           </div>
-          <h1 className="text-4xl font-bold text-stone-900 mb-3">
+          <h1 className="text-4xl font-bold text-gray-900 mb-3">
             {sortedResults.length > 0 ? (
               <>Found {sortedResults.length} Premium Product{sortedResults.length !== 1 ? 's' : ''}</>
             ) : (
@@ -225,8 +225,8 @@ const SearchResults = () => {
             )}
           </h1>
           {sortedResults.length > 0 && (
-            <p className="text-stone-600 flex items-center justify-center gap-2">
-              <Crown size={16} className="text-amber-500" />
+            <p className="text-gray-600 flex items-center justify-center gap-2">
+              <Crown size={16} className="text-purple-500" />
               Curated selection from RK Store Premium
             </p>
           )}
@@ -236,22 +236,22 @@ const SearchResults = () => {
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="bg-white rounded-2xl shadow-lg border border-stone-200 p-6 mb-8"
+          className="bg-white rounded-2xl shadow-lg border border-purple-200 p-6 mb-8"
           style={{
-            background: "linear-gradient(135deg, rgba(255,255,255,.98) 0%, rgba(255,253,230,.98) 60%, rgba(254,248,200,.98) 100%)",
+            background: "linear-gradient(135deg, rgba(255,255,255,.98) 0%, rgba(248,240,252,.98) 60%, rgba(243,232,255,.98) 100%)",
           }}
         >
           <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-4">
             {/* View Mode Toggle */}
             <div className="flex items-center gap-4">
-              <span className="text-sm font-medium text-stone-700">View:</span>
-              <div className="flex items-center bg-stone-100 rounded-lg p-1">
+              <span className="text-sm font-medium text-gray-700">View:</span>
+              <div className="flex items-center bg-purple-100 rounded-lg p-1">
                 <button
                   onClick={() => setViewMode('grid')}
                   className={`flex items-center gap-2 px-4 py-2 rounded-md transition-all ${
                     viewMode === 'grid'
-                      ? 'bg-white text-amber-600 shadow-sm'
-                      : 'text-stone-600 hover:text-amber-600'
+                      ? 'bg-white text-purple-600 shadow-sm'
+                      : 'text-gray-600 hover:text-purple-600'
                   }`}
                 >
                   <Grid size={16} />
@@ -261,8 +261,8 @@ const SearchResults = () => {
                   onClick={() => setViewMode('list')}
                   className={`flex items-center gap-2 px-4 py-2 rounded-md transition-all ${
                     viewMode === 'list'
-                      ? 'bg-white text-amber-600 shadow-sm'
-                      : 'text-stone-600 hover:text-amber-600'
+                      ? 'bg-white text-purple-600 shadow-sm'
+                      : 'text-gray-600 hover:text-purple-600'
                   }`}
                 >
                   <List size={16} />
@@ -273,13 +273,13 @@ const SearchResults = () => {
 
             {/* Sort Options */}
             <div className="flex items-center gap-4">
-              <span className="text-sm font-medium text-stone-700">Sort by:</span>
+              <span className="text-sm font-medium text-gray-700">Sort by:</span>
               <div className="relative">
-                <SortAsc size={16} className="absolute left-3 top-1/2 transform -translate-y-1/2 text-stone-500 pointer-events-none" />
+                <SortAsc size={16} className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500 pointer-events-none" />
                 <select
                   value={sortBy}
                   onChange={(e) => setSortBy(e.target.value as any)}
-                  className="appearance-none bg-stone-50 border border-stone-200 rounded-lg pl-10 pr-8 py-2 text-sm focus:ring-2 focus:ring-amber-500 focus:border-transparent hover:bg-stone-100 transition-colors cursor-pointer"
+                  className="appearance-none bg-purple-50 border border-purple-200 rounded-lg pl-10 pr-8 py-2 text-sm focus:ring-2 focus:ring-purple-500 focus:border-transparent hover:bg-purple-100 transition-colors cursor-pointer"
                 >
                   <option value="relevance">Most Relevant</option>
                   <option value="price-low">Price: Low to High</option>
@@ -298,31 +298,31 @@ const SearchResults = () => {
             animate={{ opacity: 1, scale: 1 }}
             className="text-center py-20"
           >
-            <div className="bg-white rounded-3xl shadow-xl border border-stone-200 p-12 max-w-md mx-auto"
+            <div className="bg-white rounded-3xl shadow-xl border border-purple-200 p-12 max-w-md mx-auto"
               style={{
-                background: "linear-gradient(135deg, rgba(255,255,255,.98) 0%, rgba(255,253,230,.98) 60%, rgba(254,248,200,.98) 100%)",
+                background: "linear-gradient(135deg, rgba(255,255,255,.98) 0%, rgba(248,240,252,.98) 60%, rgba(243,232,255,.98) 100%)",
               }}
             >
-              <div className="bg-stone-100 rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-6">
-                <Search className="h-10 w-10 text-stone-400" />
+              <div className="bg-purple-100 rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-6">
+                <Search className="h-10 w-10 text-purple-400" />
               </div>
-              <h2 className="text-2xl font-bold text-stone-900 mb-3">
+              <h2 className="text-2xl font-bold text-gray-900 mb-3">
                 No products found
               </h2>
-              <p className="text-stone-600 mb-6 leading-relaxed">
-                We couldn't find any premium products matching "<span className="font-semibold text-amber-600">{query}</span>". 
+              <p className="text-gray-600 mb-6 leading-relaxed">
+                We couldn't find any premium products matching "<span className="font-semibold text-purple-600">{query}</span>". 
                 Try different keywords or explore our collections.
               </p>
               <div className="space-y-3">
                 <button
                   onClick={() => navigate('/')}
-                  className="w-full px-6 py-3 bg-stone-900 hover:bg-stone-800 text-white rounded-xl transition-all font-medium shadow-lg hover:shadow-xl"
+                  className="w-full px-6 py-3 bg-purple-600 hover:bg-purple-700 text-white rounded-xl transition-all font-medium shadow-lg hover:shadow-xl"
                 >
                   Browse All Collections
                 </button>
                 <button
                   onClick={handleGoBack}
-                  className="w-full px-6 py-3 border border-stone-300 text-stone-700 rounded-xl hover:bg-stone-50 transition-all font-medium"
+                  className="w-full px-6 py-3 border border-purple-300 text-gray-700 rounded-xl hover:bg-purple-50 transition-all font-medium"
                 >
                   Go Back
                 </button>
@@ -349,15 +349,15 @@ const SearchResults = () => {
                 onMouseEnter={() => setHoveredProduct(product._id)}
                 onMouseLeave={() => setHoveredProduct(null)}
                 onClick={() => handleProductClick(product._id)}
-                className={`group rounded-xl border border-stone-200 shadow-lg hover:shadow-2xl transition-all duration-300 cursor-pointer overflow-hidden ${
+                className={`group rounded-xl border border-purple-200 shadow-lg hover:shadow-2xl transition-all duration-300 cursor-pointer overflow-hidden ${
                   viewMode === 'list' ? 'flex items-center' : ''
                 }`}
                 style={{
-                  background: "linear-gradient(135deg, rgba(255,255,255,.98) 0%, rgba(255,253,230,.98) 60%, rgba(254,248,200,.98) 100%)",
+                  background: "linear-gradient(135deg, rgba(255,255,255,.98) 0%, rgba(248,240,252,.98) 60%, rgba(243,232,255,.98) 100%)",
                 }}
               >
                 {/* Product Image */}
-                <div className={`relative overflow-hidden bg-gradient-to-br from-stone-50 to-amber-50 ${
+                <div className={`relative overflow-hidden bg-gradient-to-br from-purple-50 to-white ${
                   viewMode === 'list' ? 'w-32 h-32 flex-shrink-0' : 'w-full h-64'
                 }`}>
                   <img
@@ -379,7 +379,7 @@ const SearchResults = () => {
                     )}
 
                     {product.score && (
-                      <span className="inline-flex items-center gap-1 px-2 py-1 bg-amber-100 text-amber-700 text-xs font-medium rounded-full border border-amber-200">
+                      <span className="inline-flex items-center gap-1 px-2 py-1 bg-purple-100 text-purple-700 text-xs font-medium rounded-full border border-purple-200">
                         <Star size={12} className="fill-current" />
                         {Math.round((1 - product.score) * 100)}% Match
                       </span>
@@ -391,13 +391,13 @@ const SearchResults = () => {
                     hoveredProduct === product._id ? 'opacity-100' : 'opacity-0'
                   }`}>
                     <button className="bg-white bg-opacity-90 hover:bg-opacity-100 p-2 rounded-full transition-all shadow-lg">
-                      <Eye size={18} className="text-stone-700" />
+                      <Eye size={18} className="text-gray-700" />
                     </button>
                     <button className="bg-white bg-opacity-90 hover:bg-opacity-100 p-2 rounded-full transition-all shadow-lg">
                       <Heart size={18} className="text-rose-500" />
                     </button>
                     <button className="bg-white bg-opacity-90 hover:bg-opacity-100 p-2 rounded-full transition-all shadow-lg">
-                      <ShoppingCart size={18} className="text-amber-600" />
+                      <ShoppingCart size={18} className="text-purple-600" />
                     </button>
                   </div>
                 </div>
@@ -405,28 +405,28 @@ const SearchResults = () => {
                 {/* Product Info */}
                 <div className={`p-5 ${viewMode === 'list' ? 'flex-1' : ''}`}>
                   <div className="mb-3">
-                    <h3 className="font-bold text-stone-900 mb-2 line-clamp-2 group-hover:text-amber-600 transition-colors text-lg">
+                    <h3 className="font-bold text-gray-900 mb-2 line-clamp-2 group-hover:text-purple-600 transition-colors text-lg">
                       {product.Product_name}
                     </h3>
-                    <p className="text-sm text-stone-500 mb-3 capitalize">
+                    <p className="text-sm text-gray-500 mb-3 capitalize">
                       {product.Product_category?.category}
                     </p>
                   </div>
 
                   <div className="flex items-center justify-between">
                     <div>
-                      <p className="text-2xl font-bold text-stone-900">
+                      <p className="text-2xl font-bold text-gray-900">
                         {formatPrice(product.Product_price || 0)}
                       </p>
                       {product.score && (
-                        <p className="text-xs text-stone-400 mt-1">
+                        <p className="text-xs text-gray-400 mt-1">
                           Premium match score: {Math.round((1 - product.score) * 100)}%
                         </p>
                       )}
                     </div>
                     
                     {viewMode === 'grid' && (
-                      <button className="bg-stone-100 hover:bg-stone-200 text-stone-700 p-2 rounded-full transition-colors shadow-sm hover:shadow-md">
+                      <button className="bg-purple-100 hover:bg-purple-200 text-gray-700 p-2 rounded-full transition-colors shadow-sm hover:shadow-md">
                         <ShoppingCart size={18} />
                       </button>
                     )}
@@ -445,9 +445,9 @@ const SearchResults = () => {
             transition={{ delay: 0.5 }}
             className="mt-12 text-center"
           >
-            <div className="inline-flex items-center gap-2 bg-white px-6 py-3 rounded-full shadow-lg border border-stone-200">
-              <Gem size={16} className="text-amber-500" />
-              <span className="text-sm text-stone-600">
+            <div className="inline-flex items-center gap-2 bg-white px-6 py-3 rounded-full shadow-lg border border-purple-200">
+              <Gem size={16} className="text-purple-500" />
+              <span className="text-sm text-gray-600">
                 Discovered {sortedResults.length} premium results for "{query}"
               </span>
             </div>
