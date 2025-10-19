@@ -169,16 +169,16 @@ const CategoryPage = () => {
 
   const SkeletonCard = () => (
     <div 
-      className="bg-white rounded-xl border border-stone-200 shadow-lg overflow-hidden animate-pulse"
+      className="bg-white rounded-xl border border-purple-200 shadow-lg overflow-hidden animate-pulse"
       style={{
-        background: "linear-gradient(135deg, rgba(255,255,255,.98) 0%, rgba(255,253,230,.98) 60%, rgba(254,248,200,.98) 100%)",
+        background: "linear-gradient(135deg, rgba(255,255,255,.98) 0%, rgba(250,245,255,.98) 60%, rgba(245,240,255,.98) 100%)",
       }}
     >
-      <div className="aspect-square bg-gradient-to-br from-stone-100 to-amber-100"></div>
+      <div className="aspect-square bg-gradient-to-br from-purple-100 to-white"></div>
       <div className="p-4">
-        <div className="h-4 bg-stone-200 rounded mb-2"></div>
-        <div className="h-6 bg-gradient-to-r from-stone-200 to-amber-200 rounded mb-3"></div>
-        <div className="h-10 bg-stone-200 rounded-lg"></div>
+        <div className="h-4 bg-purple-200 rounded mb-2"></div>
+        <div className="h-6 bg-gradient-to-r from-purple-200 to-purple-100 rounded mb-3"></div>
+        <div className="h-10 bg-purple-200 rounded-lg"></div>
       </div>
     </div>
   );
@@ -187,7 +187,7 @@ const CategoryPage = () => {
     <div 
       className="min-h-screen"
       style={{
-        background: "linear-gradient(135deg, #ffffff 0%, #fffaf0 40%, #fff9e6 100%)",
+        background: "linear-gradient(135deg, #ffffff 0%, #faf5ff 40%, #f3e8ff 100%)",
       }}
     >
       <AnnouncementBar />
@@ -195,14 +195,14 @@ const CategoryPage = () => {
       
       {/* Premium Hero Section */}
       <div className="pt-24 pb-8 relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-amber-500/5 to-yellow-500/5 pointer-events-none" />
-        <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-amber-200/20 rounded-full blur-3xl pointer-events-none" />
-        <div className="absolute bottom-1/4 right-1/4 w-64 h-64 bg-yellow-200/20 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute inset-0 bg-gradient-to-br from-purple-500/5 to-purple-400/5 pointer-events-none" />
+        <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-purple-200/20 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute bottom-1/4 right-1/4 w-64 h-64 bg-purple-100/20 rounded-full blur-3xl pointer-events-none" />
         
         <div className="container mx-auto px-4 lg:px-6 relative">
           <div className="text-center max-w-4xl mx-auto">
             <motion.div 
-              className="inline-flex items-center gap-2 bg-gradient-to-r from-amber-100 to-yellow-100 text-amber-700 px-5 py-2 rounded-full text-sm font-semibold mb-6"
+              className="inline-flex items-center gap-2 bg-gradient-to-r from-purple-100 to-purple-50 text-purple-700 px-5 py-2 rounded-full text-sm font-semibold mb-6 border border-purple-200"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
@@ -212,7 +212,7 @@ const CategoryPage = () => {
             </motion.div>
             
             <motion.h1 
-              className="text-4xl md:text-5xl lg:text-6xl font-bold bg-gradient-to-r from-stone-800 via-stone-700 to-stone-900 bg-clip-text text-transparent mb-6 capitalize leading-tight"
+              className="text-4xl md:text-5xl lg:text-6xl font-bold bg-gradient-to-r from-purple-800 via-purple-700 to-purple-900 bg-clip-text text-transparent mb-6 capitalize leading-tight"
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
@@ -221,7 +221,7 @@ const CategoryPage = () => {
             </motion.h1>
             
             <motion.p 
-              className="text-lg md:text-xl text-stone-600 mb-8 leading-relaxed font-medium"
+              className="text-lg md:text-xl text-purple-600 mb-8 leading-relaxed font-medium"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.4 }}
@@ -231,16 +231,16 @@ const CategoryPage = () => {
             
             {!loading && products.length > 0 && (
               <motion.div 
-                className="inline-flex items-center gap-4 bg-white/80 backdrop-blur-sm border border-stone-200 rounded-full px-6 py-3 text-sm shadow-lg"
+                className="inline-flex items-center gap-4 bg-white/80 backdrop-blur-sm border border-purple-200 rounded-full px-6 py-3 text-sm shadow-lg"
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.6, delay: 0.6 }}
               >
-                <span className="text-stone-800 font-bold">
+                <span className="text-purple-800 font-bold">
                   {products.length} Premium Product{products.length !== 1 ? 's' : ''}
                 </span>
-                <div className="w-2 h-2 bg-amber-400 rounded-full"></div>
-                <span className="text-stone-600 font-medium">
+                <div className="w-2 h-2 bg-purple-400 rounded-full"></div>
+                <span className="text-purple-600 font-medium">
                   Quality Guaranteed
                 </span>
               </motion.div>
@@ -251,21 +251,21 @@ const CategoryPage = () => {
 
       {/* Controls Section */}
       {!loading && products.length > 0 && (
-        <div className="bg-white/90 backdrop-blur-md border-y border-stone-200 sticky top-0 z-30 shadow-sm">
+        <div className="bg-white/90 backdrop-blur-md border-y border-purple-200 sticky top-0 z-30 shadow-sm">
           <div className="container mx-auto px-4 lg:px-6 py-4">
             <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
               <div className="flex items-center gap-3">
-                <span className="text-sm text-stone-700 font-semibold">
+                <span className="text-sm text-purple-700 font-semibold">
                   {products.length} Products
                 </span>
               </div>
 
               <div className="flex items-center gap-3 w-full sm:w-auto">
-                <SortAsc className="w-4 h-4 text-stone-600" />
+                <SortAsc className="w-4 h-4 text-purple-600" />
                 <select
                   value={sortBy}
                   onChange={(e) => setSortBy(e.target.value as any)}
-                  className="bg-white border-2 border-stone-200 rounded-xl px-4 py-2.5 text-sm font-semibold text-stone-700 focus:outline-none focus:ring-2 focus:ring-amber-500/30 focus:border-amber-400 transition-all duration-300 shadow-sm hover:shadow-md w-full sm:min-w-[160px]"
+                  className="bg-white border-2 border-purple-200 rounded-xl px-4 py-2.5 text-sm font-semibold text-purple-700 focus:outline-none focus:ring-2 focus:ring-purple-500/30 focus:border-purple-400 transition-all duration-300 shadow-sm hover:shadow-md w-full sm:min-w-[160px]"
                 >
                   <option value="price-low">Price (Low to High)</option>
                   <option value="price-high">Price (High to Low)</option>
@@ -287,23 +287,23 @@ const CategoryPage = () => {
         ) : products.length === 0 ? (
           <div className="text-center py-16 lg:py-24">
             <div 
-              className="bg-white/80 backdrop-blur-sm rounded-3xl p-8 lg:p-12 max-w-md mx-auto shadow-xl border border-stone-200"
+              className="bg-white/80 backdrop-blur-sm rounded-3xl p-8 lg:p-12 max-w-md mx-auto shadow-xl border border-purple-200"
               style={{
-                background: "linear-gradient(135deg, rgba(255,255,255,.98) 0%, rgba(255,253,230,.98) 60%, rgba(254,248,200,.98) 100%)",
+                background: "linear-gradient(135deg, rgba(255,255,255,.98) 0%, rgba(250,245,255,.98) 60%, rgba(245,240,255,.98) 100%)",
               }}
             >
-              <div className="w-20 h-20 bg-gradient-to-r from-amber-200 to-yellow-200 rounded-full flex items-center justify-center mx-auto mb-6">
-                <Search className="w-10 h-10 text-amber-600" />
+              <div className="w-20 h-20 bg-gradient-to-r from-purple-200 to-purple-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                <Search className="w-10 h-10 text-purple-600" />
               </div>
-              <h3 className="text-2xl lg:text-3xl font-bold text-stone-800 mb-4">
+              <h3 className="text-2xl lg:text-3xl font-bold text-purple-800 mb-4">
                 Collection Empty
               </h3>
-              <p className="text-base text-stone-600 mb-6 leading-relaxed">
+              <p className="text-base text-purple-600 mb-6 leading-relaxed">
                 We're curating the perfect {categoryName} collection for you. Check back soon for premium additions!
               </p>
               <Button
                 variant="outline"
-                className="rounded-full px-8 py-3 border-2 border-stone-300 text-stone-700 hover:bg-stone-50 font-semibold"
+                className="rounded-full px-8 py-3 border-2 border-purple-300 text-purple-700 hover:bg-purple-50 font-semibold"
                 onClick={() => window.history.back()}
               >
                 ← Return to Collections
@@ -328,9 +328,9 @@ const CategoryPage = () => {
                 return (
                   <motion.div
                     key={product._id}
-                    className="group rounded-xl border border-stone-200 shadow-lg hover:shadow-2xl hover:shadow-amber-300/20 transition-all duration-500 overflow-hidden flex flex-col hover:-translate-y-2 hover:scale-[1.02]"
+                    className="group rounded-xl border border-purple-200 shadow-lg hover:shadow-2xl hover:shadow-purple-300/20 transition-all duration-500 overflow-hidden flex flex-col hover:-translate-y-2 hover:scale-[1.02]"
                     style={{
-                      background: "linear-gradient(135deg, rgba(255,255,255,.98) 0%, rgba(255,253,230,.98) 60%, rgba(254,248,200,.98) 100%)",
+                      background: "linear-gradient(135deg, rgba(255,255,255,.98) 0%, rgba(250,245,255,.98) 60%, rgba(245,240,255,.98) 100%)",
                     }}
                     onMouseEnter={() => setHoveredProduct(product._id)}
                     onMouseLeave={() => setHoveredProduct(null)}
@@ -340,7 +340,7 @@ const CategoryPage = () => {
                   >
                     {/* Product Image */}
                     <div
-                      className="relative aspect-square overflow-hidden cursor-pointer rounded-t-xl bg-gradient-to-br from-stone-50 to-amber-50"
+                      className="relative aspect-square overflow-hidden cursor-pointer rounded-t-xl bg-gradient-to-br from-purple-50 to-white"
                       onClick={() => handleProductClick(product._id)}
                     >
                       <img
@@ -351,19 +351,19 @@ const CategoryPage = () => {
                       />
                       
                       {/* Overlay effects */}
-                      <div className="absolute inset-0 bg-gradient-to-t from-stone-900/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                      <div className="absolute inset-0 bg-gradient-to-br from-amber-500/5 to-yellow-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                      <div className="absolute inset-0 bg-gradient-to-t from-purple-900/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                      <div className="absolute inset-0 bg-gradient-to-br from-purple-500/5 to-purple-400/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                       
                       {/* Premium Badges */}
                       <div className="absolute top-3 left-3 flex flex-col gap-1">
                         {product.isNew && (
-                          <div className="bg-gradient-to-r from-amber-600 to-amber-500 text-white text-xs font-bold px-2.5 py-1 rounded-full shadow-lg backdrop-blur-sm border border-white/20">
+                          <div className="bg-gradient-to-r from-purple-600 to-purple-500 text-white text-xs font-bold px-2.5 py-1 rounded-full shadow-lg backdrop-blur-sm border border-white/20">
                             <Sparkles size={8} className="inline mr-1" />
                             NEW
                           </div>
                         )}
                         {discount > 0 && (
-                          <div className="bg-gradient-to-r from-amber-500 to-amber-600 text-white text-xs font-bold px-2.5 py-1 rounded-full shadow-lg backdrop-blur-sm border border-white/20">
+                          <div className="bg-gradient-to-r from-purple-500 to-purple-600 text-white text-xs font-bold px-2.5 py-1 rounded-full shadow-lg backdrop-blur-sm border border-white/20">
                             {discount}% OFF
                           </div>
                         )}
@@ -377,7 +377,7 @@ const CategoryPage = () => {
                           className={`w-8 h-8 rounded-full backdrop-blur-md border transition-all duration-300 ${
                             inWishlist
                               ? "bg-gradient-to-r from-rose-500 to-pink-500 border-rose-400/50 text-white hover:from-rose-600 hover:to-pink-600 shadow-lg shadow-rose-300/40"
-                              : "bg-white/80 border-stone-200 text-stone-600 hover:bg-gradient-to-r hover:from-rose-500 hover:to-pink-500 hover:border-rose-400/50 hover:text-white"
+                              : "bg-white/80 border-purple-200 text-purple-600 hover:bg-gradient-to-r hover:from-rose-500 hover:to-pink-500 hover:border-rose-400/50 hover:text-white"
                           } ${isHovered ? 'scale-110 shadow-xl' : 'shadow-lg'}`}
                           onClick={(e) => handleWishlistToggle(e, product)}
                         >
@@ -390,7 +390,7 @@ const CategoryPage = () => {
                         <Button
                           variant="secondary"
                           size="icon"
-                          className={`w-8 h-8 rounded-full bg-white/80 backdrop-blur-md border-stone-200 text-stone-600 hover:bg-gradient-to-r hover:from-amber-500 hover:to-amber-600 hover:text-white hover:border-amber-400/50 transition-all duration-300 shadow-lg ${
+                          className={`w-8 h-8 rounded-full bg-white/80 backdrop-blur-md border-purple-200 text-purple-600 hover:bg-gradient-to-r hover:from-purple-500 hover:to-purple-600 hover:text-white hover:border-purple-400/50 transition-all duration-300 shadow-lg ${
                             isHovered ? 'scale-110 shadow-xl' : ''
                           }`}
                           onClick={(e) => {
@@ -403,14 +403,14 @@ const CategoryPage = () => {
                       </div>
 
                       {/* Shimmer effect */}
-                      <div className="absolute inset-0 bg-gradient-to-r from-transparent via-amber-200/20 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1200 ease-out" />
+                      <div className="absolute inset-0 bg-gradient-to-r from-transparent via-purple-200/20 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1200 ease-out" />
                     </div>
 
                     {/* Product Info */}
                     <div className="p-4 flex-grow flex flex-col bg-transparent">
                       <div className="mb-3">
                         <h3
-                          className="font-bold text-sm text-stone-800 line-clamp-2 leading-tight cursor-pointer hover:text-amber-700 transition-colors mb-2 min-h-[40px]"
+                          className="font-bold text-sm text-purple-800 line-clamp-2 leading-tight cursor-pointer hover:text-purple-700 transition-colors mb-2 min-h-[40px]"
                           onClick={() => handleProductClick(product._id)}
                         >
                           {product.Product_name}
@@ -420,11 +420,11 @@ const CategoryPage = () => {
                       <div className="mt-auto">
                         {/* Price Section */}
                         <div className="flex items-center gap-2 mb-3">
-                          <span className="text-base font-bold text-stone-900">
+                          <span className="text-base font-bold text-purple-900">
                             ₹{product.Product_price.toLocaleString()}
                           </span>
                           {discount > 0 && (
-                            <span className="text-xs text-stone-500 line-through bg-stone-100 px-2 py-0.5 rounded-full">
+                            <span className="text-xs text-purple-500 line-through bg-purple-100 px-2 py-0.5 rounded-full">
                               ₹{originalPrice.toLocaleString()}
                             </span>
                           )}
@@ -432,7 +432,7 @@ const CategoryPage = () => {
 
                         {/* Add to Cart Button */}
                         <Button
-                          className="w-full rounded-xl py-2.5 text-xs font-semibold bg-stone-900 hover:bg-stone-800 text-white transition-all duration-300 hover:scale-[1.02] hover:shadow-xl hover:shadow-stone-300/30 border border-stone-700 backdrop-blur-sm"
+                          className="w-full rounded-xl py-2.5 text-xs font-semibold bg-purple-900 hover:bg-purple-800 text-white transition-all duration-300 hover:scale-[1.02] hover:shadow-xl hover:shadow-purple-300/30 border border-purple-700 backdrop-blur-sm"
                           onClick={() => handleAddToCart(product)}
                         >
                           <ShoppingCart size={13} className="mr-1 group-hover:scale-110 transition-transform" />
@@ -447,12 +447,12 @@ const CategoryPage = () => {
 
             {/* Premium Results Summary */}
             <motion.div 
-              className="text-center mt-16 pt-8 border-t border-stone-200"
+              className="text-center mt-16 pt-8 border-t border-purple-200"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.8, duration: 0.6 }}
             >
-              <div className="inline-flex items-center gap-3 bg-gradient-to-r from-amber-100 to-yellow-100 text-amber-700 px-8 py-4 rounded-full text-sm font-bold shadow-lg">
+              <div className="inline-flex items-center gap-3 bg-gradient-to-r from-purple-100 to-purple-50 text-purple-700 px-8 py-4 rounded-full text-sm font-bold shadow-lg border border-purple-200">
                 <Crown className="w-5 h-5" />
                 Discovered {products.length} premium product{products.length !== 1 ? 's' : ''} in {categoryName}
               </div>

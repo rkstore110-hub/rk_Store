@@ -42,12 +42,12 @@ const RatingStars = React.memo(({ rating = 4.5 }: { rating?: number }) => {
     <div className="flex items-center gap-1 mb-2 select-none text-sm" aria-label={`Rating ${rating} of 5`}>
       {Array.from({ length: 5 }).map((_, i) => (
         <span key={i} aria-hidden="true" style={{ display: "inline-block", width: 14, height: 14, marginRight: 0 }}>
-          <svg width="14" height="14" viewBox="0 0 24 24" fill={i < rounded ? "#F59E0B" : "none"} stroke={i < rounded ? "#D97706" : "#E5E5E5"}>
-            <path d="M12 2l3 6 6 1-4.5 4.5 1 6-5.5-3-5.5 3 1-6L3 9l6-1 3-6z" fill={i < rounded ? "#F59E0B" : "none"} stroke={i < rounded ? "#D97706" : "#E5E5E5"} />
+          <svg width="14" height="14" viewBox="0 0 24 24" fill={i < rounded ? "#9333EA" : "none"} stroke={i < rounded ? "#7C3AED" : "#E5E5E5"}>
+            <path d="M12 2l3 6 6 1-4.5 4.5 1 6-5.5-3-5.5 3 1-6L3 9l6-1 3-6z" fill={i < rounded ? "#9333EA" : "none"} stroke={i < rounded ? "#7C3AED" : "#E5E5E5"} />
           </svg>
         </span>
       ))}
-      <span className="text-xs text-stone-500 ml-1">{rating.toFixed(1)}</span>
+      <span className="text-xs text-purple-500 ml-1">{rating.toFixed(1)}</span>
     </div>
   );
 });
@@ -74,14 +74,14 @@ const ProductCard: React.FC<{
     <motion.div
       tabIndex={0}
       onClick={() => onClick(product._id)}
-      className="group bg-white rounded-xl border border-amber-100 shadow-sm hover:shadow-lg transition-all duration-300 cursor-pointer flex flex-col focus:outline-none focus:ring-2 focus:ring-amber-200 overflow-hidden"
+      className="group bg-white rounded-xl border border-purple-100 shadow-sm hover:shadow-lg transition-all duration-300 cursor-pointer flex flex-col focus:outline-none focus:ring-2 focus:ring-purple-200 overflow-hidden"
       aria-label={product.Product_name}
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       whileHover={{ y: -4, boxShadow: "0 14px 28px rgba(0,0,0,.04)" }}
       transition={{ duration: 0.5 }}
       style={{
-        background: "linear-gradient(135deg, rgba(255,255,255,.98) 0%, rgba(255,253,230,.98) 60%, rgba(254,248,200,.98) 100%)",
+        background: "linear-gradient(135deg, rgba(255,255,255,.98) 0%, rgba(250,245,255,.98) 60%, rgba(245,240,255,.98) 100%)",
       }}
     >
       <div className="relative aspect-square overflow-hidden rounded-t-xl">
@@ -94,7 +94,7 @@ const ProductCard: React.FC<{
             style={{ maxHeight: 230 }}
           />
         ) : (
-          <div className="w-full h-56 bg-gradient-to-br from-amber-50 to-amber-100 text-amber-700 flex items-center justify-center rounded-t-xl select-none">
+          <div className="w-full h-56 bg-gradient-to-br from-purple-50 to-purple-100 text-purple-700 flex items-center justify-center rounded-t-xl select-none">
             No Image Available
           </div>
         )}
@@ -105,7 +105,7 @@ const ProductCard: React.FC<{
         {/* Product Status Badges */}
         <div className="absolute top-3 right-3 flex flex-col gap-2">
           {discount > 0 && (
-            <Badge className="bg-amber-500 text-white font-semibold text-xs px-2 py-1 border-0">
+            <Badge className="bg-purple-500 text-white font-semibold text-xs px-2 py-1 border-0">
               {discount}% OFF
             </Badge>
           )}
@@ -118,8 +118,8 @@ const ProductCard: React.FC<{
 
         {/* Action Buttons */}
         <button
-          className={`absolute top-3 left-3 rounded-full p-2 bg-white/90 backdrop-blur-sm border border-amber-200 shadow-sm hover:bg-white transition-all duration-200 ${
-            inWishlist ? "text-rose-500" : "text-stone-400 hover:text-rose-400"
+          className={`absolute top-3 left-3 rounded-full p-2 bg-white/90 backdrop-blur-sm border border-purple-200 shadow-sm hover:bg-white transition-all duration-200 ${
+            inWishlist ? "text-rose-500" : "text-purple-400 hover:text-rose-400"
           }`}
           onClick={e => { e.stopPropagation(); onWishlistToggle(e, product); }}
           aria-pressed={inWishlist}
@@ -129,7 +129,7 @@ const ProductCard: React.FC<{
         </button>
         
         <button
-          className="absolute bottom-3 right-3 bg-white/90 backdrop-blur-sm shadow-sm border border-amber-200 rounded-full p-2 hover:bg-white transition-all duration-200 text-stone-600 hover:text-stone-800"
+          className="absolute bottom-3 right-3 bg-white/90 backdrop-blur-sm shadow-sm border border-purple-200 rounded-full p-2 hover:bg-white transition-all duration-200 text-purple-600 hover:text-purple-800"
           onClick={e => { e.stopPropagation(); onClick(product._id); }}
           aria-label="View product"
         >
@@ -139,8 +139,8 @@ const ProductCard: React.FC<{
 
       {/* Product Info */}
       <div className="flex flex-col flex-1 p-4 bg-transparent">
-        <h3 className="text-lg font-semibold text-stone-900 truncate mb-1">{product.Product_name}</h3>
-        <p className="text-sm text-stone-700 line-clamp-2 mb-3 leading-relaxed" title={description}>
+        <h3 className="text-lg font-semibold text-purple-900 truncate mb-1">{product.Product_name}</h3>
+        <p className="text-sm text-purple-700 line-clamp-2 mb-3 leading-relaxed" title={description}>
           {description}
         </p>
         
@@ -149,9 +149,9 @@ const ProductCard: React.FC<{
           
           <div className="flex items-baseline justify-between mb-4">
             <div className="flex items-baseline gap-2">
-              <span className="text-xl font-bold text-stone-900">{currency(product.Product_price)}</span>
+              <span className="text-xl font-bold text-purple-900">{currency(product.Product_price)}</span>
               {discount > 0 && (
-                <span className="text-sm line-through text-stone-400 font-medium">{currency(originalPrice)}</span>
+                <span className="text-sm line-through text-purple-400 font-medium">{currency(originalPrice)}</span>
               )}
             </div>
           </div>
@@ -159,8 +159,7 @@ const ProductCard: React.FC<{
           <Button
             onClick={e => { e.stopPropagation(); handleAdd(); }}
             disabled={adding}
-            // size="md"
-            className="w-full font-semibold rounded-lg bg-amber-600 hover:bg-amber-700 text-white transition-all duration-200 shadow-sm hover:shadow-md border-0"
+            className="w-full font-semibold rounded-lg bg-purple-600 hover:bg-purple-700 text-white transition-all duration-200 shadow-sm hover:shadow-md border-0"
           >
             <ShoppingCart size={18} className="mr-2" /> 
             {adding ? "Adding..." : "Add to Cart"}
@@ -289,14 +288,14 @@ const FeaturedProducts: React.FC = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
         >
-          <h2 className="text-5xl font-extrabold text-stone-900">
-            Featured <span className="bg-amber-500 bg-clip-text text-transparent">Collections</span>
+          <h2 className="text-5xl font-extrabold text-purple-900">
+            Featured <span className="bg-gradient-to-r from-purple-600 to-purple-400 bg-clip-text text-transparent">Collections</span>
           </h2>
-          <p className="mt-4 text-stone-700 text-lg max-w-md mx-auto">
+          <p className="mt-4 text-purple-700 text-lg max-w-md mx-auto">
             Handpicked selections with a clean, airy aesthetic for a modern look.
           </p>
           {totalProducts > 0 && (
-            <p className="mt-2 text-amber-600 font-medium">
+            <p className="mt-2 text-purple-600 font-medium">
               Showing {products.length}
               {totalProducts > products.length ? ` of ${totalProducts}` : ''} exquisite pieces
             </p>
@@ -306,7 +305,7 @@ const FeaturedProducts: React.FC = () => {
             animate={{ y: [0, 12, 0] }}
             transition={{ repeat: Infinity, duration: 2.2, ease: "easeInOut" }}
           >
-            <ChevronDown size={36} className="text-amber-600" />
+            <ChevronDown size={36} className="text-purple-600" />
           </motion.div>
         </motion.header>
 
@@ -316,7 +315,7 @@ const FeaturedProducts: React.FC = () => {
             size="sm" 
             variant={selectedCategory === "" ? "default" : "outline"} 
             onClick={() => setSelectedCategory("")} 
-            className="rounded-full px-6 py-2 font-medium transition-all duration-200 bg-amber-600 hover:bg-amber-700 text-white border-amber-600"
+            className="rounded-full px-6 py-2 font-medium transition-all duration-200 bg-purple-600 hover:bg-purple-700 text-white border-purple-600"
           >
             All Collections
           </Button>
@@ -326,7 +325,7 @@ const FeaturedProducts: React.FC = () => {
               size="sm"
               variant={selectedCategory === cat.slug ? "default" : "outline"}
               onClick={() => setSelectedCategory(cat.slug || "")}
-              className="rounded-full px-6 py-2 font-medium transition-all duration-200 border-amber-200 text-stone-700 hover:bg-amber-50 hover:border-amber-300"
+              className="rounded-full px-6 py-2 font-medium transition-all duration-200 border-purple-200 text-purple-700 hover:bg-purple-50 hover:border-purple-300"
             >
               {cat.name}
             </Button>
@@ -355,11 +354,11 @@ const FeaturedProducts: React.FC = () => {
               size="lg"
               onClick={handleLoadMore}
               disabled={loadingMore}
-              className="border-amber-300 text-stone-700 px-12 py-6 rounded-full font-semibold hover:bg-amber-50 hover:border-amber-400 transition-all duration-200 text-lg"
+              className="border-purple-300 text-purple-700 px-12 py-6 rounded-full font-semibold hover:bg-purple-50 hover:border-purple-400 transition-all duration-200 text-lg"
             >
               {loadingMore ? (
                 <div className="flex items-center gap-2">
-                  <div className="w-5 h-5 border-2 border-amber-400 border-t-transparent rounded-full animate-spin"></div>
+                  <div className="w-5 h-5 border-2 border-purple-400 border-t-transparent rounded-full animate-spin"></div>
                   Loading...
                 </div>
               ) : (

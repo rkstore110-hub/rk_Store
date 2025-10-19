@@ -336,14 +336,14 @@ const Profile = () => {
     <div 
       className="flex flex-col justify-center items-center py-20"
       style={{
-        background: "linear-gradient(135deg, #ffffff 0%, #fffaf0 40%, #fff9e6 100%)",
+        background: "linear-gradient(135deg, #ffffff 0%, #faf5ff 40%, #f3e8ff 100%)",
       }}
     >
       <div className="relative mb-6">
-        <div className="w-16 h-16 border-4 border-amber-200 rounded-full animate-spin"></div>
-        <div className="absolute top-0 left-0 w-16 h-16 border-4 border-amber-600 rounded-full animate-spin border-t-transparent"></div>
+        <div className="w-16 h-16 border-4 border-purple-200 rounded-full animate-spin"></div>
+        <div className="absolute top-0 left-0 w-16 h-16 border-4 border-purple-600 rounded-full animate-spin border-t-transparent"></div>
       </div>
-      <p className="text-stone-600 text-lg font-medium">Loading your profile...</p>
+      <p className="text-purple-600 text-lg font-medium">Loading your profile...</p>
     </div>
   );
 
@@ -354,22 +354,22 @@ const Profile = () => {
         <div 
           className="min-h-screen flex items-center justify-center px-4"
           style={{
-            background: "linear-gradient(135deg, #ffffff 0%, #fffaf0 40%, #fff9e6 100%)",
+            background: "linear-gradient(135deg, #ffffff 0%, #faf5ff 40%, #f3e8ff 100%)",
           }}
         >
-          <div className="text-center max-w-md p-8 bg-white rounded-3xl shadow-xl border border-stone-200">
-            <div className="w-16 h-16 bg-gradient-to-r from-amber-100 to-yellow-100 rounded-full flex items-center justify-center mx-auto mb-6">
-              <User className="w-8 h-8 text-amber-600" />
+          <div className="text-center max-w-md p-8 bg-white rounded-3xl shadow-xl border border-purple-200">
+            <div className="w-16 h-16 bg-gradient-to-r from-purple-100 to-purple-50 rounded-full flex items-center justify-center mx-auto mb-6">
+              <User className="w-8 h-8 text-purple-600" />
             </div>
-            <h1 className="text-3xl font-bold text-stone-900 mb-4">
+            <h1 className="text-3xl font-bold text-purple-900 mb-4">
               Please Login
             </h1>
-            <p className="text-base text-stone-600 mb-8 leading-relaxed">
+            <p className="text-base text-purple-600 mb-8 leading-relaxed">
               You need to be logged in to view your profile information.
             </p>
             <button 
               onClick={() => navigate('/login')}
-              className="inline-flex items-center gap-2 rounded-full px-8 py-3 bg-stone-900 hover:bg-stone-800 text-white font-semibold shadow-lg hover:shadow-xl transition-all duration-300"
+              className="inline-flex items-center gap-2 rounded-full px-8 py-3 bg-purple-900 hover:bg-purple-800 text-white font-semibold shadow-lg hover:shadow-xl transition-all duration-300"
             >
               Go to Login
             </button>
@@ -387,12 +387,12 @@ const Profile = () => {
       <div 
         className="min-h-screen py-16 px-4 lg:px-8 pt-20"
         style={{
-          background: "linear-gradient(135deg, #ffffff 0%, #fffaf0 40%, #fff9e6 100%)",
+          background: "linear-gradient(135deg, #ffffff 0%, #faf5ff 40%, #f3e8ff 100%)",
         }}
       >
         {/* Background Decorations */}
-        <div className="fixed top-20 left-10 w-32 h-32 rounded-full bg-amber-200/20 blur-3xl animate-pulse" />
-        <div className="fixed bottom-40 right-10 w-48 h-48 rounded-full bg-yellow-200/20 blur-3xl animate-pulse" style={{ animationDelay: '2s' }} />
+        <div className="fixed top-20 left-10 w-32 h-32 rounded-full bg-purple-200/20 blur-3xl animate-pulse" />
+        <div className="fixed bottom-40 right-10 w-48 h-48 rounded-full bg-purple-100/20 blur-3xl animate-pulse" style={{ animationDelay: '2s' }} />
         
         <div className="max-w-4xl xl:max-w-5xl mx-auto relative z-10">
           {/* Page Header */}
@@ -402,14 +402,14 @@ const Profile = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
-            <div className="inline-flex items-center gap-3 bg-gradient-to-r from-amber-100 to-yellow-100 text-amber-700 px-6 py-2 rounded-full text-sm font-semibold mb-6">
+            <div className="inline-flex items-center gap-3 bg-gradient-to-r from-purple-100 to-purple-50 text-purple-700 px-6 py-2 rounded-full text-sm font-semibold mb-6 border border-purple-200">
               <Crown className="w-4 h-4" />
               RK Store Premium
             </div>
-            <h1 className="text-4xl md:text-5xl font-bold text-stone-900 mb-4">
+            <h1 className="text-4xl md:text-5xl font-bold text-purple-900 mb-4">
               My Profile
             </h1>
-            <p className="text-lg text-stone-600 max-w-2xl mx-auto leading-relaxed">
+            <p className="text-lg text-purple-600 max-w-2xl mx-auto leading-relaxed">
               Manage your account information and preferences
             </p>
           </motion.div>
@@ -420,9 +420,9 @@ const Profile = () => {
             <>
               {/* Profile Avatar Section */}
               <motion.div 
-                className="bg-white rounded-3xl shadow-xl border border-stone-200 p-8 mb-6"
+                className="bg-white rounded-3xl shadow-xl border border-purple-200 p-8 mb-6"
                 style={{
-                  background: "linear-gradient(135deg, rgba(255,255,255,.98) 0%, rgba(255,253,230,.98) 60%, rgba(254,248,200,.98) 100%)",
+                  background: "linear-gradient(135deg, rgba(255,255,255,.98) 0%, rgba(250,245,255,.98) 60%, rgba(245,240,255,.98) 100%)",
                 }}
                 initial={{ opacity: 0, scale: 0.95 }}
                 animate={{ opacity: 1, scale: 1 }}
@@ -430,7 +430,7 @@ const Profile = () => {
               >
                 <div className="flex flex-col items-center">
                   <div className="relative group">
-                    <div className="w-32 h-32 bg-gradient-to-r from-amber-600 to-amber-500 rounded-full flex items-center justify-center shadow-lg">
+                    <div className="w-32 h-32 bg-gradient-to-r from-purple-600 to-purple-500 rounded-full flex items-center justify-center shadow-lg">
                       <span className="text-4xl font-bold text-white">
                         {getUserInitials(currentProfile.firstName, currentProfile.lastName)}
                       </span>
@@ -440,20 +440,20 @@ const Profile = () => {
                         {currentProfile.isVerified ? (
                           <CheckCircle className="w-5 h-5 text-green-500" />
                         ) : (
-                          <AlertCircle className="w-5 h-5 text-amber-500" />
+                          <AlertCircle className="w-5 h-5 text-purple-500" />
                         )}
                       </div>
                     </div>
                   </div>
                   
                   <div className="text-center mt-6">
-                    <h2 className="text-3xl font-bold text-stone-900 mb-2">
+                    <h2 className="text-3xl font-bold text-purple-900 mb-2">
                       {getDisplayName(currentProfile.firstName, currentProfile.lastName)}
                     </h2>
                     <div className="flex gap-4 items-center justify-center">
-                      <div className="inline-flex items-center gap-2 bg-gradient-to-r from-amber-50 to-yellow-50 px-4 py-2 rounded-full border border-amber-200">
+                      <div className="inline-flex items-center gap-2 bg-gradient-to-r from-purple-50 to-purple-50 px-4 py-2 rounded-full border border-purple-200">
                         <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
-                        <span className="text-sm font-medium text-stone-600">Active Account</span>
+                        <span className="text-sm font-medium text-purple-600">Active Account</span>
                       </div>
                       
                       {currentProfile.isPhoneVerified && (
@@ -476,54 +476,54 @@ const Profile = () => {
               >
                 <button
                   onClick={() => navigate('/orders')}
-                  className="flex flex-col items-center p-4 bg-white rounded-2xl shadow-lg border border-stone-200 hover:shadow-xl transition-all duration-300 hover:scale-105"
+                  className="flex flex-col items-center p-4 bg-white rounded-2xl shadow-lg border border-purple-200 hover:shadow-xl transition-all duration-300 hover:scale-105"
                   style={{
-                    background: "linear-gradient(135deg, rgba(255,255,255,.98) 0%, rgba(255,253,230,.98) 60%, rgba(254,248,200,.98) 100%)",
+                    background: "linear-gradient(135deg, rgba(255,255,255,.98) 0%, rgba(250,245,255,.98) 60%, rgba(245,240,255,.98) 100%)",
                   }}
                 >
-                  <Package className="w-8 h-8 text-amber-600 mb-2" />
-                  <span className="text-sm font-semibold text-stone-900">My Orders</span>
+                  <Package className="w-8 h-8 text-purple-600 mb-2" />
+                  <span className="text-sm font-semibold text-purple-900">My Orders</span>
                 </button>
                 
                 <button
                   onClick={() => navigate('/wishlist')}
-                  className="flex flex-col items-center p-4 bg-white rounded-2xl shadow-lg border border-stone-200 hover:shadow-xl transition-all duration-300 hover:scale-105"
+                  className="flex flex-col items-center p-4 bg-white rounded-2xl shadow-lg border border-purple-200 hover:shadow-xl transition-all duration-300 hover:scale-105"
                   style={{
-                    background: "linear-gradient(135deg, rgba(255,255,255,.98) 0%, rgba(255,253,230,.98) 60%, rgba(254,248,200,.98) 100%)",
+                    background: "linear-gradient(135deg, rgba(255,255,255,.98) 0%, rgba(250,245,255,.98) 60%, rgba(245,240,255,.98) 100%)",
                   }}
                 >
                   <Heart className="w-8 h-8 text-rose-500 mb-2" />
-                  <span className="text-sm font-semibold text-stone-900">Wishlist</span>
+                  <span className="text-sm font-semibold text-purple-900">Wishlist</span>
                 </button>
                 
                 <button
                   onClick={() => navigate('/custom-hamper')}
-                  className="flex flex-col items-center p-4 bg-white rounded-2xl shadow-lg border border-stone-200 hover:shadow-xl transition-all duration-300 hover:scale-105"
+                  className="flex flex-col items-center p-4 bg-white rounded-2xl shadow-lg border border-purple-200 hover:shadow-xl transition-all duration-300 hover:scale-105"
                   style={{
-                    background: "linear-gradient(135deg, rgba(255,255,255,.98) 0%, rgba(255,253,230,.98) 60%, rgba(254,248,200,.98) 100%)",
+                    background: "linear-gradient(135deg, rgba(255,255,255,.98) 0%, rgba(250,245,255,.98) 60%, rgba(245,240,255,.98) 100%)",
                   }}
                 >
-                  <Sparkles className="w-8 h-8 text-amber-500 mb-2" />
-                  <span className="text-sm font-semibold text-stone-900">Hampers</span>
+                  <Sparkles className="w-8 h-8 text-purple-500 mb-2" />
+                  <span className="text-sm font-semibold text-purple-900">Hampers</span>
                 </button>
                 
                 <button
                   onClick={() => setIsEditing(true)}
-                  className="flex flex-col items-center p-4 bg-white rounded-2xl shadow-lg border border-stone-200 hover:shadow-xl transition-all duration-300 hover:scale-105"
+                  className="flex flex-col items-center p-4 bg-white rounded-2xl shadow-lg border border-purple-200 hover:shadow-xl transition-all duration-300 hover:scale-105"
                   style={{
-                    background: "linear-gradient(135deg, rgba(255,255,255,.98) 0%, rgba(255,253,230,.98) 60%, rgba(254,248,200,.98) 100%)",
+                    background: "linear-gradient(135deg, rgba(255,255,255,.98) 0%, rgba(250,245,255,.98) 60%, rgba(245,240,255,.98) 100%)",
                   }}
                 >
                   <Edit3 className="w-8 h-8 text-blue-600 mb-2" />
-                  <span className="text-sm font-semibold text-stone-900">Edit Profile</span>
+                  <span className="text-sm font-semibold text-purple-900">Edit Profile</span>
                 </button>
               </motion.div>
 
               {/* Profile Information Grid */}
               <motion.div 
-                className="bg-white rounded-3xl shadow-xl border border-stone-200 p-8"
+                className="bg-white rounded-3xl shadow-xl border border-purple-200 p-8"
                 style={{
-                  background: "linear-gradient(135deg, rgba(255,255,255,.98) 0%, rgba(255,253,230,.98) 60%, rgba(254,248,200,.98) 100%)",
+                  background: "linear-gradient(135deg, rgba(255,255,255,.98) 0%, rgba(250,245,255,.98) 60%, rgba(245,240,255,.98) 100%)",
                 }}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -542,7 +542,7 @@ const Profile = () => {
                         size="sm"
                         onClick={() => setIsEditing(false)}
                         disabled={isSaving}
-                        className="border-stone-300 text-stone-700 hover:bg-stone-50"
+                        className="border-purple-300 text-purple-700 hover:bg-purple-50"
                       >
                         <X className="w-4 h-4 mr-1" />
                         Cancel
@@ -551,7 +551,7 @@ const Profile = () => {
                         size="sm"
                         onClick={handleSaveProfile}
                         disabled={isSaving}
-                        className="bg-stone-900 hover:bg-stone-800"
+                        className="bg-purple-900 hover:bg-purple-800"
                       >
                         {isSaving ? (
                           <>
@@ -573,82 +573,82 @@ const Profile = () => {
                   {/* Personal Details */}
                   <div className="space-y-6">
                     <div className="flex items-center gap-3 mb-6">
-                      <div className="w-8 h-8 bg-gradient-to-r from-amber-100 to-yellow-100 rounded-lg flex items-center justify-center">
-                        <User className="w-4 h-4 text-amber-600" />
+                      <div className="w-8 h-8 bg-gradient-to-r from-purple-100 to-purple-50 rounded-lg flex items-center justify-center">
+                        <User className="w-4 h-4 text-purple-600" />
                       </div>
-                      <h3 className="text-xl font-bold text-stone-900">Personal Details</h3>
+                      <h3 className="text-xl font-bold text-purple-900">Personal Details</h3>
                     </div>
 
                     {/* First Name */}
-                    <div className="bg-gradient-to-br from-amber-50/50 to-yellow-50/30 p-6 rounded-2xl border border-amber-100 hover:shadow-lg transition-all duration-300">
+                    <div className="bg-gradient-to-br from-purple-50/50 to-purple-50/30 p-6 rounded-2xl border border-purple-100 hover:shadow-lg transition-all duration-300">
                       <div className="flex items-center gap-3 mb-3">
-                        <User className="w-5 h-5 text-amber-600" />
-                        <label className="text-sm font-semibold text-amber-800 uppercase tracking-wide">First Name</label>
+                        <User className="w-5 h-5 text-purple-600" />
+                        <label className="text-sm font-semibold text-purple-800 uppercase tracking-wide">First Name</label>
                       </div>
                       {isEditing ? (
                         <Input
                           value={editData.firstName}
                           onChange={(e) => handleInputChange('firstName', e.target.value)}
-                          className="text-lg font-bold border-stone-200 focus:border-amber-500"
+                          className="text-lg font-bold border-purple-200 focus:border-purple-500"
                           placeholder="Enter first name"
                         />
                       ) : (
-                        <p className="text-xl font-bold text-stone-900">
+                        <p className="text-xl font-bold text-purple-900">
                           {currentProfile.firstName || 'Not provided'}
                         </p>
                       )}
                     </div>
 
                     {/* Last Name */}
-                    <div className="bg-gradient-to-br from-amber-50/50 to-yellow-50/30 p-6 rounded-2xl border border-amber-100 hover:shadow-lg transition-all duration-300">
+                    <div className="bg-gradient-to-br from-purple-50/50 to-purple-50/30 p-6 rounded-2xl border border-purple-100 hover:shadow-lg transition-all duration-300">
                       <div className="flex items-center gap-3 mb-3">
-                        <User className="w-5 h-5 text-amber-600" />
-                        <label className="text-sm font-semibold text-amber-800 uppercase tracking-wide">Last Name</label>
+                        <User className="w-5 h-5 text-purple-600" />
+                        <label className="text-sm font-semibold text-purple-800 uppercase tracking-wide">Last Name</label>
                       </div>
                       {isEditing ? (
                         <Input
                           value={editData.lastName}
                           onChange={(e) => handleInputChange('lastName', e.target.value)}
-                          className="text-lg font-bold border-stone-200 focus:border-amber-500"
+                          className="text-lg font-bold border-purple-200 focus:border-purple-500"
                           placeholder="Enter last name"
                         />
                       ) : (
-                        <p className="text-xl font-bold text-stone-900">
+                        <p className="text-xl font-bold text-purple-900">
                           {currentProfile.lastName || 'Not provided'}
                         </p>
                       )}
                     </div>
 
                     {/* Email */}
-                    <div className="bg-gradient-to-br from-amber-50/50 to-yellow-50/30 p-6 rounded-2xl border border-amber-100 hover:shadow-lg transition-all duration-300">
+                    <div className="bg-gradient-to-br from-purple-50/50 to-purple-50/30 p-6 rounded-2xl border border-purple-100 hover:shadow-lg transition-all duration-300">
                       <div className="flex items-center gap-3 mb-3">
-                        <Mail className="w-5 h-5 text-amber-600" />
-                        <label className="text-sm font-semibold text-amber-800 uppercase tracking-wide">Email Address</label>
+                        <Mail className="w-5 h-5 text-purple-600" />
+                        <label className="text-sm font-semibold text-purple-800 uppercase tracking-wide">Email Address</label>
                       </div>
-                      <p className="text-xl font-bold text-stone-900 break-all">
+                      <p className="text-xl font-bold text-purple-900 break-all">
                         {currentProfile.email || 'Not provided'}
                       </p>
-                      <p className="text-sm text-stone-500 mt-1">Email cannot be changed</p>
+                      <p className="text-sm text-purple-500 mt-1">Email cannot be changed</p>
                     </div>
 
                     {/* Phone Number */}
-                    <div className="bg-gradient-to-br from-amber-50/50 to-yellow-50/30 p-6 rounded-2xl border border-amber-100 hover:shadow-lg transition-all duration-300">
+                    <div className="bg-gradient-to-br from-purple-50/50 to-purple-50/30 p-6 rounded-2xl border border-purple-100 hover:shadow-lg transition-all duration-300">
                       <div className="flex items-center gap-3 mb-3">
-                        <Phone className="w-5 h-5 text-amber-600" />
-                        <label className="text-sm font-semibold text-amber-800 uppercase tracking-wide">Phone Number</label>
+                        <Phone className="w-5 h-5 text-purple-600" />
+                        <label className="text-sm font-semibold text-purple-800 uppercase tracking-wide">Phone Number</label>
                       </div>
                       {isEditing ? (
                         <Input
                           type="tel"
                           value={editData.phoneNo}
                           onChange={(e) => handleInputChange('phoneNo', e.target.value.replace(/\D/g, '').slice(0, 10))}
-                          className="text-lg font-bold border-stone-200 focus:border-amber-500"
+                          className="text-lg font-bold border-purple-200 focus:border-purple-500"
                           placeholder="Enter 10-digit mobile number"
                           maxLength={10}
                         />
                       ) : (
                         <div>
-                          <p className="text-xl font-bold text-stone-900">
+                          <p className="text-xl font-bold text-purple-900">
                             {formatPhoneNumber(currentProfile.phoneNo)}
                           </p>
                           {currentProfile.isPhoneVerified && (
@@ -665,17 +665,17 @@ const Profile = () => {
                   {/* Address & Account Information */}
                   <div className="space-y-6">
                     <div className="flex items-center gap-3 mb-6">
-                      <div className="w-8 h-8 bg-gradient-to-r from-amber-100 to-yellow-100 rounded-lg flex items-center justify-center">
-                        <MapPin className="w-4 h-4 text-amber-600" />
+                      <div className="w-8 h-8 bg-gradient-to-r from-purple-100 to-purple-50 rounded-lg flex items-center justify-center">
+                        <MapPin className="w-4 h-4 text-purple-600" />
                       </div>
-                      <h3 className="text-xl font-bold text-stone-900">Address & Account</h3>
+                      <h3 className="text-xl font-bold text-purple-900">Address & Account</h3>
                     </div>
 
                     {/* Address */}
-                    <div className="bg-gradient-to-br from-amber-50/50 to-yellow-50/30 p-6 rounded-2xl border border-amber-100 hover:shadow-lg transition-all duration-300">
+                    <div className="bg-gradient-to-br from-purple-50/50 to-purple-50/30 p-6 rounded-2xl border border-purple-100 hover:shadow-lg transition-all duration-300">
                       <div className="flex items-center gap-3 mb-3">
-                        <MapPin className="w-5 h-5 text-amber-600" />
-                        <label className="text-sm font-semibold text-amber-800 uppercase tracking-wide">Address</label>
+                        <MapPin className="w-5 h-5 text-purple-600" />
+                        <label className="text-sm font-semibold text-purple-800 uppercase tracking-wide">Address</label>
                       </div>
                       {isEditing ? (
                         <div className="space-y-3">
@@ -683,20 +683,20 @@ const Profile = () => {
                             value={editData.street}
                             onChange={(e) => handleInputChange('street', e.target.value)}
                             placeholder="Street address"
-                            className="border-stone-200 focus:border-amber-500"
+                            className="border-purple-200 focus:border-purple-500"
                           />
                           <div className="grid grid-cols-2 gap-2">
                             <Input
                               value={editData.city}
                               onChange={(e) => handleInputChange('city', e.target.value)}
                               placeholder="City"
-                              className="border-stone-200 focus:border-amber-500"
+                              className="border-purple-200 focus:border-purple-500"
                             />
                             <Input
                               value={editData.state}
                               onChange={(e) => handleInputChange('state', e.target.value)}
                               placeholder="State"
-                              className="border-stone-200 focus:border-amber-500"
+                              className="border-purple-200 focus:border-purple-500"
                             />
                           </div>
                           <div className="grid grid-cols-2 gap-2">
@@ -704,35 +704,35 @@ const Profile = () => {
                               value={editData.pinCode}
                               onChange={(e) => handleInputChange('pinCode', e.target.value)}
                               placeholder="PIN Code"
-                              className="border-stone-200 focus:border-amber-500"
+                              className="border-purple-200 focus:border-purple-500"
                             />
                             <Input
                               value={editData.country}
                               onChange={(e) => handleInputChange('country', e.target.value)}
                               placeholder="Country"
-                              className="border-stone-200 focus:border-amber-500"
+                              className="border-purple-200 focus:border-purple-500"
                             />
                           </div>
                         </div>
                       ) : (
-                        <p className="text-base font-medium text-stone-900 leading-relaxed">
+                        <p className="text-base font-medium text-purple-900 leading-relaxed">
                           {getFormattedAddress(currentProfile)}
                         </p>
                       )}
                     </div>
 
                     {/* Account Type */}
-                    <div className="bg-gradient-to-br from-amber-50/50 to-yellow-50/30 p-6 rounded-2xl border border-amber-100 hover:shadow-lg transition-all duration-300">
+                    <div className="bg-gradient-to-br from-purple-50/50 to-purple-50/30 p-6 rounded-2xl border border-purple-100 hover:shadow-lg transition-all duration-300">
                       <div className="flex items-center gap-3 mb-3">
-                        <Shield className="w-5 h-5 text-amber-600" />
-                        <label className="text-sm font-semibold text-amber-800 uppercase tracking-wide">Account Type</label>
+                        <Shield className="w-5 h-5 text-purple-600" />
+                        <label className="text-sm font-semibold text-purple-800 uppercase tracking-wide">Account Type</label>
                       </div>
                       <div className="flex items-center gap-3">
-                        <span className="inline-flex items-center px-4 py-2 rounded-full text-sm font-semibold bg-stone-900 text-white capitalize">
+                        <span className="inline-flex items-center px-4 py-2 rounded-full text-sm font-semibold bg-purple-900 text-white capitalize">
                           {currentProfile.role || 'user'}
                         </span>
                         {currentProfile.role === 'admin' && (
-                          <span className="text-xs text-amber-600 font-medium bg-amber-100 px-2 py-1 rounded-full">
+                          <span className="text-xs text-purple-600 font-medium bg-purple-100 px-2 py-1 rounded-full">
                             Admin Privileges
                           </span>
                         )}
@@ -740,28 +740,28 @@ const Profile = () => {
                     </div>
 
                     {/* Member Since */}
-                    <div className="bg-gradient-to-br from-amber-50/50 to-yellow-50/30 p-6 rounded-2xl border border-amber-100 hover:shadow-lg transition-all duration-300">
+                    <div className="bg-gradient-to-br from-purple-50/50 to-purple-50/30 p-6 rounded-2xl border border-purple-100 hover:shadow-lg transition-all duration-300">
                       <div className="flex items-center gap-3 mb-3">
-                        <Calendar className="w-5 h-5 text-amber-600" />
-                        <label className="text-sm font-semibold text-amber-800 uppercase tracking-wide">Member Since</label>
+                        <Calendar className="w-5 h-5 text-purple-600" />
+                        <label className="text-sm font-semibold text-purple-800 uppercase tracking-wide">Member Since</label>
                       </div>
-                      <p className="text-xl font-bold text-stone-900">
+                      <p className="text-xl font-bold text-purple-900">
                         {formatDate(currentProfile.createdAt, 'MMMM d, yyyy')}
                       </p>
-                      <p className="text-sm text-stone-500 mt-1">
+                      <p className="text-sm text-purple-500 mt-1">
                         {formatDate(currentProfile.createdAt, "'Joined' EEEE 'at' h:mm a")}
                       </p>
                     </div>
 
                     {/* Verification Status */}
-                    <div className="bg-gradient-to-br from-amber-50/50 to-yellow-50/30 p-6 rounded-2xl border border-amber-100 hover:shadow-lg transition-all duration-300">
+                    <div className="bg-gradient-to-br from-purple-50/50 to-purple-50/30 p-6 rounded-2xl border border-purple-100 hover:shadow-lg transition-all duration-300">
                       <div className="flex items-center gap-3 mb-3">
-                        <Award className="w-5 h-5 text-amber-600" />
-                        <label className="text-sm font-semibold text-amber-800 uppercase tracking-wide">Verification Status</label>
+                        <Award className="w-5 h-5 text-purple-600" />
+                        <label className="text-sm font-semibold text-purple-800 uppercase tracking-wide">Verification Status</label>
                       </div>
                       <div className="space-y-2">
                         <div className="flex items-center justify-between">
-                          <span className="text-sm text-stone-600">Email Verified</span>
+                          <span className="text-sm text-purple-600">Email Verified</span>
                           <div className="flex items-center gap-1">
                             {currentProfile.isVerified ? (
                               <>
@@ -770,14 +770,14 @@ const Profile = () => {
                               </>
                             ) : (
                               <>
-                                <AlertCircle className="w-4 h-4 text-amber-500" />
-                                <span className="text-sm text-amber-600 font-medium">Pending</span>
+                                <AlertCircle className="w-4 h-4 text-purple-500" />
+                                <span className="text-sm text-purple-600 font-medium">Pending</span>
                               </>
                             )}
                           </div>
                         </div>
                         <div className="flex items-center justify-between">
-                          <span className="text-sm text-stone-600">Phone Verified</span>
+                          <span className="text-sm text-purple-600">Phone Verified</span>
                           <div className="flex items-center gap-1">
                             {currentProfile.isPhoneVerified ? (
                               <>
@@ -786,8 +786,8 @@ const Profile = () => {
                               </>
                             ) : (
                               <>
-                                <AlertCircle className="w-4 h-4 text-amber-500" />
-                                <span className="text-sm text-amber-600 font-medium">Pending</span>
+                                <AlertCircle className="w-4 h-4 text-purple-500" />
+                                <span className="text-sm text-purple-600 font-medium">Pending</span>
                               </>
                             )}
                           </div>

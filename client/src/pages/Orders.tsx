@@ -1,4 +1,3 @@
-
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Header from "@/components/Header";
@@ -92,18 +91,18 @@ const orderStatus = {
     variant: "default" as const, 
     label: "Processing", 
     progress: 50,
-    bgColor: "bg-blue-50/80",
-    textColor: "text-blue-700", 
-    borderColor: "border-blue-200"
+    bgColor: "bg-purple-50/80",
+    textColor: "text-purple-700", 
+    borderColor: "border-purple-200"
   },
   shipped: { 
     icon: Truck, 
     variant: "outline" as const, 
     label: "Shipped", 
     progress: 75,
-    bgColor: "bg-pink-50/80",
-    textColor: "text-pink-700",
-    borderColor: "border-pink-200"
+    bgColor: "bg-purple-50/80",
+    textColor: "text-purple-700",
+    borderColor: "border-purple-200"
   },
   delivered: { 
     icon: CheckCircle, 
@@ -136,7 +135,7 @@ const orderStatus = {
 
 const payStatus = {
   initiated: { variant: "secondary" as const, label: "Initiated", color: "bg-purple-500" },
-  pending: { variant: "outline" as const, label: "Pending", color: "bg-amber-500" },
+  pending: { variant: "outline" as const, label: "Pending", color: "bg-purple-500" },
   paid: { variant: "default" as const, label: "Paid", color: "bg-green-500" },
   failed: { variant: "destructive" as const, label: "Failed", color: "bg-red-500" },
 };
@@ -230,7 +229,7 @@ const Orders = () => {
     return (
       <>
         <Header />
-        <div className="min-h-screen bg-gradient-to-br from-purple-50/30 via-pink-50/20 to-white">
+        <div className="min-h-screen bg-gradient-to-br from-purple-50/30 via-purple-50/20 to-white">
           <div className="px-2 pt-20 pb-8">
             <div className="max-w-sm mx-auto space-y-4">
               {Array.from({ length: 3 }).map((_, i) => (
@@ -262,7 +261,7 @@ const Orders = () => {
     return (
       <>
         <Header />
-        <div className="min-h-screen bg-gradient-to-br from-purple-50/30 via-pink-50/20 to-white">
+        <div className="min-h-screen bg-gradient-to-br from-purple-50/30 via-purple-50/20 to-white">
           <div className="px-2 pt-20 pb-8">
             <Card className="max-w-xs mx-auto text-center border-purple-100/50 bg-white/80 backdrop-blur-sm">
               <CardContent className="pt-4 px-4">
@@ -273,7 +272,7 @@ const Orders = () => {
                 </p>
                 <Button 
                   onClick={() => navigate("/login")} 
-                  className="w-full bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600"
+                  className="w-full bg-gradient-to-r from-purple-500 to-purple-600 hover:from-purple-600 hover:to-purple-700"
                 >
                   Go to Login
                 </Button>
@@ -289,7 +288,7 @@ const Orders = () => {
     <>
       <Header />
       {/* Pastel gradient background */}
-      <div className="min-h-screen bg-gradient-to-br from-purple-50/30 via-pink-50/20 to-white">
+      <div className="min-h-screen bg-gradient-to-br from-purple-50/30 via-purple-50/20 to-white">
         <div className="px-2 pt-20 pb-8">
           <div className="max-w-sm mx-auto">
             {/* Header - optimized for 320px */}
@@ -306,7 +305,7 @@ const Orders = () => {
               
               <div className="flex items-center justify-between">
                 <div>
-                  <h1 className="text-xl font-bold tracking-tight bg-gradient-to-r from-purple-700 to-pink-600 bg-clip-text text-transparent">
+                  <h1 className="text-xl font-bold tracking-tight bg-gradient-to-r from-purple-700 to-purple-600 bg-clip-text text-transparent">
                     My Orders
                   </h1>
                   <p className="text-sm text-purple-600">
@@ -337,7 +336,7 @@ const Orders = () => {
                   </p>
                   <Button 
                     onClick={() => navigate("/")} 
-                    className="w-full bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600"
+                    className="w-full bg-gradient-to-r from-purple-500 to-purple-600 hover:from-purple-600 hover:to-purple-700"
                   >
                     Start Shopping
                   </Button>
@@ -371,7 +370,7 @@ const Orders = () => {
                                   #{order._id.slice(-6).toUpperCase()}
                                 </span>
                                 {order.isCustomHamper && (
-                                  <Badge className="bg-gradient-to-r from-amber-400 to-orange-400 text-white text-[10px] px-1 py-0">
+                                  <Badge className="bg-gradient-to-r from-purple-400 to-purple-500 text-white text-[10px] px-1 py-0">
                                     <Gift className="w-2 h-2 mr-0.5" />
                                     Hamper
                                   </Badge>
@@ -420,7 +419,7 @@ const Orders = () => {
                             </div>
                             
                             <div className="text-right">
-                              <p className="font-bold text-sm bg-gradient-to-r from-purple-700 to-pink-600 bg-clip-text text-transparent">
+                              <p className="font-bold text-sm bg-gradient-to-r from-purple-700 to-purple-600 bg-clip-text text-transparent">
                                 ₹{order.totalAmount.toFixed(2)}
                               </p>
                             </div>
@@ -484,6 +483,3 @@ const Orders = () => {
 };
 
 export default Orders;
-
-
-

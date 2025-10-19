@@ -86,14 +86,14 @@ const OptimizedWishlistItem = React.memo(({
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
-      className="group rounded-xl border border-stone-200 shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden flex flex-col hover:-translate-y-2"
+      className="group rounded-xl border border-purple-100 shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden flex flex-col hover:-translate-y-2"
       style={{
-        background: "linear-gradient(135deg, rgba(255,255,255,.98) 0%, rgba(255,253,230,.98) 60%, rgba(254,248,200,.98) 100%)",
+        background: "linear-gradient(135deg, rgba(255,255,255,.98) 0%, rgba(248,240,252,.98) 60%, rgba(243,232,255,.98) 100%)",
       }}
     >
       {/* Product Image */}
       <div 
-        className="relative aspect-square overflow-hidden cursor-pointer bg-gradient-to-br from-stone-50 to-amber-50"
+        className="relative aspect-square overflow-hidden cursor-pointer bg-gradient-to-br from-purple-50 to-white"
         onClick={handleProductClick}
       >
         <img
@@ -105,7 +105,7 @@ const OptimizedWishlistItem = React.memo(({
         
         {/* Quantity Badge */}
         {localQuantity > 1 && (
-          <div className="absolute top-4 left-4 bg-amber-600 text-white text-sm font-bold px-2 py-1 rounded-full shadow-lg">
+          <div className="absolute top-4 left-4 bg-purple-600 text-white text-sm font-bold px-2 py-1 rounded-full shadow-lg">
             {localQuantity}
           </div>
         )}
@@ -115,7 +115,7 @@ const OptimizedWishlistItem = React.memo(({
           variant="secondary"
           size="icon"
           type="button"
-          className="absolute top-4 right-4 w-10 h-10 rounded-full bg-rose-500 border-rose-500 text-white hover:bg-rose-600 hover:border-rose-600 shadow-lg z-10"
+          className="absolute top-4 right-4 w-10 h-10 rounded-full bg-purple-500 border-purple-500 text-white hover:bg-purple-600 hover:border-purple-600 shadow-lg z-10"
           onClick={handleRemoveClick}
           disabled={isUpdating}
         >
@@ -125,7 +125,7 @@ const OptimizedWishlistItem = React.memo(({
         {/* Premium Badges */}
         <div className="absolute bottom-4 left-4 flex flex-col gap-1">
           {discount > 0 && (
-            <span className="inline-flex items-center gap-1 px-2 py-1 bg-amber-500 text-white text-xs font-medium rounded-full border border-amber-600">
+            <span className="inline-flex items-center gap-1 px-2 py-1 bg-purple-500 text-white text-xs font-medium rounded-full border border-purple-600">
               {discount}% OFF
             </span>
           )}
@@ -139,7 +139,7 @@ const OptimizedWishlistItem = React.memo(({
       <div className="p-6 flex-grow flex flex-col">
         <div className="mb-4">
           <h3 
-            className="font-bold text-lg text-stone-900 line-clamp-2 leading-tight cursor-pointer hover:text-amber-600 transition-colors mb-2"
+            className="font-bold text-lg text-gray-900 line-clamp-2 leading-tight cursor-pointer hover:text-purple-600 transition-colors mb-2"
             onClick={handleProductClick}
           >
             {product.Product_name}
@@ -149,11 +149,11 @@ const OptimizedWishlistItem = React.memo(({
         <div className="mt-auto">
           {/* Price Section */}
           <div className="flex items-center gap-2 mb-3">
-            <span className="text-2xl font-bold text-stone-900">
+            <span className="text-2xl font-bold text-gray-900">
               ₹{product.Product_price.toLocaleString()}
             </span>
             {discount > 0 && (
-              <span className="text-sm text-stone-500 line-through">
+              <span className="text-sm text-gray-500 line-through">
                 ₹{originalPrice.toLocaleString()}
               </span>
             )}
@@ -161,13 +161,13 @@ const OptimizedWishlistItem = React.memo(({
 
           {/* ✅ Optimized Quantity Controls */}
           <div className="flex items-center justify-between mb-3">
-            <span className="text-sm font-medium text-stone-600">Quantity:</span>
-            <div className="flex items-center bg-stone-50 rounded-lg border border-stone-200">
+            <span className="text-sm font-medium text-gray-600">Quantity:</span>
+            <div className="flex items-center bg-purple-50 rounded-lg border border-purple-200">
               <Button
                 variant="ghost"
                 size="sm"
                 type="button"
-                className="w-8 h-8 p-0 hover:bg-stone-100 rounded-l-lg disabled:opacity-50"
+                className="w-8 h-8 p-0 hover:bg-purple-100 rounded-l-lg disabled:opacity-50"
                 onClick={() => handleQuantityChange(-1)}
                 disabled={isUpdating}
               >
@@ -178,7 +178,7 @@ const OptimizedWishlistItem = React.memo(({
                 {localQuantity}
                 {isUpdating && (
                   <div className="absolute inset-0 bg-white/80 flex items-center justify-center">
-                    <div className="w-2 h-2 bg-amber-500 rounded-full animate-pulse"></div>
+                    <div className="w-2 h-2 bg-purple-500 rounded-full animate-pulse"></div>
                   </div>
                 )}
               </span>
@@ -187,7 +187,7 @@ const OptimizedWishlistItem = React.memo(({
                 variant="ghost"
                 size="sm"
                 type="button"
-                className="w-8 h-8 p-0 hover:bg-stone-100 rounded-r-lg disabled:opacity-50"
+                className="w-8 h-8 p-0 hover:bg-purple-100 rounded-r-lg disabled:opacity-50"
                 onClick={() => handleQuantityChange(1)}
                 disabled={isUpdating || localQuantity >= 99}
               >
@@ -199,7 +199,7 @@ const OptimizedWishlistItem = React.memo(({
           {/* Add to Cart Button */}
           <Button
             type="button"
-            className="w-full rounded-xl py-3 text-sm font-semibold bg-stone-900 hover:bg-stone-800 text-white transition-all duration-300 hover:scale-[1.02] hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed"
+            className="w-full rounded-xl py-3 text-sm font-semibold bg-purple-600 hover:bg-purple-700 text-white transition-all duration-300 hover:scale-[1.02] hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed"
             onClick={handleAddToCartClick}
             disabled={isUpdating || !product.Product_available}
           >
@@ -300,15 +300,15 @@ const WishlistPage: React.FC = () => {
       <div 
         className="min-h-screen flex flex-col items-center justify-center"
         style={{
-          background: "linear-gradient(135deg, #ffffff 0%, #fffaf0 40%, #fff9e6 100%)",
+          background: "linear-gradient(135deg, #ffffff 0%, #f8f0fc 40%, #f3e8ff 100%)",
         }}
       >
-        <div className="bg-white rounded-3xl p-12 shadow-xl border border-stone-200">
+        <div className="bg-white rounded-3xl p-12 shadow-xl border border-purple-100">
           <div className="relative mb-6">
-            <div className="w-16 h-16 border-4 border-amber-200 rounded-full animate-spin"></div>
-            <div className="absolute top-0 left-0 w-16 h-16 border-4 border-amber-600 rounded-full animate-spin border-t-transparent"></div>
+            <div className="w-16 h-16 border-4 border-purple-200 rounded-full animate-spin"></div>
+            <div className="absolute top-0 left-0 w-16 h-16 border-4 border-purple-600 rounded-full animate-spin border-t-transparent"></div>
           </div>
-          <h2 className="text-2xl font-bold text-center text-stone-700">
+          <h2 className="text-2xl font-bold text-center text-gray-700">
             Loading your wishlist...
           </h2>
         </div>
@@ -321,24 +321,24 @@ const WishlistPage: React.FC = () => {
       <div 
         className="min-h-screen flex flex-col items-center justify-center text-center px-6"
         style={{
-          background: "linear-gradient(135deg, #ffffff 0%, #fffaf0 40%, #fff9e6 100%)",
+          background: "linear-gradient(135deg, #ffffff 0%, #f8f0fc 40%, #f3e8ff 100%)",
         }}
       >
-        <div className="bg-white rounded-3xl p-12 shadow-xl border border-stone-200">
-          <div className="w-16 h-16 bg-gradient-to-r from-amber-100 to-yellow-100 rounded-full flex items-center justify-center mx-auto mb-6">
-            <Heart className="w-8 h-8 text-amber-600" fill="currentColor" />
+        <div className="bg-white rounded-3xl p-12 shadow-xl border border-purple-100">
+          <div className="w-16 h-16 bg-gradient-to-r from-purple-100 to-purple-50 rounded-full flex items-center justify-center mx-auto mb-6">
+            <Heart className="w-8 h-8 text-purple-600" fill="currentColor" />
           </div>
-          <h2 className="text-4xl font-bold text-stone-900 mb-6">
+          <h2 className="text-4xl font-bold text-gray-900 mb-6">
             Your Wishlist is Empty
           </h2>
-          <p className="text-lg text-stone-600 mb-8 max-w-md">
+          <p className="text-lg text-gray-600 mb-8 max-w-md">
             Discover our premium collection and save your favorite pieces for later.
           </p>
           <Button 
             onClick={() => navigate("/")}
             size="lg" 
             type="button"
-            className="rounded-xl px-12 py-3 bg-stone-900 hover:bg-stone-800 text-white shadow-lg hover:shadow-xl transition-all duration-300"
+            className="rounded-xl px-12 py-3 bg-purple-600 hover:bg-purple-700 text-white shadow-lg hover:shadow-xl transition-all duration-300"
           >
             <Gem className="w-5 h-5 mr-2" />
             Explore Collections
@@ -352,7 +352,7 @@ const WishlistPage: React.FC = () => {
     <section 
       className="py-20 min-h-screen"
       style={{
-        background: "linear-gradient(135deg, #ffffff 0%, #fffaf0 40%, #fff9e6 100%)",
+        background: "linear-gradient(135deg, #ffffff 0%, #f8f0fc 40%, #f3e8ff 100%)",
       }}
     >
       <div className="container mx-auto px-4 lg:px-6">
@@ -363,18 +363,18 @@ const WishlistPage: React.FC = () => {
           className="flex flex-col lg:flex-row justify-between items-start lg:items-center mb-16 gap-4"
         >
           <div>
-            <div className="inline-flex items-center gap-2 bg-gradient-to-r from-amber-100 to-yellow-100 text-amber-700 px-4 py-2 rounded-full text-sm font-semibold mb-4">
+            <div className="inline-flex items-center gap-2 bg-gradient-to-r from-purple-100 to-purple-50 text-purple-700 px-4 py-2 rounded-full text-sm font-semibold mb-4">
               <Crown className="w-4 h-4" />
               <span className="flex items-center gap-2">
                 <span>RK Store Premium</span>
-                <span className="text-amber-500">•</span>
+                <span className="text-purple-500">•</span>
                 <span>{totalUniqueItems} {totalUniqueItems === 1 ? 'Item' : 'Items'}</span>
               </span>
             </div>
-            <h2 className="text-4xl md:text-5xl font-bold text-stone-900">
+            <h2 className="text-4xl md:text-5xl font-bold text-gray-900">
               Your Wishlist
             </h2>
-            <p className="text-stone-600 mt-2">
+            <p className="text-gray-600 mt-2">
               Curated collection of your favorite premium products
             </p>
           </div>
@@ -385,7 +385,7 @@ const WishlistPage: React.FC = () => {
               size="sm"
               type="button"
               onClick={handleClearWishlist}
-              className="border-stone-300 text-stone-700 hover:bg-stone-50 hover:border-stone-400"
+              className="border-purple-300 text-purple-700 hover:bg-purple-50 hover:border-purple-400"
               disabled={loading}
             >
               <Trash2 className="w-4 h-4 mr-2" />
@@ -420,9 +420,9 @@ const WishlistPage: React.FC = () => {
             transition={{ delay: 0.5 }}
             className="mt-12 text-center"
           >
-            <div className="inline-flex items-center gap-2 bg-white px-6 py-3 rounded-full shadow-lg border border-stone-200">
-              <Gem className="w-4 h-4 text-amber-500" />
-              <span className="text-sm text-stone-600">
+            <div className="inline-flex items-center gap-2 bg-white px-6 py-3 rounded-full shadow-lg border border-purple-200">
+              <Gem className="w-4 h-4 text-purple-500" />
+              <span className="text-sm text-gray-600">
                 Curating {totalItems} premium product{totalItems !== 1 ? 's' : ''} across {totalUniqueItems} unique item{totalUniqueItems !== 1 ? 's' : ''}
               </span>
             </div>

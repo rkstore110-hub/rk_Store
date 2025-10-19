@@ -452,52 +452,85 @@ const outOFstock = async(req,res)=>{
   }
 }
 
-function getPublicId(url) {
+const extractPublicId = (url) => {
   try {
-    const path = new URL(url).pathname;
-    const afterUpload = path.split('/image/upload/')[1] || '';
-    const withoutVersion = afterUpload.replace(/^v\d+\//, '');
-    const publicId = withoutVersion.replace(/\.[^/.]+$/, '');
-    return publicId;
-  } catch (e) {
+    if (!url) return null;
+    const clean = url.split("?")[0];
+    const idx = clean.indexOf("/upload/");
+    if (idx === -1) return null;
+    const rest = clean.substring(idx + "/upload/".length);
+    const parts = rest.split("/");
+    if (parts[0] && /^v\d+$/.test(parts[0])) parts.shift(); // drop version
+    const last = parts.pop();
+    if (!last) return null;
+    const noExt = last.replace(/\.[a-z0-9]+$/i, "");
+    parts.push(noExt);
+    const publicId = parts.join("/");
+    return publicId || null;
+  } catch {
     return null;
   }
-}
+};
+
+
+
 
 const updateCategory = async (req, res) => {
   try {
-    const { image , id } = req.body;
+    console.log("updateCategory body:", req.body);
+    const { id, image } = req.body || {};
 
+    // Validate inputs
+    if (!id || !mongoose.isValidObjectId(id)) {
+      return res.status(400).json({ message: "Invalid id", status: "failed" });
+    }
+    if (!image || typeof image !== "string") {
+      return res.status(400).json({ message: "Invalid image", status: "failed" });
+    }
 
-    const response = await Category.findById(id);
-    if (!response) throw new Error("Category not found");
+    // Find category
+    const doc = await Category.findById(id);
+    if (!doc) {
+      return res.status(404).json({ message: "Category not found", status: "failed" });
+    }
 
-    // agar image change hui ho
-    if (response.category_image !== image) {
-      const public_id = getPublicId(response.category_image);
-      if (public_id) {
-        const cloudinaryRes = await cloudinary.uploader.destroy(public_id);
-        if (cloudinaryRes.result !== "ok") {
-          throw new Error("Failed to delete old image");
+    // If same URL, no work needed
+    if (doc.category_image === image) {
+      return res.status(200).json({ message: "No changes", status: "success" });
+    }
+
+    // Delete old Cloudinary asset (non-fatal if already gone)
+    if (doc.category_image) {
+      const oldPublicId = extractPublicId(doc.category_image);
+      if (oldPublicId) {
+        // cloudinary exported as v2 directly -> use cloudinary.uploader
+        const del = await cloudinary.uploader.destroy(oldPublicId, { invalidate: true });
+        const ok = ["ok", "not found", "gone"];
+        if (!ok.includes(del?.result)) {
+          return res.status(502).json({ message: "Failed to delete old image", status: "failed" });
         }
       }
     }
 
-    response.category_image = image;
+    // Save new image URL only (text fields untouched)
+    doc.category_image = image;
+    await doc.save();
 
-    await response.save();
-
-    res.status(200).json({
-      message: "Updated successfully",
-      status: "success"
+    return res.status(200).json({
+      message: "Image updated",
+      status: "success",
+      category: {
+        _id: doc._id,
+        category: doc.category,
+        category_image: doc.category_image,
+        slug: doc.slug
+      }
     });
   } catch (e) {
-    res.status(500).json({
-      message: e.message,
-      status: "failed"
-    });
+    return res.status(500).json({ message: e.message || "Internal error", status: "failed" });
   }
 };
+
  
 const updateProduct = async (req,res)=>{
   try{

@@ -19,18 +19,18 @@ const MotionDiv = prefersReducedMotion ? "div" : motion.div;
 const LogoBrand = () => (
   <span className="inline-flex items-center gap-2" aria-label="RK Store Logo">
     <span
-      className="w-9 h-9 rounded-full bg-gradient-to-br from-white/95 to-cream-100 shadow-md flex items-center justify-center border border-amber-200"
-      style={{ fontWeight: 800, color: "#3b2f2f", fontSize: "0.9rem" }}
+      className="w-9 h-9 rounded-full bg-gradient-to-br from-white/95 to-purple-50 shadow-md flex items-center justify-center border border-purple-200"
+      style={{ fontWeight: 800, color: "#4a3c6b", fontSize: "0.9rem" }}
     >
       RK
     </span>
-    <span className="hidden sm:inline-block font-semibold tracking-tight text-stone-800" style={{ fontSize: "1.05rem" }}>
+    <span className="hidden sm:inline-block font-semibold tracking-tight text-purple-900" style={{ fontSize: "1.05rem" }}>
       Store
     </span>
   </span>
 );
 
-const creamGradient = "bg-gradient-to-br from-white via-cream-50 to-cream-100";
+const lavenderGradient = "bg-gradient-to-br from-white via-purple-50 to-purple-100";
 
 const Header = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -271,7 +271,7 @@ const Header = () => {
         initial={prefersReducedMotion ? undefined : { y: -100 }}
         animate={prefersReducedMotion ? undefined : { y: showNavbar ? 0 : -100 }}
         transition={prefersReducedMotion ? undefined : { type: "tween", duration: 0.18 }}
-        className={`fixed top-0 left-0 right-0 z-50 ${creamGradient} bg-white/95 backdrop-blur-sm border-b border-amber-200/60 shadow-sm`}
+        className={`fixed top-0 left-0 right-0 z-50 ${lavenderGradient} bg-white/95 backdrop-blur-sm border-b border-purple-200/60 shadow-sm`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16 lg:h-18">
@@ -290,7 +290,7 @@ const Header = () => {
             <div className="hidden lg:flex flex-1 mx-8 relative" ref={searchResultsRef}>
               <div className="w-full relative group">
                 <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
-                  <Search className="h-4 w-4 text-stone-400 group-focus-within:text-amber-600 transition-colors" strokeWidth={1.5} />
+                  <Search className="h-4 w-4 text-purple-400 group-focus-within:text-purple-600 transition-colors" strokeWidth={1.5} />
                 </div>
                 <input
                   type="text"
@@ -299,7 +299,7 @@ const Header = () => {
                   onKeyDown={(e) => e.key === "Enter" && handleSearch(e)}
                   onFocus={() => searchQuery && setShowSearchResults(true)}
                   placeholder="Search products..."
-                  className="w-full pl-11 pr-4 py-2.5 bg-amber-50/40 border border-amber-200 rounded-xl focus:ring-2 focus:ring-amber-500/20 focus:border-amber-500 focus:bg-white transition-all duration-200 text-sm placeholder-stone-400 shadow-sm"
+                  className="w-full pl-11 pr-4 py-2.5 bg-purple-50/40 border border-purple-200 rounded-xl focus:ring-2 focus:ring-purple-500/20 focus:border-purple-500 focus:bg-white transition-all duration-200 text-sm placeholder-purple-400 shadow-sm"
                 />
                 <AnimatePresence>
                   {showSearchResults && (
@@ -308,12 +308,12 @@ const Header = () => {
                       animate={prefersReducedMotion ? undefined : { opacity: 1, y: 0, scale: 1 }}
                       exit={prefersReducedMotion ? undefined : { opacity: 0, y: 8, scale: 0.98 }}
                       transition={prefersReducedMotion ? undefined : { duration: 0.15 }}
-                      className="absolute top-full mt-2 bg-white border border-amber-200 rounded-xl w-full z-50 shadow-xl max-h-80 overflow-hidden"
+                      className="absolute top-full mt-2 bg-white border border-purple-200 rounded-xl w-full z-50 shadow-xl max-h-80 overflow-hidden"
                     >
                       {isSearching ? (
                         <div className="p-4 text-center">
-                          <div className="animate-spin rounded-full h-6 w-6 border-b-2 border-amber-600 mx-auto"></div>
-                          <p className="text-sm text-stone-500 mt-2">Searching...</p>
+                          <div className="animate-spin rounded-full h-6 w-6 border-b-2 border-purple-600 mx-auto"></div>
+                          <p className="text-sm text-purple-500 mt-2">Searching...</p>
                         </div>
                       ) : searchResults.length > 0 ? (
                         <div className="p-2 max-h-80 overflow-y-auto">
@@ -321,7 +321,7 @@ const Header = () => {
                             <button
                               key={product._id}
                               onClick={() => handleProductClick(product._id)}
-                              className="w-full p-3 hover:bg-amber-50/50 cursor-pointer rounded-lg transition-colors flex items-center space-x-3"
+                              className="w-full p-3 hover:bg-purple-50/50 cursor-pointer rounded-lg transition-colors flex items-center space-x-3"
                             >
                               <img
                                 loading="lazy"
@@ -336,16 +336,16 @@ const Header = () => {
                                 }}
                               />
                               <div className="flex-1 text-left min-w-0">
-                                <h4 className="font-medium text-stone-900 truncate text-sm">{product.Product_name}</h4>
-                                <p className="text-amber-700 font-medium text-sm">₹{product.Product_price?.toLocaleString()}</p>
+                                <h4 className="font-medium text-purple-900 truncate text-sm">{product.Product_name}</h4>
+                                <p className="text-purple-700 font-medium text-sm">₹{product.Product_price?.toLocaleString()}</p>
                               </div>
                             </button>
                           ))}
                         </div>
                       ) : searchQuery && !isSearching ? (
                         <div className="p-6 text-center">
-                          <Search className="mx-auto h-8 w-8 text-stone-300 mb-2" strokeWidth={1.5} />
-                          <p className="text-sm text-stone-500">No products found</p>
+                          <Search className="mx-auto h-8 w-8 text-purple-300 mb-2" strokeWidth={1.5} />
+                          <p className="text-sm text-purple-500">No products found</p>
                         </div>
                       ) : null}
                     </MotionDiv>
@@ -358,7 +358,7 @@ const Header = () => {
             <div className="flex items-center space-x-1 lg:space-x-3">
               {/* Mobile Search */}
               <button
-                className="md:hidden p-2 text-stone-600 hover:text-amber-700 transition-colors rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-400"
+                className="md:hidden p-2 text-purple-600 hover:text-purple-700 transition-colors rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-400"
                 onClick={() => setIsMobileSearchOpen(true)}
                 aria-label="Search"
               >
@@ -369,7 +369,7 @@ const Header = () => {
               {isAdmin && (
                 <div className="relative group hidden lg:block">
                   <button
-                    className="px-4 py-2 bg-amber-700 text-white text-sm font-medium rounded-lg hover:bg-amber-800 transition-all shadow-md focus:outline-none focus:ring-2 focus:ring-amber-400"
+                    className="px-4 py-2 bg-purple-700 text-white text-sm font-medium rounded-lg hover:bg-purple-800 transition-all shadow-md focus:outline-none focus:ring-2 focus:ring-purple-400"
                     onClick={() => navigate("/admin")}
                   >
                     <LayoutDashboard size={16} className="inline-block mr-2" strokeWidth={1.5} />
@@ -380,13 +380,13 @@ const Header = () => {
 
               {/* Wishlist (desktop) */}
               <button
-                className="hidden md:flex p-2 text-stone-700 hover:text-amber-700 transition-colors rounded-lg hover:bg-amber-50 focus:outline-none focus:ring-2 focus:ring-amber-400 relative"
+                className="hidden md:flex p-2 text-purple-700 hover:text-purple-800 transition-colors rounded-lg hover:bg-purple-50 focus:outline-none focus:ring-2 focus:ring-purple-400 relative"
                 onClick={() => navigate("/wishlist")}
                 aria-label={`Wishlist with ${totalWishlistItems} items`}
               >
                 <Heart size={20} strokeWidth={1.5} />
                 {totalWishlistItems > 0 && (
-                  <span className="absolute -top-1 -right-1 inline-flex items-center justify-center w-5 h-5 text-xs font-bold text-white bg-amber-700 rounded-full">
+                  <span className="absolute -top-1 -right-1 inline-flex items-center justify-center w-5 h-5 text-xs font-bold text-white bg-purple-700 rounded-full">
                     {totalWishlistItems > 99 ? "99+" : totalWishlistItems}
                   </span>
                 )}
@@ -394,13 +394,13 @@ const Header = () => {
 
               {/* Cart */}
               <button
-                className="p-2 text-stone-700 hover:text-amber-700 transition-colors rounded-lg hover:bg-amber-50 focus:outline-none focus:ring-2 focus:ring-amber-400 relative"
+                className="p-2 text-purple-700 hover:text-purple-800 transition-colors rounded-lg hover:bg-purple-50 focus:outline-none focus:ring-2 focus:ring-purple-400 relative"
                 onClick={() => navigate("/cart")}
                 aria-label={`Shopping cart with ${totalQuantity} items`}
               >
                 <ShoppingCart size={20} strokeWidth={1.5} />
                 {totalQuantity > 0 && (
-                  <span className="absolute -top-1 -right-1 inline-flex items-center justify-center w-5 h-5 text-xs font-bold text-white bg-rose-600 rounded-full">
+                  <span className="absolute -top-1 -right-1 inline-flex items-center justify-center w-5 h-5 text-xs font-bold text-white bg-purple-600 rounded-full">
                     {totalQuantity > 99 ? "99+" : totalQuantity}
                   </span>
                 )}
@@ -412,13 +412,13 @@ const Header = () => {
                   <div className="flex items-center space-x-2">
                     <button
                       onClick={() => navigate("/login")}
-                      className="px-4 py-2 text-stone-800 hover:text-amber-800 transition-colors text-sm font-medium rounded-lg hover:bg-amber-50 focus:outline-none focus:ring-2 focus:ring-amber-400"
+                      className="px-4 py-2 text-purple-800 hover:text-purple-900 transition-colors text-sm font-medium rounded-lg hover:bg-purple-50 focus:outline-none focus:ring-2 focus:ring-purple-400"
                     >
                       Sign In
                     </button>
                     <button
                       onClick={() => navigate("/signup")}
-                      className="px-4 py-2 bg-amber-700 text-white text-sm font-medium rounded-lg hover:bg-amber-800 transition-all shadow-md focus:outline-none focus:ring-2 focus:ring-amber-400"
+                      className="px-4 py-2 bg-purple-700 text-white text-sm font-medium rounded-lg hover:bg-purple-800 transition-all shadow-md focus:outline-none focus:ring-2 focus:ring-purple-400"
                     >
                       Sign Up
                     </button>
@@ -426,7 +426,7 @@ const Header = () => {
                 ) : (
                   <div className="relative" ref={profileMenuRef}>
                     <button
-                      className="p-2 text-stone-700 hover:text-amber-700 transition-colors rounded-lg hover:bg-amber-50 focus:outline-none focus:ring-2 focus:ring-amber-400"
+                      className="p-2 text-purple-700 hover:text-purple-800 transition-colors rounded-lg hover:bg-purple-50 focus:outline-none focus:ring-2 focus:ring-purple-400"
                       onClick={() => setIsProfileMenuOpen((s) => !s)}
                       aria-label="User menu"
                     >
@@ -439,11 +439,11 @@ const Header = () => {
                           animate={prefersReducedMotion ? undefined : { opacity: 1, y: 0, scale: 1 }}
                           exit={prefersReducedMotion ? undefined : { opacity: 0, y: 8, scale: 0.96 }}
                           transition={prefersReducedMotion ? undefined : { duration: 0.15 }}
-                          className="absolute right-0 mt-2 w-48 bg-white border border-amber-200 rounded-xl shadow-xl z-50 overflow-hidden"
+                          className="absolute right-0 mt-2 w-48 bg-white border border-purple-200 rounded-xl shadow-xl z-50 overflow-hidden"
                         >
-                          <div className="px-4 py-3 border-b border-amber-100 bg-amber-50/60">
-                            <p className="text-sm font-medium text-stone-900 truncate">{user?.firstName || user?.email}</p>
-                            <p className="text-xs text-stone-500 truncate">{user?.email}</p>
+                          <div className="px-4 py-3 border-b border-purple-100 bg-purple-50/60">
+                            <p className="text-sm font-medium text-purple-900 truncate">{user?.firstName || user?.email}</p>
+                            <p className="text-xs text-purple-500 truncate">{user?.email}</p>
                           </div>
                           <div className="py-1">
                             <button
@@ -451,7 +451,7 @@ const Header = () => {
                                 navigate("/profile");
                                 setIsProfileMenuOpen(false);
                               }}
-                              className="w-full text-left px-4 py-3 text-sm text-stone-700 hover:bg-amber-50 transition-colors"
+                              className="w-full text-left px-4 py-3 text-sm text-purple-700 hover:bg-purple-50 transition-colors"
                             >
                               My Profile
                             </button>
@@ -460,7 +460,7 @@ const Header = () => {
                                 navigate("/orders");
                                 setIsProfileMenuOpen(false);
                               }}
-                              className="w-full text-left px-4 py-3 text-sm text-stone-700 hover:bg-amber-50 transition-colors"
+                              className="w-full text-left px-4 py-3 text-sm text-purple-700 hover:bg-purple-50 transition-colors"
                             >
                               My Orders
                             </button>
@@ -469,11 +469,11 @@ const Header = () => {
                                 navigate("/wishlist");
                                 setIsProfileMenuOpen(false);
                               }}
-                              className="w-full text-left px-4 py-3 text-sm text-stone-700 hover:bg-amber-50 transition-colors flex items-center justify-between"
+                              className="w-full text-left px-4 py-3 text-sm text-purple-700 hover:bg-purple-50 transition-colors flex items-center justify-between"
                             >
                               My Wishlist
                               {totalWishlistItems > 0 && (
-                                <span className="inline-flex items-center justify-center w-4 h-4 text-xs font-bold text-white bg-amber-700 rounded-full">
+                                <span className="inline-flex items-center justify-center w-4 h-4 text-xs font-bold text-white bg-purple-700 rounded-full">
                                   {totalWishlistItems > 9 ? "9+" : totalWishlistItems}
                                 </span>
                               )}
@@ -484,14 +484,14 @@ const Header = () => {
                                   navigate("/admin");
                                   setIsProfileMenuOpen(false);
                                 }}
-                                className="w-full text-left px-4 py-3 text-sm text-amber-800 hover:bg-amber-100 transition-colors border-t border-amber-100"
+                                className="w-full text-left px-4 py-3 text-sm text-purple-800 hover:bg-purple-100 transition-colors border-t border-purple-100"
                               >
                                 Admin Panel
                               </button>
                             )}
                             <button
                               onClick={handleLogout}
-                              className="w-full text-left px-4 py-3 text-sm text-rose-700 hover:bg-rose-50 transition-colors border-t border-amber-100"
+                              className="w-full text-left px-4 py-3 text-sm text-rose-700 hover:bg-rose-50 transition-colors border-t border-purple-100"
                             >
                               Logout
                             </button>
@@ -505,7 +505,7 @@ const Header = () => {
 
               {/* Mobile Menu Toggle */}
               <button
-                className="md:hidden p-2 text-stone-700 hover:text-amber-700 transition-colors rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-400"
+                className="md:hidden p-2 text-purple-700 hover:text-purple-800 transition-colors rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-400"
                 onClick={() => setIsMobileMenuOpen((s) => !s)}
                 aria-label="Toggle mobile menu"
               >
@@ -526,23 +526,23 @@ const Header = () => {
             className="fixed inset-0 z-[60] bg-white md:hidden"
           >
             <div className="flex flex-col h-full">
-              <div className="flex items-center p-4 border-b border-amber-200 bg-white">
+              <div className="flex items-center p-4 border-b border-purple-200 bg-white">
                 <button
                   onClick={() => setIsMobileSearchOpen(false)}
-                  className="p-2 text-stone-700 hover:text-stone-900 transition-colors rounded-lg mr-2"
+                  className="p-2 text-purple-700 hover:text-purple-900 transition-colors rounded-lg mr-2"
                   aria-label="Close search"
                 >
                   <X size={20} strokeWidth={1.5} />
                 </button>
                 <div className="flex-1 relative">
-                  <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-stone-400" size={18} strokeWidth={1.5} />
+                  <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-purple-400" size={18} strokeWidth={1.5} />
                   <input
                     type="text"
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
                     onKeyDown={(e) => e.key === "Enter" && handleSearch(e)}
                     placeholder="Search products..."
-                    className="w-full pl-10 pr-4 py-2.5 bg-amber-50/40 border border-amber-200 rounded-full focus:ring-2 focus:ring-amber-500 focus:border-transparent text-sm"
+                    className="w-full pl-10 pr-4 py-2.5 bg-purple-50/40 border border-purple-200 rounded-full focus:ring-2 focus:ring-purple-500 focus:border-transparent text-sm"
                     autoFocus
                   />
                 </div>
@@ -550,7 +550,7 @@ const Header = () => {
               <div className="flex-1 overflow-y-auto">
                 {isSearching ? (
                   <div className="flex justify-center items-center p-8">
-                    <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-amber-700"></div>
+                    <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-purple-700"></div>
                   </div>
                 ) : searchResults.length > 0 ? (
                   <div className="p-4 space-y-2">
@@ -558,7 +558,7 @@ const Header = () => {
                       <button
                         key={product._id}
                         onClick={() => handleProductClick(product._id)}
-                        className="w-full p-4 hover:bg-amber-50 rounded-lg transition-colors flex items-center space-x-3 text-left"
+                        className="w-full p-4 hover:bg-purple-50 rounded-lg transition-colors flex items-center space-x-3 text-left"
                       >
                         <img
                           loading="lazy"
@@ -573,8 +573,8 @@ const Header = () => {
                           }}
                         />
                         <div className="flex-1 min-w-0">
-                          <h4 className="font-medium text-stone-900 truncate">{product.Product_name}</h4>
-                          <p className="text-amber-700 font-medium text-sm">
+                          <h4 className="font-medium text-purple-900 truncate">{product.Product_name}</h4>
+                          <p className="text-purple-700 font-medium text-sm">
                             ₹{product.Product_price?.toLocaleString()}
                           </p>
                         </div>
@@ -583,9 +583,9 @@ const Header = () => {
                   </div>
                 ) : searchQuery && !isSearching ? (
                   <div className="flex flex-col items-center justify-center p-8 text-center">
-                    <Search className="h-12 w-12 text-stone-300 mb-4" strokeWidth={1.5} />
-                    <h3 className="text-lg font-medium text-stone-900 mb-2">No results found</h3>
-                    <p className="text-stone-500">Try searching with different keywords</p>
+                    <Search className="h-12 w-12 text-purple-300 mb-4" strokeWidth={1.5} />
+                    <h3 className="text-lg font-medium text-purple-900 mb-2">No results found</h3>
+                    <p className="text-purple-500">Try searching with different keywords</p>
                   </div>
                 ) : null}
               </div>
@@ -614,13 +614,13 @@ const Header = () => {
             >
               <div className="flex flex-col h-full">
                 {/* Menu Header */}
-                <div className="flex items-center justify-between p-4 border-b border-amber-200 bg-amber-50/60">
+                <div className="flex items-center justify-between p-4 border-b border-purple-200 bg-purple-50/60">
                   <div className="flex items-center space-x-2">
-                    <span className="font-semibold text-stone-900">Menu</span>
+                    <span className="font-semibold text-purple-900">Menu</span>
                   </div>
                   <button
                     onClick={() => setIsMobileMenuOpen(false)}
-                    className="p-2 text-stone-700 hover:text-stone-900 transition-colors rounded-lg"
+                    className="p-2 text-purple-700 hover:text-purple-900 transition-colors rounded-lg"
                     aria-label="Close menu"
                   >
                     <X size={20} strokeWidth={1.5} />
@@ -630,7 +630,7 @@ const Header = () => {
                 {/* Menu Content */}
                 <div className="flex-1 overflow-y-auto">
                   <div className="p-4 space-y-2">
-                    <h3 className="text-xs font-semibold text-stone-500 uppercase tracking-wide mb-3">
+                    <h3 className="text-xs font-semibold text-purple-500 uppercase tracking-wide mb-3">
                       Navigation
                     </h3>
                     <button
@@ -638,7 +638,7 @@ const Header = () => {
                         navigate("/wishlist");
                         setIsMobileMenuOpen(false);
                       }}
-                      className="flex items-center w-full text-left px-4 py-3 rounded-lg font-medium transition-colors text-stone-700 hover:bg-amber-50 justify-between"
+                      className="flex items-center w-full text-left px-4 py-3 rounded-lg font-medium transition-colors text-purple-700 hover:bg-purple-50 justify-between"
                     >
                       <div className="flex items-center">
                         <Heart size={18} className="mr-3" strokeWidth={1.5} />
@@ -649,8 +649,8 @@ const Header = () => {
 
                   {/* Admin */}
                   {isAdmin && (
-                    <div className="px-4 pb-4 border-t border-amber-200 mt-4 pt-4">
-                      <h3 className="text-xs font-semibold text-stone-500 uppercase tracking-wide mb-3">
+                    <div className="px-4 pb-4 border-t border-purple-200 mt-4 pt-4">
+                      <h3 className="text-xs font-semibold text-purple-500 uppercase tracking-wide mb-3">
                         Admin
                       </h3>
                       <button
@@ -658,7 +658,7 @@ const Header = () => {
                           navigate("/admin");
                           setIsMobileMenuOpen(false);
                         }}
-                        className="flex items-center w-full text-left px-4 py-3 text-amber-800 bg-amber-100 hover:bg-amber-200 rounded-lg font-medium transition-colors"
+                        className="flex items-center w-full text-left px-4 py-3 text-purple-800 bg-purple-100 hover:bg-purple-200 rounded-lg font-medium transition-colors"
                       >
                         <LayoutDashboard size={18} className="mr-3" strokeWidth={1.5} />
                         Admin Dashboard
@@ -667,10 +667,10 @@ const Header = () => {
                   )}
 
                   {/* Auth */}
-                  <div className="px-4 pb-4 border-t border-amber-200 mt-4 pt-4">
+                  <div className="px-4 pb-4 border-t border-purple-200 mt-4 pt-4">
                     {!isAuthenticated ? (
                       <div className="space-y-3">
-                        <h3 className="text-xs font-semibold text-stone-500 uppercase tracking-wide mb-3">
+                        <h3 className="text-xs font-semibold text-purple-500 uppercase tracking-wide mb-3">
                           Account
                         </h3>
                         <button
@@ -678,7 +678,7 @@ const Header = () => {
                             navigate("/login");
                             setIsMobileMenuOpen(false);
                           }}
-                          className="w-full py-3 border border-amber-300 text-stone-800 rounded-lg font-medium hover:bg-amber-50 transition-colors"
+                          className="w-full py-3 border border-purple-300 text-purple-800 rounded-lg font-medium hover:bg-purple-50 transition-colors"
                         >
                           Sign In
                         </button>
@@ -687,25 +687,25 @@ const Header = () => {
                             navigate("/signup");
                             setIsMobileMenuOpen(false);
                           }}
-                          className="w-full py-3 bg-amber-700 text-white rounded-lg font-medium hover:bg-amber-800 transition-all"
+                          className="w-full py-3 bg-purple-700 text-white rounded-lg font-medium hover:bg-purple-800 transition-all"
                         >
                           Create Account
                         </button>
                       </div>
                     ) : (
                       <div className="space-y-2">
-                        <div className="px-4 py-3 bg-amber-50 rounded-lg mb-3">
-                          <p className="text-sm font-medium text-stone-900 truncate">
+                        <div className="px-4 py-3 bg-purple-50 rounded-lg mb-3">
+                          <p className="text-sm font-medium text-purple-900 truncate">
                             {user?.firstName || "User"}
                           </p>
-                          <p className="text-xs text-stone-500 truncate">{user?.email}</p>
+                          <p className="text-xs text-purple-500 truncate">{user?.email}</p>
                         </div>
                         <button
                           onClick={() => {
                             navigate("/profile");
                             setIsMobileMenuOpen(false);
                           }}
-                          className="w-full text-left px-4 py-3 text-stone-700 hover:bg-amber-50 rounded-lg transition-colors"
+                          className="w-full text-left px-4 py-3 text-purple-700 hover:bg-purple-50 rounded-lg transition-colors"
                         >
                           My Profile
                         </button>
@@ -714,7 +714,7 @@ const Header = () => {
                             navigate("/orders");
                             setIsMobileMenuOpen(false);
                           }}
-                          className="w-full text-left px-4 py-3 text-stone-700 hover:bg-amber-50 rounded-lg transition-colors"
+                          className="w-full text-left px-4 py-3 text-purple-700 hover:bg-purple-50 rounded-lg transition-colors"
                         >
                           My Orders
                         </button>
@@ -723,11 +723,11 @@ const Header = () => {
                             navigate("/wishlist");
                             setIsMobileMenuOpen(false);
                           }}
-                          className="w-full text-left px-4 py-3 text-stone-700 hover:bg-amber-50 rounded-lg transition-colors flex items-center justify-between"
+                          className="w-full text-left px-4 py-3 text-purple-700 hover:bg-purple-50 rounded-lg transition-colors flex items-center justify-between"
                         >
                           My Wishlist
                           {totalWishlistItems > 0 && (
-                            <span className="inline-flex items-center justify-center w-4 h-4 text-xs font-bold text-white bg-amber-700 rounded-full">
+                            <span className="inline-flex items-center justify-center w-4 h-4 text-xs font-bold text-white bg-purple-700 rounded-full">
                               {totalWishlistItems > 9 ? "9+" : totalWishlistItems}
                             </span>
                           )}
@@ -738,14 +738,14 @@ const Header = () => {
                               navigate("/admin");
                               setIsMobileMenuOpen(false);
                             }}
-                            className="w-full text-left px-4 py-3 text-sm text-amber-800 hover:bg-amber-100 transition-colors border-t border-amber-100"
+                            className="w-full text-left px-4 py-3 text-sm text-purple-800 hover:bg-purple-100 transition-colors border-t border-purple-100"
                           >
                             Admin Panel
                           </button>
                         )}
                         <button
                           onClick={handleLogout}
-                          className="w-full text-left px-4 py-3 text-sm text-rose-700 hover:bg-rose-50 transition-colors border-t border-amber-100"
+                          className="w-full text-left px-4 py-3 text-sm text-rose-700 hover:bg-rose-50 transition-colors border-t border-purple-100"
                         >
                           Logout
                         </button>
@@ -754,8 +754,8 @@ const Header = () => {
                   </div>
                 </div>
 
-                <div className="p-4 border-t border-amber-200 bg-amber-50/60">
-                  <p className="text-xs text-center text-stone-500">© 2025 RK Store. All rights reserved.</p>
+                <div className="p-4 border-t border-purple-200 bg-purple-50/60">
+                  <p className="text-xs text-center text-purple-500">© 2025 RK Store. All rights reserved.</p>
                 </div>
               </div>
             </MotionDiv>

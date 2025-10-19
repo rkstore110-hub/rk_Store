@@ -42,8 +42,8 @@ interface BannerSliderProps {
 
 const BannerSkeleton: React.FC<{ className?: string; headerHeight?: number }> = ({ className }) => (
   <div className={`w-full relative ${className || ""} pt-16`}>
-    <div className="w-full relative overflow-hidden bg-amber-50">
-      <Skeleton className="w-full h-full bg-gradient-to-br from-amber-100 to-stone-100" style={{ aspectRatio: "16/9", maxHeight: "550px" }} />
+    <div className="w-full relative overflow-hidden bg-purple-50">
+      <Skeleton className="w-full h-full bg-gradient-to-br from-purple-100 to-white" style={{ aspectRatio: "16/9", maxHeight: "550px" }} />
       <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex space-x-2">
         {[0, 1, 2].map((i) => (
           <Skeleton key={i} className="w-2 h-2 rounded-full bg-white/60" />
@@ -56,12 +56,12 @@ const BannerSkeleton: React.FC<{ className?: string; headerHeight?: number }> = 
 const BannerError: React.FC<{ className?: string; headerHeight?: number; onRetry?: () => void }> = ({ className, onRetry }) => (
   <div className={`w-full relative ${className || ""} pt-16`}>
     <div className="w-full max-w-4xl mx-auto px-4">
-      <Card className="p-8 text-center bg-gradient-to-br from-amber-50/50 to-stone-50/70 border-amber-100 shadow-inner">
-        <Sparkles className="w-12 h-12 text-amber-500 mx-auto mb-4" />
-        <h3 className="text-xl font-semibold text-stone-800 mb-2">Unable to load banners</h3>
-        <p className="text-stone-600 mb-4">Please check your connection and try again</p>
+      <Card className="p-8 text-center bg-gradient-to-br from-purple-50/50 to-white/70 border-purple-100 shadow-inner">
+        <Sparkles className="w-12 h-12 text-purple-500 mx-auto mb-4" />
+        <h3 className="text-xl font-semibold text-purple-800 mb-2">Unable to load banners</h3>
+        <p className="text-purple-600 mb-4">Please check your connection and try again</p>
         {onRetry && (
-          <Button onClick={onRetry} className="bg-amber-700 text-white hover:bg-amber-800 rounded-lg">
+          <Button onClick={onRetry} className="bg-purple-700 text-white hover:bg-purple-800 rounded-lg">
             Try Again
           </Button>
         )}
@@ -184,8 +184,8 @@ const BannerSlider: React.FC<BannerSliderProps> = ({
     >
       {showPlayPause && (
         <div className="absolute top-4 right-4 z-30 flex items-center space-x-4">
-          <div className="hidden md:flex items-center space-x-2 text-sm text-amber-800/80 bg-amber-50/80 backdrop-blur-sm rounded-full px-3 py-1 border border-amber-200 shadow">
-            <span className="font-medium text-amber-900">{String(currentSlide + 1).padStart(2, "0")}</span>
+          <div className="hidden md:flex items-center space-x-2 text-sm text-purple-800/80 bg-purple-50/80 backdrop-blur-sm rounded-full px-3 py-1 border border-purple-200 shadow">
+            <span className="font-medium text-purple-900">{String(currentSlide + 1).padStart(2, "0")}</span>
             <span>/</span>
             <span>{String(banners.length).padStart(2, "0")}</span>
           </div>
@@ -193,7 +193,7 @@ const BannerSlider: React.FC<BannerSliderProps> = ({
             variant="secondary"
             size="sm"
             onClick={togglePlayPause}
-            className="hidden md:flex items-center space-x-2 bg-amber-100 border border-amber-300 text-amber-800 hover:bg-amber-200 rounded-full"
+            className="hidden md:flex items-center space-x-2 bg-purple-100 border border-purple-300 text-purple-800 hover:bg-purple-200 rounded-full"
             aria-label={isPlaying ? "Pause slideshow" : "Play slideshow"}
           >
             {isPlaying ? <Pause className="w-4 h-4" /> : <Play className="w-4 h-4" />}
@@ -202,7 +202,7 @@ const BannerSlider: React.FC<BannerSliderProps> = ({
         </div>
       )}
 
-      <div className="w-full relative overflow-hidden bg-amber-50">
+      <div className="w-full relative overflow-hidden bg-purple-50">
         <Swiper
           modules={SWIPER_MODULES}
           spaceBetween={0}
@@ -214,10 +214,10 @@ const BannerSlider: React.FC<BannerSliderProps> = ({
           autoplay={swiperAutoplay as any}
           pagination={{
             clickable: true,
-            bulletClass: "swiper-pagination-bullet !bg-amber-200 !w-2 !h-2 !rounded-full opacity-80",
-            bulletActiveClass: "swiper-pagination-bullet-active !bg-amber-700 !w-8 !h-2 !rounded-full shadow",
+            bulletClass: "swiper-pagination-bullet !bg-purple-200 !w-2 !h-2 !rounded-full opacity-80",
+            bulletActiveClass: "swiper-pagination-bullet-active !bg-purple-700 !w-8 !h-2 !rounded-full shadow",
             renderBullet: (index: number, className: string): string =>
-              `<span class="${className} cursor-pointer hover:!bg-amber-400" aria-label="Go to slide ${index + 1}"></span>`,
+              `<span class="${className} cursor-pointer hover:!bg-purple-400" aria-label="Go to slide ${index + 1}"></span>`,
           }}
           navigation={swiperNavigation as any}
           onSwiper={handleSwiperInit}
@@ -236,7 +236,7 @@ const BannerSlider: React.FC<BannerSliderProps> = ({
                 <img
                   src={banner.BannerUrl}
                   alt={banner.BannerTitle || `Banner ${index + 1}`}
-                  className="w-full h-full object-cover object-center transition-transform duration-[5000ms] hover:scale-105 rounded-xl border border-amber-100 shadow-xs"
+                  className="w-full h-full object-cover object-center transition-transform duration-[5000ms] hover:scale-105 rounded-xl border border-purple-100 shadow-xs"
                   loading={index === 0 ? "eager" : "lazy"}
                   decoding={index === 0 ? "sync" : "async"}
                   width={1920}
@@ -244,7 +244,7 @@ const BannerSlider: React.FC<BannerSliderProps> = ({
                   onError={handleImageError}
                   style={{ objectPosition: "center center", minHeight: "100%", minWidth: "100%" }}
                 />
-                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-amber-50/10 to-transparent pointer-events-none" />
+                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-purple-50/10 to-transparent pointer-events-none" />
               </div>
             </SwiperSlide>
           ))}
@@ -254,7 +254,7 @@ const BannerSlider: React.FC<BannerSliderProps> = ({
             <Button
               variant="secondary"
               size="icon"
-              className="swiper-button-prev-custom absolute left-6 md:left-10 top-1/2 -translate-y-1/2 z-20 w-14 h-14 bg-white/70 border border-amber-100 text-amber-700 hover:bg-amber-200 transition-all duration-200 opacity-80 hover:opacity-100 rounded-full"
+              className="swiper-button-prev-custom absolute left-6 md:left-10 top-1/2 -translate-y-1/2 z-20 w-14 h-14 bg-white/70 border border-purple-100 text-purple-700 hover:bg-purple-200 transition-all duration-200 opacity-80 hover:opacity-100 rounded-full"
               aria-label="Previous slide"
             >
               <ChevronLeft className="w-7 h-7" />
@@ -262,7 +262,7 @@ const BannerSlider: React.FC<BannerSliderProps> = ({
             <Button
               variant="secondary"
               size="icon"
-              className="swiper-button-next-custom absolute right-6 md:right-10 top-1/2 -translate-y-1/2 z-20 w-14 h-14 bg-white/70 border border-amber-100 text-amber-700 hover:bg-amber-200 transition-all duration-200 opacity-80 hover:opacity-100 rounded-full"
+              className="swiper-button-next-custom absolute right-6 md:right-10 top-1/2 -translate-y-1/2 z-20 w-14 h-14 bg-white/70 border border-purple-100 text-purple-700 hover:bg-purple-200 transition-all duration-200 opacity-80 hover:opacity-100 rounded-full"
               aria-label="Next slide"
             >
               <ChevronRight className="w-7 h-7" />
@@ -276,7 +276,7 @@ const BannerSlider: React.FC<BannerSliderProps> = ({
             .banner-slider { aspect-ratio: 16/9; max-height: 550px; }
             .banner-slider .swiper-pagination { bottom: 20px !important; z-index: 10; }
             .banner-slider .swiper-pagination-bullet { margin: 0 4px !important; transition: all 0.3s; }
-            .banner-slider .swiper-pagination-bullet:hover { transform: scale(1.13) !important; background: #eab308 !important; }
+            .banner-slider .swiper-pagination-bullet:hover { transform: scale(1.13) !important; background: #9333ea !important; }
             .banner-slider .swiper-pagination-bullet-active { opacity: 1 !important; }
             .banner-slide { position: relative; aspect-ratio: 16/9; }
             .banner-slider .swiper-slide img { filter: brightness(1) contrast(1.01) saturate(1.01); }

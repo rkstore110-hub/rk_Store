@@ -59,16 +59,16 @@ const Login = () => {
     <div 
       className="min-h-screen flex items-center justify-center p-4"
       style={{
-        background: "linear-gradient(135deg, #ffffff 0%, #fffaf0 40%, #fff9e6 100%)",
+        background: "linear-gradient(135deg, #ffffff 0%, #faf5ff 40%, #f3e8ff 100%)",
       }}
     >
       <div className="w-full max-w-md">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="bg-white rounded-3xl shadow-2xl overflow-hidden border border-stone-200"
+          className="bg-white rounded-3xl shadow-2xl overflow-hidden border border-purple-200"
           style={{
-            background: "linear-gradient(135deg, rgba(255,255,255,.98) 0%, rgba(255,253,230,.98) 60%, rgba(254,248,200,.98) 100%)",
+            background: "linear-gradient(135deg, rgba(255,255,255,.98) 0%, rgba(250,245,255,.98) 60%, rgba(245,240,255,.98) 100%)",
           }}
         >
           {/* Header */}
@@ -76,14 +76,14 @@ const Login = () => {
             <motion.div
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
-              className="inline-flex items-center gap-2 bg-gradient-to-r from-amber-100 to-yellow-100 text-amber-700 px-4 py-2 rounded-full text-sm font-bold mb-4 border border-amber-200"
+              className="inline-flex items-center gap-2 bg-gradient-to-r from-purple-100 to-purple-50 text-purple-700 px-4 py-2 rounded-full text-sm font-bold mb-4 border border-purple-200"
             >
               <Crown className="w-4 h-4" />
               RK Store Premium
               <Gem className="w-4 h-4" />
             </motion.div>
-            <h2 className="text-3xl font-bold text-stone-900 mb-2">Welcome Back</h2>
-            <p className="text-stone-600 text-sm">Sign in to your premium account</p>
+            <h2 className="text-3xl font-bold text-purple-900 mb-2">Welcome Back</h2>
+            <p className="text-purple-600 text-sm">Sign in to your premium account</p>
           </div>
 
           {/* Body */}
@@ -97,7 +97,7 @@ const Login = () => {
             >
               {/* Email */}
               <div className="space-y-2">
-                <label htmlFor="email" className="block text-sm font-medium text-stone-700">
+                <label htmlFor="email" className="block text-sm font-medium text-purple-700">
                   Email Address
                 </label>
                 <Input
@@ -107,13 +107,13 @@ const Login = () => {
                   onChange={(e) => setEmail(e.target.value)}
                   required
                   placeholder="name@example.com"
-                  className="h-12 bg-white border-stone-200 focus:border-amber-500 focus:ring-amber-500/20 rounded-xl"
+                  className="h-12 bg-white border-purple-200 focus:border-purple-500 focus:ring-purple-500/20 rounded-xl"
                 />
               </div>
 
               {/* Password */}
               <div className="space-y-2">
-                <label htmlFor="password" className="block text-sm font-medium text-stone-700">
+                <label htmlFor="password" className="block text-sm font-medium text-purple-700">
                   Password
                 </label>
                 <div className="relative">
@@ -124,12 +124,12 @@ const Login = () => {
                     onChange={(e) => setPassword(e.target.value)}
                     required
                     placeholder="Enter your password"
-                    className="pr-10 h-12 bg-white border-stone-200 focus:border-amber-500 focus:ring-amber-500/20 rounded-xl"
+                    className="pr-10 h-12 bg-white border-purple-200 focus:border-purple-500 focus:ring-purple-500/20 rounded-xl"
                   />
                   <button
                     type="button"
                     onClick={togglePasswordVisibility}
-                    className="absolute inset-y-0 right-0 pr-3 flex items-center text-stone-500 hover:text-stone-700"
+                    className="absolute inset-y-0 right-0 pr-3 flex items-center text-purple-500 hover:text-purple-700"
                     aria-label="Toggle password visibility"
                   >
                     {showPassword ? <EyeOff className="h-5 w-5" /> : <Eye className="h-5 w-5" />}
@@ -144,22 +144,22 @@ const Login = () => {
                     id="remember-me"
                     name="remember-me"
                     type="checkbox"
-                    className="h-4 w-4 text-amber-500 focus:ring-amber-400 border-stone-300 rounded"
+                    className="h-4 w-4 text-purple-500 focus:ring-purple-400 border-purple-300 rounded"
                   />
-                  <span className="text-sm text-stone-600">Remember me</span>
+                  <span className="text-sm text-purple-600">Remember me</span>
                 </label>
                 <Link 
                   to="/forgot-password" 
-                  className="text-sm font-medium text-amber-600 hover:text-amber-700 transition-colors"
+                  className="text-sm font-medium text-purple-600 hover:text-purple-700 transition-colors"
                 >
                   Forgot password?
                 </Link>
               </div>
 
               {/* Security Notice */}
-              <div className="flex items-start space-x-3 p-4 bg-amber-50 rounded-xl border border-amber-200">
-                <Shield className="h-5 w-5 text-amber-600 mt-0.5 flex-shrink-0" />
-                <div className="text-sm text-amber-800">
+              <div className="flex items-start space-x-3 p-4 bg-purple-50 rounded-xl border border-purple-200">
+                <Shield className="h-5 w-5 text-purple-600 mt-0.5 flex-shrink-0" />
+                <div className="text-sm text-purple-800">
                   <p className="font-medium">Secure Login</p>
                   <p className="mt-1">Your account is protected with enterprise-grade security</p>
                 </div>
@@ -169,7 +169,7 @@ const Login = () => {
               <Button
                 type="submit"
                 disabled={loading}
-                className="w-full h-12 rounded-xl bg-stone-900 hover:bg-stone-800 text-white font-semibold shadow-lg hover:shadow-xl transition-all duration-200"
+                className="w-full h-12 rounded-xl bg-purple-900 hover:bg-purple-800 text-white font-semibold shadow-lg hover:shadow-xl transition-all duration-200"
               >
                 {loading ? (
                   <div className="flex items-center justify-center gap-2">
@@ -184,10 +184,10 @@ const Login = () => {
               {/* Divider */}
               <div className="relative">
                 <div className="absolute inset-0 flex items-center">
-                  <div className="w-full border-t border-stone-200" />
+                  <div className="w-full border-t border-purple-200" />
                 </div>
                 <div className="relative flex justify-center text-sm">
-                  <span className="px-2 bg-transparent text-stone-500">Or continue with</span>
+                  <span className="px-2 bg-transparent text-purple-500">Or continue with</span>
                 </div>
               </div>
 
@@ -196,7 +196,7 @@ const Login = () => {
                 type="button"
                 onClick={handleGoogleLogin}
                 variant="outline"
-                className="w-full h-12 rounded-xl border-2 border-stone-300 text-stone-700 hover:bg-stone-50 font-semibold transition-all duration-200"
+                className="w-full h-12 rounded-xl border-2 border-purple-300 text-purple-700 hover:bg-purple-50 font-semibold transition-all duration-200"
               >
                 <svg className="w-5 h-5 mr-2" viewBox="0 0 24 24">
                   <path
@@ -220,11 +220,11 @@ const Login = () => {
               </Button>
 
               {/* Footer Link */}
-              <p className="text-center text-sm text-stone-600">
+              <p className="text-center text-sm text-purple-600">
                 Don't have an account?{" "}
                 <Link 
                   to="/signup" 
-                  className="font-medium text-amber-600 hover:text-amber-700 transition-colors"
+                  className="font-medium text-purple-600 hover:text-purple-700 transition-colors"
                 >
                   Create Premium Account
                 </Link>
@@ -233,7 +233,7 @@ const Login = () => {
           </div>
 
           {/* Premium Accent */}
-          <div className="h-1 w-full bg-gradient-to-r from-amber-400 to-amber-600" />
+          <div className="h-1 w-full bg-gradient-to-r from-purple-400 to-purple-600" />
         </motion.div>
       </div>
     </div>

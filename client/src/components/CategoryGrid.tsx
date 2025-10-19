@@ -76,12 +76,12 @@ const CategoryGridModern: React.FC = () => {
   if (loading) {
     return (
       <section className="py-16 bg-white/90 text-center">
-        <h3 className="mb-8 text-3xl font-extrabold text-amber-700">Loading Categories...</h3>
+        <h3 className="mb-8 text-3xl font-extrabold text-purple-700">Loading Categories...</h3>
         <div className="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-6 gap-6 max-w-7xl mx-auto px-4">
           {Array(8)
             .fill(0)
             .map((_, i) => (
-              <Skeleton key={i} className="aspect-square rounded-xl bg-amber-100 animate-pulse" />
+              <Skeleton key={i} className="aspect-square rounded-xl bg-purple-100 animate-pulse" />
             ))}
         </div>
       </section>
@@ -92,10 +92,10 @@ const CategoryGridModern: React.FC = () => {
     return (
       <section className="py-24 bg-white/95 flex flex-col items-center justify-center min-h-[300px]">
         <div className="max-w-md text-center bg-white shadow rounded-lg p-6">
-          <p className="text-lg font-semibold mb-4 text-amber-700">{error}</p>
+          <p className="text-lg font-semibold mb-4 text-purple-700">{error}</p>
           <Button
             onClick={() => window.location.reload()}
-            className="bg-amber-700 hover:bg-amber-800 text-white px-6 py-2 rounded-lg"
+            className="bg-purple-700 hover:bg-purple-800 text-white px-6 py-2 rounded-lg"
           >
             Retry
           </Button>
@@ -113,10 +113,10 @@ const CategoryGridModern: React.FC = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
         >
-          <h2 className="text-5xl font-extrabold text-stone-900">
-            Discover <span className="bg-amber-500 bg-clip-text text-transparent">Premium Categories</span>
+          <h2 className="text-5xl font-extrabold text-purple-900">
+            Discover <span className="bg-gradient-to-r from-purple-600 to-purple-400 bg-clip-text text-transparent">Premium Categories</span>
           </h2>
-          <p className="mt-4 text-stone-700 text-lg max-w-md mx-auto">
+          <p className="mt-4 text-purple-700 text-lg max-w-md mx-auto">
             Handpicked selections with a clean, airy aesthetic for a modern look.
           </p>
           <motion.div
@@ -124,11 +124,11 @@ const CategoryGridModern: React.FC = () => {
             animate={{ y: [0, 12, 0] }}
             transition={{ repeat: Infinity, duration: 2.2, ease: "easeInOut" }}
           >
-            <ChevronDown size={36} className="text-amber-600" />
+            <ChevronDown size={36} className="text-purple-600" />
           </motion.div>
         </motion.header>
 
-        {/* Horizontal scroll drag container with pristine white/cream/yellow vibe */}
+        {/* Horizontal scroll drag container with pristine white/lavender purple vibe */}
         <div
           ref={scrollRef}
           className="flex space-x-6 overflow-x-auto overflow-y-hidden snap-x snap-mandatory scroll-pl-4 pb-6 cursor-grab"
@@ -149,7 +149,7 @@ const CategoryGridModern: React.FC = () => {
               onClick={() => navigate(`/category/${category.slug}`)}
               style={{
                 scrollSnapAlign: "center",
-                background: "linear-gradient(135deg, rgba(255,255,255,.98) 0%, rgba(255,253,230,.98) 60%, rgba(254,248,200,.98) 100%)",
+                background: "linear-gradient(135deg, rgba(255,255,255,.98) 0%, rgba(250,245,255,.98) 60%, rgba(245,240,255,.98) 100%)",
               }}
             >
               <div className="aspect-square relative overflow-hidden rounded-xl">
@@ -161,14 +161,14 @@ const CategoryGridModern: React.FC = () => {
                 />
                 {/* Subtle soft shimmer gradient to add depth while staying white-mostly */}
                 <div className="absolute inset-0 bg-gradient-to-b from-white/0 via-white/50 to-white/80" />
-                <div className="absolute bottom-4 left-4 right-4 text-stone-900 z-10">
+                <div className="absolute bottom-4 left-4 right-4 text-purple-900 z-10">
                   <h3 className="text-2xl font-semibold drop-shadow-sm">{category.name}</h3>
                   {category.productCount !== undefined && (
-                    <Badge className="mt-2 bg-amber-100 text-stone-800 font-semibold">
+                    <Badge className="mt-2 bg-purple-100 text-purple-800 font-semibold">
                       {category.productCount} Items
                     </Badge>
                   )}
-                  <Button className="mt-4 bg-amber-600 hover:bg-amber-700 text-white w-full" size="sm">
+                  <Button className="mt-4 bg-purple-600 hover:bg-purple-700 text-white w-full" size="sm">
                     Shop Now <ShoppingCart className="inline ml-1" size={16} />
                   </Button>
                 </div>

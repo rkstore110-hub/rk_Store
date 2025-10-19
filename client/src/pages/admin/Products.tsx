@@ -324,19 +324,7 @@ export default function Products() {
             />
           </div>
 
-          <div className="flex flex-col flex-1 mt-4 sm:mt-0">
-            <label className="text-sm font-semibold text-gray-700 dark:text-gray-200 mb-1">
-              Hamper Price (Optional)
-            </label>
-            <input
-              type="number"
-              min={0}
-              value={hamperPrice}
-              onChange={(e) => setHamperPrice(e.target.value)}
-              placeholder="Leave empty if not applicable"
-              className="px-3 py-2 rounded-md border border-gray-300 dark:border-gray-600 text-gray-900 dark:text-gray-100 bg-white dark:bg-gray-700 placeholder-gray-400 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500 dark:focus:ring-purple-400"
-            />
-          </div>
+          
         </div>
 
         <Button

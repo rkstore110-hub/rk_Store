@@ -147,22 +147,22 @@ const CartPage = () => {
       <div 
         className="min-h-screen pt-20 pb-6 px-4 flex items-center justify-center"
         style={{
-          background: "linear-gradient(135deg, #ffffff 0%, #fffaf0 40%, #fff9e6 100%)",
+          background: "linear-gradient(135deg, #ffffff 0%, #faf5ff 40%, #f3e8ff 100%)",
         }}
       >
         <div className="text-center max-w-md mx-auto">
-          <div className="w-24 h-24 bg-gradient-to-br from-amber-100 to-yellow-100 rounded-full flex items-center justify-center mx-auto mb-6">
-            <ShoppingBag className="w-12 h-12 text-amber-600" />
+          <div className="w-24 h-24 bg-gradient-to-br from-purple-100 to-purple-50 rounded-full flex items-center justify-center mx-auto mb-6">
+            <ShoppingBag className="w-12 h-12 text-purple-600" />
           </div>
-          <h2 className="text-2xl lg:text-3xl font-bold text-stone-900 mb-4">
+          <h2 className="text-2xl lg:text-3xl font-bold text-purple-900 mb-4">
             Your Cart is Empty
           </h2>
-          <p className="text-stone-600 mb-8 leading-relaxed">
+          <p className="text-purple-600 mb-8 leading-relaxed">
             Discover our premium collection and add some exquisite pieces to your cart
           </p>
           <Button
             onClick={() => navigate("/")}
-            className="bg-stone-900 hover:bg-stone-800 text-white px-8 py-3 rounded-full font-semibold shadow-lg hover:shadow-xl transition-all"
+            className="bg-purple-900 hover:bg-purple-800 text-white px-8 py-3 rounded-full font-semibold shadow-lg hover:shadow-xl transition-all"
           >
             Explore Collections
           </Button>
@@ -176,7 +176,7 @@ const CartPage = () => {
       <div 
         className="min-h-screen pt-20 pb-6 px-4 overflow-x-hidden"
         style={{
-          background: "linear-gradient(135deg, #ffffff 0%, #fffaf0 40%, #fff9e6 100%)",
+          background: "linear-gradient(135deg, #ffffff 0%, #faf5ff 40%, #f3e8ff 100%)",
         }}
       >
         <div className="container mx-auto max-w-6xl">
@@ -186,14 +186,14 @@ const CartPage = () => {
             animate={{ opacity: 1, y: 0 }}
             className="text-center mb-8"
           >
-            <div className="inline-flex items-center gap-2 bg-gradient-to-r from-amber-100 to-yellow-100 text-amber-700 px-4 py-2 rounded-full text-sm font-semibold mb-4">
+            <div className="inline-flex items-center gap-2 bg-gradient-to-r from-purple-100 to-purple-50 text-purple-700 px-4 py-2 rounded-full text-sm font-semibold mb-4 border border-purple-200">
               <Crown className="w-4 h-4" />
               RK Store Premium
             </div>
-            <h1 className="text-3xl lg:text-4xl font-bold text-stone-900 mb-2">
+            <h1 className="text-3xl lg:text-4xl font-bold text-purple-900 mb-2">
               Shopping Cart
             </h1>
-            <p className="text-stone-600">
+            <p className="text-purple-600">
               Review your selected premium items
             </p>
           </motion.div>
@@ -207,15 +207,15 @@ const CartPage = () => {
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: index * 0.1 }}
-                  className="bg-white rounded-xl border border-stone-200 shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden"
+                  className="bg-white rounded-xl border border-purple-200 shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden"
                   style={{
-                    background: "linear-gradient(135deg, rgba(255,255,255,.98) 0%, rgba(255,253,230,.98) 60%, rgba(254,248,200,.98) 100%)",
+                    background: "linear-gradient(135deg, rgba(255,255,255,.98) 0%, rgba(250,245,255,.98) 60%, rgba(245,240,255,.98) 100%)",
                   }}
                 >
                   <div className="p-4 flex flex-col sm:flex-row gap-4">
                     {/* Product Image */}
                     <div 
-                      className="flex-shrink-0 w-20 h-20 sm:w-24 sm:h-24 rounded-lg overflow-hidden cursor-pointer bg-gradient-to-br from-stone-50 to-amber-50"
+                      className="flex-shrink-0 w-20 h-20 sm:w-24 sm:h-24 rounded-lg overflow-hidden cursor-pointer bg-gradient-to-br from-purple-50 to-white"
                       onClick={() => handleProductClick(getProductId(item))}
                     >
                       <img
@@ -229,7 +229,7 @@ const CartPage = () => {
                     <div className="flex-grow min-w-0">
                       <div className="flex justify-between items-start mb-2">
                         <h3 
-                          className="font-semibold text-stone-900 cursor-pointer hover:text-amber-700 transition-colors line-clamp-2"
+                          className="font-semibold text-purple-900 cursor-pointer hover:text-purple-700 transition-colors line-clamp-2"
                           onClick={() => handleProductClick(getProductId(item))}
                         >
                           {item.name || item.Product_name}
@@ -238,7 +238,7 @@ const CartPage = () => {
                           variant="ghost"
                           size="icon"
                           onClick={() => removeCart(getProductId(item))}
-                          className="h-8 w-8 rounded-full text-stone-400 hover:text-rose-500 hover:bg-rose-50 transition-all"
+                          className="h-8 w-8 rounded-full text-purple-400 hover:text-rose-500 hover:bg-rose-50 transition-all"
                         >
                           <Trash2 size={16} />
                         </Button>
@@ -247,23 +247,23 @@ const CartPage = () => {
                       <div className="flex items-center justify-between">
                         <div className="flex items-center gap-3">
                           {/* Quantity Controls */}
-                          <div className="flex items-center border border-stone-200 rounded-lg overflow-hidden">
+                          <div className="flex items-center border border-purple-200 rounded-lg overflow-hidden">
                             <Button
                               variant="ghost"
                               size="icon"
                               onClick={() => handleQuantityChange(getProductId(item), (item.quantity || 1) - 1)}
-                              className="h-8 w-8 rounded-none text-stone-600 hover:bg-stone-100"
+                              className="h-8 w-8 rounded-none text-purple-600 hover:bg-purple-100"
                             >
                               <Minus size={14} />
                             </Button>
-                            <span className="px-3 py-1 bg-white text-sm font-semibold text-stone-900 min-w-[40px] text-center">
+                            <span className="px-3 py-1 bg-white text-sm font-semibold text-purple-900 min-w-[40px] text-center">
                               {item.quantity || 1}
                             </span>
                             <Button
                               variant="ghost"
                               size="icon"
                               onClick={() => handleQuantityChange(getProductId(item), (item.quantity || 1) + 1)}
-                              className="h-8 w-8 rounded-none text-stone-600 hover:bg-stone-100"
+                              className="h-8 w-8 rounded-none text-purple-600 hover:bg-purple-100"
                             >
                               <Plus size={14} />
                             </Button>
@@ -271,10 +271,10 @@ const CartPage = () => {
 
                           {/* Price */}
                           <div className="text-right">
-                            <div className="text-lg font-bold text-stone-900">
+                            <div className="text-lg font-bold text-purple-900">
                               ₹{getItemTotal(item).toLocaleString()}
                             </div>
-                            <div className="text-sm text-stone-500">
+                            <div className="text-sm text-purple-500">
                               ₹{getItemUnitPrice(item).toLocaleString()} each
                             </div>
                           </div>
@@ -292,39 +292,39 @@ const CartPage = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.3 }}
-                className="bg-white rounded-xl border border-stone-200 shadow-xl p-6 sticky top-24"
+                className="bg-white rounded-xl border border-purple-200 shadow-xl p-6 sticky top-24"
                 style={{
-                  background: "linear-gradient(135deg, rgba(255,255,255,.98) 0%, rgba(255,253,230,.98) 60%, rgba(254,248,200,.98) 100%)",
+                  background: "linear-gradient(135deg, rgba(255,255,255,.98) 0%, rgba(250,245,255,.98) 60%, rgba(245,240,255,.98) 100%)",
                 }}
               >
-                <h2 className="text-xl font-bold text-stone-900 mb-4 flex items-center gap-2">
-                  <Gem className="w-5 h-5 text-amber-600" />
+                <h2 className="text-xl font-bold text-purple-900 mb-4 flex items-center gap-2">
+                  <Gem className="w-5 h-5 text-purple-600" />
                   Order Summary
                 </h2>
 
                 {/* Calculation Section */}
                 <div className="space-y-3 mb-6">
                   <div className="flex justify-between items-center text-sm">
-                    <span className="text-stone-600">Subtotal ({cart.reduce((sum, item) => sum + (item.quantity || 1), 0)} items)</span>
+                    <span className="text-purple-600">Subtotal ({cart.reduce((sum, item) => sum + (item.quantity || 1), 0)} items)</span>
                     <span className="font-semibold">₹{totalPrice.toLocaleString()}</span>
                   </div>
 
                   <div className="flex justify-between items-center text-sm">
-                    <span className="text-stone-600">Delivery Charge</span>
+                    <span className="text-purple-600">Delivery Charge</span>
                     <span className="font-semibold text-green-600">FREE</span>
                   </div>
 
-                  <div className="border-t border-stone-200 pt-3">
+                  <div className="border-t border-purple-200 pt-3">
                     <div className="flex justify-between items-center text-lg font-bold">
-                      <span className="text-stone-900">Total Amount</span>
-                      <span className="text-amber-600">₹{totalPrice.toLocaleString()}</span>
+                      <span className="text-purple-900">Total Amount</span>
+                      <span className="text-purple-600">₹{totalPrice.toLocaleString()}</span>
                     </div>
                   </div>
                 </div>
 
                 {/* Checkout Button */}
                 <Button
-                  className="w-full py-3 rounded-xl bg-stone-900 hover:bg-stone-800 text-white font-semibold shadow-lg hover:shadow-xl transition-all duration-200"
+                  className="w-full py-3 rounded-xl bg-purple-900 hover:bg-purple-800 text-white font-semibold shadow-lg hover:shadow-xl transition-all duration-200"
                   onClick={startCheckout}
                 >
                   <Lock className="w-4 h-4 mr-2" />
@@ -332,17 +332,17 @@ const CartPage = () => {
                 </Button>
 
                 {/* Trust Indicators */}
-                <div className="mt-4 space-y-2 text-xs text-stone-500">
+                <div className="mt-4 space-y-2 text-xs text-purple-500">
                   <div className="flex items-center gap-2">
-                    <div className="w-1 h-1 bg-amber-400 rounded-full"></div>
+                    <div className="w-1 h-1 bg-purple-400 rounded-full"></div>
                     <span>Free shipping on all orders</span>
                   </div>
                   <div className="flex items-center gap-2">
-                    <div className="w-1 h-1 bg-amber-400 rounded-full"></div>
+                    <div className="w-1 h-1 bg-purple-400 rounded-full"></div>
                     <span>Secure payment processing</span>
                   </div>
                   <div className="flex items-center gap-2">
-                    <div className="w-1 h-1 bg-amber-400 rounded-full"></div>
+                    <div className="w-1 h-1 bg-purple-400 rounded-full"></div>
                     <span>Quality guarantee</span>
                   </div>
                 </div>
@@ -368,16 +368,16 @@ const CartPage = () => {
               exit={{ scale: 0.9, opacity: 0 }}
               className="bg-white rounded-2xl shadow-2xl w-full max-w-2xl max-h-[90vh] flex flex-col"
               style={{
-                background: "linear-gradient(135deg, rgba(255,255,255,.98) 0%, rgba(255,253,230,.98) 60%, rgba(254,248,200,.98) 100%)",
+                background: "linear-gradient(135deg, rgba(255,255,255,.98) 0%, rgba(250,245,255,.98) 60%, rgba(245,240,255,.98) 100%)",
               }}
               onClick={e => e.stopPropagation()}
             >
               {/* Header */}
-              <div className="flex-shrink-0 bg-gradient-to-r from-amber-600 to-amber-700 text-white px-6 py-4 rounded-t-2xl">
+              <div className="flex-shrink-0 bg-gradient-to-r from-purple-600 to-purple-700 text-white px-6 py-4 rounded-t-2xl">
                 <div className="flex items-center justify-between">
                   <div>
                     <h2 className="text-xl font-bold">Complete Your Order</h2>
-                    <p className="text-amber-100 text-sm mt-1">
+                    <p className="text-purple-100 text-sm mt-1">
                       Premium shopping experience with RK Store
                     </p>
                   </div>
@@ -395,8 +395,8 @@ const CartPage = () => {
               {/* Content */}
               <div className="flex-1 overflow-y-auto p-6">
                 {/* Order Summary */}
-                <div className="bg-amber-50 rounded-xl p-4 mb-6 border border-amber-200">
-                  <h3 className="font-semibold text-stone-900 mb-3 text-sm flex items-center gap-2">
+                <div className="bg-purple-50 rounded-xl p-4 mb-6 border border-purple-200">
+                  <h3 className="font-semibold text-purple-900 mb-3 text-sm flex items-center gap-2">
                     <ShoppingBag className="w-4 h-4" />
                     Order Summary ({cart.length} items)
                   </h3>
@@ -409,7 +409,7 @@ const CartPage = () => {
                       <span>Delivery</span>
                       <span>FREE</span>
                     </div>
-                    <div className="flex justify-between font-bold text-base text-amber-700 pt-2 border-t border-amber-200">
+                    <div className="flex justify-between font-bold text-base text-purple-700 pt-2 border-t border-purple-200">
                       <span>Total Amount</span>
                       <span>₹{totalPrice.toLocaleString()}</span>
                     </div>
@@ -418,72 +418,72 @@ const CartPage = () => {
 
                 {/* Shipping Address Form */}
                 <div className="space-y-4">
-                  <h3 className="font-semibold text-stone-900 text-lg">Shipping Information</h3>
+                  <h3 className="font-semibold text-purple-900 text-lg">Shipping Information</h3>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div className="space-y-2">
-                      <Label htmlFor="fullName" className="text-stone-700">Full Name</Label>
+                      <Label htmlFor="fullName" className="text-purple-700">Full Name</Label>
                       <Input
                         id="fullName"
                         name="fullName"
                         value={shippingAddress.fullName}
                         onChange={handleInputChange}
-                        className="border-stone-300 focus:border-amber-400"
+                        className="border-purple-300 focus:border-purple-400"
                         placeholder="Enter your full name"
                       />
                     </div>
                     <div className="space-y-2">
-                      <Label htmlFor="phone" className="text-stone-700">Phone Number</Label>
+                      <Label htmlFor="phone" className="text-purple-700">Phone Number</Label>
                       <Input
                         id="phone"
                         name="phone"
                         value={shippingAddress.phone}
                         onChange={handleInputChange}
-                        className="border-stone-300 focus:border-amber-400"
+                        className="border-purple-300 focus:border-purple-400"
                         placeholder="Verified phone number"
                         disabled
                       />
                     </div>
                     <div className="md:col-span-2 space-y-2">
-                      <Label htmlFor="address" className="text-stone-700">Address</Label>
+                      <Label htmlFor="address" className="text-purple-700">Address</Label>
                       <Input
                         id="address"
                         name="address"
                         value={shippingAddress.address}
                         onChange={handleInputChange}
-                        className="border-stone-300 focus:border-amber-400"
+                        className="border-purple-300 focus:border-purple-400"
                         placeholder="Enter your complete address"
                       />
                     </div>
                     <div className="space-y-2">
-                      <Label htmlFor="city" className="text-stone-700">City</Label>
+                      <Label htmlFor="city" className="text-purple-700">City</Label>
                       <Input
                         id="city"
                         name="city"
                         value={shippingAddress.city}
                         onChange={handleInputChange}
-                        className="border-stone-300 focus:border-amber-400"
+                        className="border-purple-300 focus:border-purple-400"
                         placeholder="Enter your city"
                       />
                     </div>
                     <div className="space-y-2">
-                      <Label htmlFor="state" className="text-stone-700">State</Label>
+                      <Label htmlFor="state" className="text-purple-700">State</Label>
                       <Input
                         id="state"
                         name="state"
                         value={shippingAddress.state}
                         onChange={handleInputChange}
-                        className="border-stone-300 focus:border-amber-400"
+                        className="border-purple-300 focus:border-purple-400"
                         placeholder="Enter your state"
                       />
                     </div>
                     <div className="space-y-2">
-                      <Label htmlFor="pinCode" className="text-stone-700">PIN Code</Label>
+                      <Label htmlFor="pinCode" className="text-purple-700">PIN Code</Label>
                       <Input
                         id="pinCode"
                         name="pinCode"
                         value={shippingAddress.pinCode}
                         onChange={handleInputChange}
-                        className="border-stone-300 focus:border-amber-400"
+                        className="border-purple-300 focus:border-purple-400"
                         placeholder="Enter PIN code"
                       />
                     </div>
@@ -492,11 +492,11 @@ const CartPage = () => {
               </div>
 
               {/* Payment Buttons */}
-              <div className="flex-shrink-0 bg-white border-t border-stone-200 p-6 space-y-3 rounded-b-2xl">
+              <div className="flex-shrink-0 bg-white border-t border-purple-200 p-6 space-y-3 rounded-b-2xl">
                 <Button
                   onClick={() => handlePaymentSelection('online')}
                   disabled={checkoutLoading}
-                  className="w-full h-12 rounded-xl bg-stone-900 hover:bg-stone-800 text-white font-semibold shadow-lg hover:shadow-xl transition-all duration-200"
+                  className="w-full h-12 rounded-xl bg-purple-900 hover:bg-purple-800 text-white font-semibold shadow-lg hover:shadow-xl transition-all duration-200"
                 >
                   {checkoutLoading ? (
                     <div className="flex items-center justify-center gap-2">
@@ -515,11 +515,11 @@ const CartPage = () => {
                   onClick={() => handlePaymentSelection('cod')}
                   disabled={checkoutLoading}
                   variant="outline"
-                  className="w-full h-12 rounded-xl border-2 border-amber-600 text-amber-700 hover:bg-amber-600 hover:text-white font-semibold shadow-lg hover:shadow-xl transition-all duration-200"
+                  className="w-full h-12 rounded-xl border-2 border-purple-600 text-purple-700 hover:bg-purple-600 hover:text-white font-semibold shadow-lg hover:shadow-xl transition-all duration-200"
                 >
                   {checkoutLoading ? (
                     <div className="flex items-center justify-center gap-2">
-                      <div className="w-5 h-5 border-2 border-amber-600 border-t-transparent rounded-full animate-spin"></div>
+                      <div className="w-5 h-5 border-2 border-purple-600 border-t-transparent rounded-full animate-spin"></div>
                       Processing...
                     </div>
                   ) : (
