@@ -600,7 +600,6 @@ const ProductDetailPage: React.FC = () => {
                   <div className="grid grid-cols-2 gap-4 pt-4">
                     {[
                       { icon: Truck, text: "Free Shipping", subtext: "2-3 days" },
-                      { icon: Shield, text: "2-Year Warranty", subtext: "Full coverage" },
                       { icon: RotateCcw, text: "30-Day Returns", subtext: "No questions" },
                       { icon: Award, text: "Premium Quality", subtext: "Certified" },
                     ].map((item, idx) => (
