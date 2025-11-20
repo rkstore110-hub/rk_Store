@@ -1,4 +1,3 @@
-disable cod option only prepaid avaialable:
 import React, { useState, useEffect } from "react";
 import { useCart } from "../components/CartContext";
 import { Button } from "../components/ui/button";
@@ -25,7 +24,9 @@ const CartPage = () => {
   const { checkoutLoading, processPayment } = usePaymentProcessing();
 
   const [isCheckingOut, setIsCheckingOut] = useState(false);
-  const [selectedPaymentMethod, setSelectedPaymentMethod] = useState<"online" | null>(null);
+  // Type updated: removed | "cod"
+  const [selectedPaymentMethod, setSelectedPaymentMethod] = useState<"online" | null>('online'); // Changed default to 'online'
+
   const [shippingAddress, setShippingAddress] = useState({
     fullName: "",
     address: "",
@@ -47,7 +48,7 @@ const CartPage = () => {
       }));
       setIsCheckingOut(true);
       // Auto-select online payment when phone is verified
-      setSelectedPaymentMethod('online');
+      setSelectedPaymentMethod('online'); // Ensure 'online' is selected
     }
   }, [phoneVerification.phoneVerified, phoneVerification.phoneNumber]);
 
@@ -83,6 +84,7 @@ const CartPage = () => {
     phoneVerification.setShowPhoneVerification(true);
   };
 
+  // Payment method parameter must be "online" only
   const handlePaymentSelection = async (paymentMethod: "online") => {
     const requiredFields = ["fullName", "address", "city", "state", "pinCode", "phone"];
     const missingFields = requiredFields.filter((field) => !shippingAddress[field].trim());
@@ -94,6 +96,12 @@ const CartPage = () => {
       toast({ title: "Phone Not Verified", description: "Please verify your phone number first", variant: "destructive" });
       return;
     }
+    // Enforce selectedPaymentMethod check
+    if (selectedPaymentMethod !== 'online') {
+        toast({ title: "Error", description: "Please select Online Payment method", variant: "destructive" });
+        return;
+    }
+
 
     const orderItems = cart.map(item => ({
       productId: item._id || item.id,
@@ -120,11 +128,12 @@ const CartPage = () => {
     if (success) {
       clearCart();
       setIsCheckingOut(false);
-      setSelectedPaymentMethod(null);
+      setSelectedPaymentMethod('online'); // Reset to 'online'
       phoneVerification.resetPhoneVerification();
     }
   };
 
+  // Only allow selection of "online"
   const handlePaymentMethodSelect = (method: "online") => {
     setSelectedPaymentMethod(method);
   };
@@ -498,6 +507,7 @@ const CartPage = () => {
                   <h3 className="font-semibold text-purple-900 text-lg">Payment Method</h3>
                   
                   {/* Online Payment Option - Only Option */}
+                  {/* Note: COD option has been removed from here */}
                   <div className="space-y-3">
                     <div
                       className={`border-2 rounded-xl p-4 cursor-pointer transition-all duration-200 ${
@@ -578,7 +588,8 @@ const CartPage = () => {
               <div className="flex-shrink-0 bg-white border-t border-purple-200 p-6 space-y-3 rounded-b-2xl">
                 {/* Online Payment Button - Only Button */}
                 <Button
-                  onClick={() => handlePaymentSelection('online')}
+                  // Call handlePaymentSelection with 'online' directly
+                  onClick={() => handlePaymentSelection('online')} 
                   disabled={checkoutLoading || selectedPaymentMethod !== 'online'}
                   className={`w-full h-12 rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all duration-200 ${
                     selectedPaymentMethod === 'online'
