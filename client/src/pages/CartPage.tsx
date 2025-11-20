@@ -1,3 +1,4 @@
+disable cod option only prepaid avaialable:
 import React, { useState, useEffect } from "react";
 import { useCart } from "../components/CartContext";
 import { Button } from "../components/ui/button";
@@ -24,7 +25,7 @@ const CartPage = () => {
   const { checkoutLoading, processPayment } = usePaymentProcessing();
 
   const [isCheckingOut, setIsCheckingOut] = useState(false);
-  const [selectedPaymentMethod, setSelectedPaymentMethod] = useState<"cod" | "online" | null>(null);
+  const [selectedPaymentMethod, setSelectedPaymentMethod] = useState<"online" | null>(null);
   const [shippingAddress, setShippingAddress] = useState({
     fullName: "",
     address: "",
@@ -45,6 +46,8 @@ const CartPage = () => {
         phone: phoneVerification.phoneNumber
       }));
       setIsCheckingOut(true);
+      // Auto-select online payment when phone is verified
+      setSelectedPaymentMethod('online');
     }
   }, [phoneVerification.phoneVerified, phoneVerification.phoneNumber]);
 
@@ -80,7 +83,7 @@ const CartPage = () => {
     phoneVerification.setShowPhoneVerification(true);
   };
 
-  const handlePaymentSelection = async (paymentMethod: "cod" | "online") => {
+  const handlePaymentSelection = async (paymentMethod: "online") => {
     const requiredFields = ["fullName", "address", "city", "state", "pinCode", "phone"];
     const missingFields = requiredFields.filter((field) => !shippingAddress[field].trim());
     if (missingFields.length > 0) {
@@ -122,7 +125,7 @@ const CartPage = () => {
     }
   };
 
-  const handlePaymentMethodSelect = (method: "cod" | "online") => {
+  const handlePaymentMethodSelect = (method: "online") => {
     setSelectedPaymentMethod(method);
   };
 
@@ -343,7 +346,7 @@ const CartPage = () => {
                   </div>
                   <div className="flex items-center gap-2">
                     <div className="w-1 h-1 bg-purple-400 rounded-full"></div>
-                    <span>Quality guarantee</span>
+                    <span>Prepaid orders only</span>
                   </div>
                 </div>
               </motion.div>
@@ -494,7 +497,7 @@ const CartPage = () => {
                 <div className="space-y-4 mt-6">
                   <h3 className="font-semibold text-purple-900 text-lg">Payment Method</h3>
                   
-                  {/* Online Payment Option */}
+                  {/* Online Payment Option - Only Option */}
                   <div className="space-y-3">
                     <div
                       className={`border-2 rounded-xl p-4 cursor-pointer transition-all duration-200 ${
@@ -551,35 +554,19 @@ const CartPage = () => {
                       )}
                     </div>
 
-                    {/* Cash on Delivery Option */}
-                    <div
-                      className={`border-2 rounded-xl p-4 cursor-pointer transition-all duration-200 ${
-                        selectedPaymentMethod === 'cod' 
-                          ? 'border-purple-600 bg-purple-50 shadow-md' 
-                          : 'border-purple-200 hover:border-purple-400'
-                      }`}
-                      onClick={() => handlePaymentMethodSelect('cod')}
-                    >
-                      <div className="flex items-center justify-between">
-                        <div className="flex items-center gap-3">
-                          <div className={`w-5 h-5 rounded-full border-2 flex items-center justify-center ${
-                            selectedPaymentMethod === 'cod' 
-                              ? 'border-purple-600 bg-purple-600' 
-                              : 'border-purple-300'
-                          }`}>
-                            {selectedPaymentMethod === 'cod' && (
-                              <div className="w-2 h-2 bg-white rounded-full"></div>
-                            )}
-                          </div>
-                          <div>
-                            <div className="flex items-center gap-2">
-                              <Truck className="w-5 h-5 text-purple-600" />
-                              <span className="font-semibold text-purple-900">Cash on Delivery</span>
-                            </div>
-                            <p className="text-sm text-purple-600 mt-1">
-                              Pay when you receive your order
-                            </p>
-                          </div>
+                    {/* COD Option Removed - Informational Note */}
+                    <div className="bg-amber-50 border border-amber-200 rounded-xl p-4">
+                      <div className="flex items-center gap-3">
+                        <div className="w-5 h-5 rounded-full bg-amber-100 border border-amber-300 flex items-center justify-center">
+                          <Truck className="w-3 h-3 text-amber-600" />
+                        </div>
+                        <div>
+                          <p className="text-sm font-medium text-amber-800">
+                            Prepaid Orders Only
+                          </p>
+                          <p className="text-xs text-amber-600 mt-1">
+                            Currently we are accepting prepaid orders only for faster processing and delivery.
+                          </p>
                         </div>
                       </div>
                     </div>
@@ -589,7 +576,7 @@ const CartPage = () => {
 
               {/* Payment Buttons */}
               <div className="flex-shrink-0 bg-white border-t border-purple-200 p-6 space-y-3 rounded-b-2xl">
-                {/* Online Payment Button */}
+                {/* Online Payment Button - Only Button */}
                 <Button
                   onClick={() => handlePaymentSelection('online')}
                   disabled={checkoutLoading || selectedPaymentMethod !== 'online'}
@@ -612,42 +599,17 @@ const CartPage = () => {
                   )}
                 </Button>
 
-                {/* COD Button */}
-                <Button
-                  onClick={() => handlePaymentSelection('cod')}
-                  disabled={checkoutLoading || selectedPaymentMethod !== 'cod'}
-                  className={`w-full h-12 rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all duration-200 ${
-                    selectedPaymentMethod === 'cod'
-                      ? 'bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 text-white'
-                      : 'bg-gray-200 text-gray-400 cursor-not-allowed'
-                  }`}
-                >
-                  {checkoutLoading ? (
-                    <div className="flex items-center justify-center gap-2">
-                      <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
-                      Placing Order...
-                    </div>
-                  ) : (
-                    <div className="flex items-center justify-center gap-2">
-                      <Truck className="w-5 h-5" />
-                      Place COD Order
-                    </div>
-                  )}
-                </Button>
-
                 {/* Payment Security Note */}
-                {selectedPaymentMethod === 'online' && (
-                  <motion.div
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    className="text-center"
-                  >
-                    <p className="text-xs text-purple-600 flex items-center justify-center gap-1">
-                      <Shield className="w-3 h-3" />
-                      Your payment is secured with 256-bit SSL encryption
-                    </p>
-                  </motion.div>
-                )}
+                <motion.div
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className="text-center"
+                >
+                  <p className="text-xs text-purple-600 flex items-center justify-center gap-1">
+                    <Shield className="w-3 h-3" />
+                    Your payment is secured with 256-bit SSL encryption
+                  </p>
+                </motion.div>
               </div>
             </motion.div>
           </motion.div>
